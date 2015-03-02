@@ -5,14 +5,20 @@ using System.Text;
 
 namespace Refactor
 {
-    public class TextPosition
+    public struct TextPosition
     {
+        public int LineNumber;
+        public int ColumnNumber;
+
         public TextPosition(int lineNumber, int columnNumber)
         {
             LineNumber = lineNumber;
             ColumnNumber = columnNumber;
         }
-        public int LineNumber { get; private set; }
-        public int ColumnNumber { get; private set; }
+
+        public override string ToString()
+        {
+            return string.Format("({0},{1})", LineNumber, ColumnNumber);
+        }
     }
 }

@@ -1,0 +1,92 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Refactor;
+
+namespace Refactor.Test
+{
+    [TestClass]
+    public class RefactorUtilityTest
+    {
+        [TestMethod]
+        public void TestInsertOneItem_OneLine()
+        {
+            string originText = "0123";
+            var insertItem = new InsertItem(1, 1, "*");
+            var newText = RefactorUtility.InsertOneItem(originText, insertItem);
+            Assert.AreEqual("*0123", newText);
+        }
+
+        [TestMethod]
+        public void TestInsertOneItem_MultiLine()
+        {
+            string originText = "0123\r\n0123";
+            var insertItem = new InsertItem(2, 1, "*"); 
+            var newText = RefactorUtility.InsertOneItem(originText, insertItem);
+            Assert.AreEqual("0123\r\n*0123", newText);
+        }
+
+        [TestMethod]
+        public void TestInserMoreThanOneItem()
+        {
+            string originText = "0123\r\n0123";
+            var insertItem_1 = new InsertItem(1, 1, "[1]");
+            var insertItem_2 = new InsertItem(1, 3, "[2]");
+            var newText = RefactorUtility.InsertMoreThanOneItem(originText, new InsertItem[] { insertItem_1, insertItem_2 });
+            Assert.AreEqual("[1]01[2]23\r\n0123", newText);
+        }
+
+        
+        [TestMethod]
+        public void TestBulkInsert_null()
+        {
+            string originText = "0123\r\n0123";
+            var nextText = RefactorUtility.BulkInsert(originText, null);
+            Assert.AreEqual(originText, nextText);
+        }
+
+        [TestMethod]
+        public void TestBulkInsert_EmptyArray()
+        {
+            string originText = "0123\r\n0123";
+            var nextText = RefactorUtility.BulkInsert(originText, new InsertItem[0]);
+            Assert.AreEqual(originText, nextText);
+        }
+
+        [TestMethod]
+        public void TestBulkInsert_OneItem()
+        {
+            string originText = "0123\r\n0123";
+            var nextText = RefactorUtility.BulkInsert(originText, new InsertItem[]{new InsertItem(2, 3,"*")});
+            Assert.AreEqual("0123\r\n01*23", nextText);
+        }
+
+        [ExpectedException(typeof(InvalidOperationException))]
+        [TestMethod]
+        public void TestBulkInsert_MoreThanOneItem_Duplicated()
+        {
+            string originText = "0123\r\n0123";
+            var nextText = RefactorUtility.BulkInsert(originText, new InsertItem[] { 
+                new InsertItem(2, 3, "[1]"),
+                new InsertItem(2, 3, "[2]"),
+                new InsertItem(1, 3, "[1]"),
+                new InsertItem(1, 3, "[2]")
+            });            
+        }
+        [TestMethod]
+        public void TestBulkInsert_MoreThanOneItem_Success()
+        {
+            string originText = "0123\n0123";
+            var newText = RefactorUtility.BulkInsert(originText, new InsertItem[] { 
+                new InsertItem(1, 3, "[1]"),
+                new InsertItem(2, 3, "[2]"),
+                new InsertItem(1, 1, "[3]"),
+                new InsertItem(2, 1, "[4]")
+            });
+            Assert.AreEqual("[3]01[1]23\n[4]01[2]23", newText);
+        }
+    }
+}
