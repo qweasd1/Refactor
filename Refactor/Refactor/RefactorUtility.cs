@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace Refactor
 {
+    //TODO_High: when we insert text, if the insert point out of range of the current range, we should complete it.
     //TODO: complete all the exceptions
     public class RefactorUtility
     {
