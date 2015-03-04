@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
+using System.Text;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Refactor;
-
+using System.Text.RegularExpressions;
 
 namespace Refactor.Test
 {
@@ -116,42 +117,11 @@ namespace Refactor.Test
         }
 
         [TestMethod]
-        public void TestExpandText_InsertOneItem_3()
+        public void TestExpandText_InsertOneItem_2()
         {
             string originText = "0123\r\n0123";
-            string newText = RefactorUtility.BulkInsert(originText, new InsertItem[] { new InsertItem(2, 6, "*") });
-            Assert.AreEqual("0123\r\n0123 *", newText);
-        }
-
-
-        [TestMethod]
-        public void TestExpandText_InsertOneItem_4()
-        {
-            string originText = "0123\r\n0123";
-            string newText = RefactorUtility.BulkInsert(originText, new InsertItem[] { new InsertItem(1, 6, "*") });
-            Assert.AreEqual("0123 *\r\n0123", newText);
-        }
-
-        [TestMethod]
-        public void TestExpandText_InsertMoreThanTwoItem_1()
-        {
-            string originText = "0123\r\n0123";
-            string newText = RefactorUtility.BulkInsert(originText, new InsertItem[]{
-                new InsertItem(1,6,"[1]"),
-                new InsertItem(3,3,"[2]")
-            });
-            Assert.AreEqual("0123 [1]\r\n0123\r\n  [2]", newText);
-        }
-
-        [TestMethod]
-        public void TestExpandText_InsertMoreThanTwoItem_2()
-        {
-            string originText = "0123\r\n0123";
-            string newText = RefactorUtility.BulkInsert(originText, new InsertItem[]{
-                new InsertItem(1,6,"[1]"),
-                new InsertItem(1,8,"[2]")
-            });
-            Assert.AreEqual("0123 [1]  [2]\r\n0123", newText);
+            string newText = RefactorUtility.BulkInsert(originText, new InsertItem[] { new InsertItem(2, 5, "*") });
+            Assert.AreEqual("0123\r\n0123*", newText);
         }
     }
 }
