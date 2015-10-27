@@ -1,7 +1,7 @@
 # Content
 * quick up
   * [install](#install)
-  * a simple example
+  * [a simple example](#example)
 * functions
   * grammar syntax
   * __AST rewrite__
@@ -59,3 +59,6 @@
 
 
 ## <a name="install">install</a>
+
+
+## <a name="example">Examples</a>
