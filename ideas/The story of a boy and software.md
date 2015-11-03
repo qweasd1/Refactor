@@ -14,9 +14,36 @@ After I graduate from University, I got a chance to join a small startup company
 
 
 ### The boy's growth in Citi
-If someone ask me to describe my experience there in one word, I think it's mature. During 1 years, I became mature in many areas, such as the programming skill, the depth of understanding t of Design Pattern and architecture, the skill to balance my time when I face complex project and the way to efficiently learn new knowledge. 
+If someone ask me to describe my experience there in one word, I think it's mature. During 1 years, I became mature in many areas, such as the programming skill, the depth of understanding t of Design Pattern and architecture, the skill to balance my time when I facing complex project and the way to learn new knowledge efficiently. 
 
-Let's return to my journey in Citi. I was
+
+During the day in Citi, I work with a well-organized team. It's there that I realize some non-tech factors are so important. For instance, in our daily development, we need to express ideas clearly and efficiently. If we can't do it, our mate will probably do things unexpected and lead to something bad. The same thing happened when we write e-mails. Though looks trivil, they are actually important. We can save a lot of time by doing them efficiently. I remind myself to train myself speaking more neatly and clearly.
+
+From the tech view, Citi is actually using many advanced technology. We also develop some our own systems. I began to think how can I efficiently learn them. After trying again and again. I accumulate many useful tips to setup envrionment and develop my own methodology to learn  new thing. I became more patient when facing complex subjects, try to divide them in conquerable picecs and finally absorb them
+
+Though I become more mature, I don't lose my creative ideas. At the beginning of this year, we decide to build a new data warehouse. The real challenge is we are facing many different format data and we hope we can use a uniform, configurable and easy way to extract them out. We also have other traditional none-efficent options, but my manager Abhijeet and I decided to try if we can find a new way. I try it for many days and found a solution. Though have a thought in mind, it's really hard to implement. But no pay, no gain, a complex framework can help you improve your skills more better! I finally decided to have try. The obstacles disappear one by one and finally we successed! The final result exceeded our initial expected, the algorithm is extremely flexible. Without our inistance on inovation
+
+
+Citi's work is more professional and serious than my previous work. For every release of our product, we need to do careful design, serious and fully test. We also need to write easy-understand documents. Since I also work on a data related project, data integrity is also an important part. 
+
+
+Let's return to my journey in Citi. I was supposed to be a GUI developer on WPF, but when I was on board, my manager said I will be a BI developer. I would work on a quite complex datawarehouse, but I had no experience on any database related development. 
+
+Details
+
+Performance
+
+Team work. easily understood by your co-workers. Clearly express your ideas and made them understood by others. We are a global team, so if can't express our ideas in e-mail clearly, we might waste one day time. Though these are not tech related question and sounds trivil, I thought they are important. We always spent a lot of time on trivil things, we can do them more quicklier or we can even made them automatically. But we can do nothing if we ignore them.
+
+A clear Goal
+
+
+I began to write complex framework and start to consider the issue I met more seriously. I begin to see my code from different perspectives not just let it work.
+
+I began to create my own tools to help myself. I wrote plugins for my IDE.
+
+I learn how to balance and assign my time. (Thanks to my co-workers Max and Harry), Now, even facing a big and urgent task, I tell myself to divide them into reasonable parts instead of begin a try mindlessly. I also assign at least more than 1 hours to learn new technology every day. When it's not busy, I will refactor my code or develop some useful tools to help save more time in the future. Rome was not built in a day， the same is your dream. However, if you prepare every day, your dream can come true earlier.
+
 
 
 ### The boy's work in Citi
