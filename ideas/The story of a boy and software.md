@@ -23,9 +23,7 @@ From the tech view, Citi is actually using many advanced technology. We also dev
 
 Though I become more mature, I don't lose my creative ideas. At the beginning of this year, we decide to build a new data warehouse. The real challenge is we are facing many different format data and we hope we can use a uniform, configurable and easy way to extract them out. We also have other traditional none-efficent options, but my manager Abhijeet and I decided to try if we can find a new way. I try it for many days and found a solution. Though have a thought in mind, it's really hard to implement. But no pay, no gain, a complex framework can help you improve your skills more better! I finally decided to have try. The obstacles disappear one by one and finally we successed! The final result exceeded our initial expected, the algorithm is extremely flexible. Without my manager's and my insistance on innovation, we won't have this great result. My algorithm then attend the '2015 CSTC GOT INNOVATIVE TALENT' competition. At the time I write this PS, our project ranks 14 (of 110 projects) and pass the first selection.
 
-
-##### The boy's new story:
-
+I have to say, I really really learn a lot in Citi, I want to say thank you to all my colleagues, I love here but I have to go.
 
 Citi's work is more professional and serious than my previous work. For every release of our product, we need to do careful design, serious and fully test. We also need to write easy-understand documents. Since I also work on a data related project, data integrity is also an important part. 
 
@@ -47,9 +45,15 @@ I began to create my own tools to help myself. I wrote plugins for my IDE.
 
 I learn how to balance and assign my time. (Thanks to my co-workers Max and Harry), Now, even facing a big and urgent task, I tell myself to divide them into reasonable parts instead of begin a try mindlessly. I also assign at least more than 1 hours to learn new technology every day. When it's not busy, I will refactor my code or develop some useful tools to help save more time in the future. Rome was not built in a day， the same is your dream. However, if you prepare every day, your dream can come true earlier.
 
+##### The boy's new story:
+During the days in Citi, I found myself extremely interested in researching issues of Software Engineering. I can handle some of them, but I thought I can do it better.In one word, I need to study more. In the past years, I read books like <><><> The y really appeals me but I found I read them slowly. Also It's not easy to do research as a programmer in industry.
+The first time I saw the ISR, I was crying, I found those ideas
 
 
-### The boy's work in Citi
+
+
+
+
 
 
 ### The boy's view on Software Engineering
