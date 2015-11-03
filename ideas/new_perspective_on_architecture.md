@@ -1,3 +1,5 @@
+use less elements to express the basic structure
+
 Solve your issue in a new way
 Recently, I got a new idea on how we write code.
 Usually when we encounter a new issue, 
