@@ -5,7 +5,7 @@
 - Analysis
 - Desgin of objmap
 
-###### Trigger
+###### Trigger (Jstree)
 The idea of objmap came occasionally when I want to include jstree(jQuery plugin) into my angularjs app.
 The obstacles I found when I use jsTree is that I need to map my domain model into a specific structure designed for jsTree.
 
@@ -104,5 +104,51 @@ It solves the issue 1, 2, however, the target jstree_model can be more complex(t
 ```
 Also, it's still imperative than declarative(what we implement in ```node_transformer``` can be complex when the transform logic become complex). Moreover, we can only use this recursive logic with jstree, but such kind of recursive logic likely to occur in many different places. 
 
-**So, can we made it more generic? Can one javascript object map to a new javascript object in a different structure?**
+**So, can we made it more generic? Can one javascript object transform to a new javascript object with different structure in a declarative way?**
 
+##### Before Start
+**Potential scenarios**
+
+Now we have our question, but is it a meaningful question?
+The answer is **YES**!
+Think about the following scenarios:
+* When we build GUI in MVVM pattern, we usually need to transform our model to view model. These codes are sometimes boilerplate codes, so if we can use declarative way to do the transform, it's much easier and can save us a lot of time.
+* When we use other's framework, we always need some adapting code to transform our domain model to the framework's domain model, so that we invoke the facade method of the it.(our jstree is an example for this case). Again, boilerplate code.
+
+So there is no doubt that the if we can answer our question, it would be definitely useful!
+
+
+**Does there any existing framework?**
+
+Usually, before your project, look around to see if anyone has made it!
+After a couple hours searching, I found a great case: **[jsonpath-object-transform](https://github.com/dvdln/jsonpath-object-transform)**
+
+the core idea of this framework is to use a ```template``` object to specify the structure of the target object and use the ```JSONPath``` to select the fields from the origin object.
+Here is a sample:
+```javascript
+var transform = require('jsonpath-object-transform');
+
+var template = {
+  a:{
+    b:'$.x',
+    c:'$.y'
+  }
+};
+
+var data = {
+  x:1,
+  y:2
+};
+
+var result = transform(data, template);
+```
+Result:
+```javasript
+{
+  a:{
+      b: 1,
+      c: 2
+    }
+  
+}
+```
