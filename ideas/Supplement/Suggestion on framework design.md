@@ -21,12 +21,17 @@
   - build trivial adapter to quickly incorperate the framework in new system.
 
 ##### What is a framework?
-To answer a question, to make it clear first. Before we talk anything about how to design a framework, I want pust some useful constraints on the module we are talking about: A module should have only one single root object and might has an optional config object.
+To answer a question, to make it clear first. Before we talk anything about how to design a framework, I want pust some useful constraints on the module we are talking about: A module should have only **a single root object** and  **an optional config object**.
 
 here are several good examples:
 
---------------------------------------------------
-| No              | There is none              |
---------------------------------------------------
-| There really      | should be one              |
---------------------------------------------------
+<table>
+    <th>
+      <tr>
+          <td>Framework</td>
+          <td>Root Object</td>
+          <td>Config</td>
+      </tr>
+    </th>
+    
+</table>
