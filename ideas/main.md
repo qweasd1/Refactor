@@ -52,7 +52,9 @@
   - build trivial adapter to quickly incorperate the framework in new system.
 
 ###### how to design a system(stateful)
-- what's the difference between a system and a framework?
+- what's the difference between a system and a framework? (stateful)
+- controll the state
+  - rollback
 
 ###### context-aware: make you code less(develop tool)
 
@@ -63,6 +65,8 @@
   - you already know how to use the framework but don't know the details. You might want to see what does one API exactly do
   - you have some desired functions and you don't if the framework support that. You want to find an anwser for it.
 
+
+### Who am I
 
 ###Teachers:
 - Jonathan Aldrich
