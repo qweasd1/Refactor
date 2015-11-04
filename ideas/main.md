@@ -34,7 +34,7 @@
 - Interation 2: AST re-write
 - Interation 3: add visit pattern
 
-###### how to design a framework
+###### how to design a framework(module)
 - What's your goal with your framework
 - How we design them efficently
   - Single root
