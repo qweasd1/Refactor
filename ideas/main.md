@@ -65,7 +65,8 @@
   - you already know how to use the framework but don't know the details. You might want to see what does one API exactly do
   - you have some desired functions and you don't if the framework support that. You want to find an anwser for it.
 
-
+###### efficient way to re-use other's code
+As a community, we are in two roles: write code to facilitate others, consume other's code. So this raise 2 questions: how to make our codes easily understood and used by others. How to efficiently use other's code. (a solid a ground maybe patterns)
 ### Who am I
 
 ###Teachers:
