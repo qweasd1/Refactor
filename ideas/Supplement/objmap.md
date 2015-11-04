@@ -102,4 +102,7 @@ It solves the issue 1, 2, however, the target jstree_model can be more complex(t
   a_attr      : {}  // attributes for the generated A node
 }
 ```
-Also, it's still imperative than declarative(what we implement in ```node_transformer``` can be complex when the transform logic become complex)
+Also, it's still imperative than declarative(what we implement in ```node_transformer``` can be complex when the transform logic become complex). Moreover, we can only use this recursive logic with jstree, but such kind of recursive logic likely to occur in many different places. 
+
+**So, can we made it more generic? Can one javascript object map to a new javascript object in a different structure?**
+
