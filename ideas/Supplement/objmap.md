@@ -173,7 +173,7 @@ var template = {
 Though there still many place to improve, it's actually a good start point!
 
 
-### Start Design
+### Function Design
 
 ##### Step 1: add expression + context inference
 **expression is a very useful tools to let our framework verse and flexible.**
@@ -276,7 +276,7 @@ When we process our domain model, it's very common to use functions like map, fi
 ```javascript
 var tansformer.register_template("file", {
   text: '$.name',
-  children: ['$.subfiles', 'filter name.startWith("a")', '&file' ] // '_' represent one item from upstream of our pipeline function.
+  children: ['$.subfiles', 'filter _.name.startWith("a")', '&file' ] // '_' represent one item from upstream of our pipeline function.
 })
 ```
 
@@ -305,7 +305,7 @@ Now, our framework more flexible to a next level. **As a conclusion, let your fr
 #### Part4: don't miss those things look trivial but not
 There are some things look trivial but not. Missing them might cause your user use workaround for them.
 
-###### what return: single value? array, null?
+###### what return: single value? array
 ```javascript
 // which value will return for the following condition?
 // when $.a has no match
@@ -336,4 +336,20 @@ var template = {
 }
 ```
 we definitely know we only select one result, so we want to return a single value.
+
 **So here, we need to let our users have the chance to decide which way they want, not make decisions for them! I have seen many framework set some presumed implemention and make their users use some work around to achieve their goals!** 
+
+So let's do it like this:
+```javascript
+//this will always return array
+var template =  {
+  'blogs[]':"$.blogs"
+}
+//this will always return the first single result
+var template = {
+  'blog':"$.blog"
+}
+
+```
+The example above is only one aspect. There are also other aspects like: if our jsonpath selector return nothing, shall we set the target's property as ```null``` or totally ignore it as ```undefined```? It can be meaningful for your user, since they might has code like ```if(target.prop !== undefined) ```. 
+###
