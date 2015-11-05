@@ -225,7 +225,9 @@ So far everhthing looks good! And let's turn to the second part
 
 #### Part2: add abstraction
 if expression brings flexibility, abstraction brings reusable and extensibility. The best example for abstraction is 'function' and 'object', we encapsulate reusable logic inside them.
-let's see an example in our objmap:
+let's see what we can do with our objmap:
+
+###### add functions
 ```javascript
 //copy all fields start with 'a'
 var origin = {
@@ -252,8 +254,43 @@ var template = {
   _copy_:"a*" // _<func>_ represents a function
 }
 ```
+The template here will copy all properties which start with 'a' from orgin to target object. _<function name>_ will used to specify a function. The value of it will pass as paramenters to it.
+
+##### add sub-template
+Next, let's add sub-template.
+```javascript
+// recall our file system example for jstree
+// we can specify our transform logic like this 
+var tansformer.register_template("file", {
+  text: '$.name',
+  children: ['$.subfiles', '&file' ] //'&' represent invoke a sub-template
+})
+
+var target = transformer.transform(origin, 'file')
+
+```
+With sub-template, our transform logic looks extremely simple and declarative
+
+##### add pipeline functions
+When we process our domain model, it's very common to use functions like map, filter, group, reduce(in javascript). Let's include them in objmap
+```javascript
+var tansformer.register_template("file", {
+  text: '$.name',
+  children: ['$.subfiles', 'filter name.startWith("a")', '&file' ] // '_' represent one item from upstream of our pipeline function.
+})
+```
 
 #### Part3: make it dynamic
+##### add dynamic parameters to our function
+```javascript
+var template = {
+  _f = '$.some_fields',
+  _copy_: "{{_f}}"
+}
+```
+This shall make our framework more flexible.
+
+
 
 
 #### Part4: don't miss those trivial things
