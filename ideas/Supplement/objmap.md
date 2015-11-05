@@ -1,11 +1,11 @@
-##objmap - a framework to transform javascript object
-#### **Content**
+#objmap - a framework to transform javascript object
+## **Content**
 - Trigger (Jstree)
 - Before Start
-- Analysis
-- Desgin of objmap
+- Start Design
+- More to Think
 
-###### Trigger (Jstree)
+### Trigger (Jstree)
 The idea of objmap came occasionally when I want to include jstree(jQuery plugin) into my angularjs app.
 The obstacles I found when I use jsTree is that I need to map my domain model into a specific structure designed for jsTree.
 
@@ -106,7 +106,7 @@ Also, it's still imperative than declarative(what we implement in ```node_transf
 
 **So, can we made it more generic? Can one javascript object transform to a new javascript object with different structure in a declarative way?**
 
-##### Before Start
+### Before Start
 **Potential scenarios**
 
 Now we have our question, but is it a meaningful question?
@@ -152,3 +152,109 @@ Result:
   
 }
 ```
+This is really a good idea! but it still has some lack:
+
+1. It doesn't support recursive(so we can't apply it to our jsTree scenario)
+2. It doesn't support calculation(or expression). e.g. it can't do something like this
+```javascript
+var template = {
+  firstName:'$.firstname',
+  lastName:'$.lastname'
+  name: //expected to be $.firstname + ' ' + $.lastname, but can't here
+}
+
+
+```
+
+
+3. Lacking reusable: when the transform becomes complex, we can not re-use our existing template object
+4. ...(**to be continure**)
+
+Though there still many place to improve, it's actually a good start point!
+
+
+### Start Design
+
+##### Step 1: add expression + context inference
+**expression is a very useful tools to let our framework verse and flexible.**
+
+A good example is Angularjs. The following code will dynamically change the button's visibility according to model's  products.count
+```html
+<button ng-show="products.count >= 4">Select a gift</button>
+```
+It's really short and convenient. In the meanwhile, angularjs also use context inference: ```product.count``` is actually on object ```$scope``` but we don't specify ```$scope``` in the expression. Angularjs knows it under such context. This is another useful tech we can use to simplify the code we need to write.
+
+Let's turn to objmap
+
+the best thing we expect is maybe we can use the javscript expression in our template. maybe something like this
+```javascript
+var template = {
+  sum: '((1 + 2 + 3))'
+}
+```
+we use '((' '))' to tell our compiler this is a expression
+
+Also the context-inference when we want to reference other property
+```javascript
+var = template = {
+     firstname:'$.firstname',
+     lastname:'$.lastname',
+     name: '((firstname + " " + lastname))' // we reference firstname and lastname here
+}
+```
+
+To be more advanced, we might don't need to output firstname and lastname in our target object, so let's add a new concept: private field(or intermediate variable). Think it as a ```let``` binding in some functional programming:
+```javascript
+var = template {
+     _fn:'$.firstname', //private
+     _ln:'$.lastname',  //private
+     name:'((_fn + ' ' + _ln))'
+}
+```
+
+You might feel tired to see string concat like ```_fn + ' ' + _ln``` here. So let's add a string template engine here
+```javascript
+var = template {
+     _fn:'$.firstname',
+     _ln:'$.lastname',
+     name:'{{_fn}} {{_ln}}' //mustache flavor string template
+}
+```
+
+So far everhthing looks good! And let's turn to the second part
+
+#### Part2: add abstraction
+if expression brings flexibility, abstraction brings reusable and extensibility. The best example for abstraction is 'function' and 'object', we encapsulate reusable logic inside them.
+let's see an example in our objmap:
+```javascript
+//copy all fields start with 'a'
+var origin = {
+   a_1:1,
+   a_2:2,
+   a_3:3,
+   a_4:4,
+   b_1:5,
+   b_2:6
+}
+
+var target = {
+   a_1:1,
+   a_2:2,
+   a_3:3,
+   a_4:4
+}
+
+```
+obviously this is not convenient to for our existing framework. So let's add some functions to it!
+```javascript
+//something like
+var template = {
+  _copy_:"a*" // _<func>_ represents a function
+}
+```
+
+#### Part3: make it dynamic
+
+
+#### Part4: don't miss those trivial things
+TODO: let user determine which one to return
