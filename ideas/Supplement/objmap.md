@@ -285,13 +285,55 @@ var tansformer.register_template("file", {
 ```javascript
 var template = {
   _f = '$.some_fields',
-  _copy_: "{{_f}}"
+  _copy_: "{{_f}}" //use dynamically parameters here
 }
 ```
-This shall make our framework more flexible.
+
+##### add dynamic paramters to your jsonpath
+```javascript
+var tempalte = {
+  the_most_popular_blog:["$.blogs","sort like 'desc'", "first"] // get the most popular blog
+  author_of_the_most_popular_blog: "$.authors[?(@.name == {{the_most_popular_blog.author}})]" //use {{the_most_popular_blog.author}} to inject dynamic parameter
+}
+```
+Here we extend the existing jsonpath expression. **As we said before embed expression in host environment can be flexible**
+Now, our framework more flexible to a next level. **As a conclusion, let your framework use as much context as possible can make it dramatically flexible**
 
 
 
 
-#### Part4: don't miss those trivial things
-TODO: let user determine which one to return
+#### Part4: don't miss those things look trivial but not
+There are some things look trivial but not. Missing them might cause your user use workaround for them.
+
+###### what return: single value? array, null?
+```javascript
+// which value will return for the following condition?
+// when $.a has no match
+// when $.a has one match
+// when $.a has more than one match
+var template = {
+  prop: "$.a"
+}
+```
+The desire answer may depends on your user's requirement:
+```javascript
+var template = {
+  blogs:"$.a.b.blogs" 
+}
+//target.blogs will be use as a input in a array function(like map)
+target.blogs.map(...)
+```
+In this situation, we definitely want ```blogs``` to be an array, even if it returns only 1 object.
+
+However in such situation:
+```javascript
+var origin = {
+   best_blog: {...}
+}
+
+var template = {
+   blog: '$.best_blog'
+}
+```
+we definitely know we only select one result, so we want to return a single value.
+**So here, we need to let our users have the chance to decide which way they want, not make decisions for them! I have seen many framework set some presumed implemention and make their users use some work around to achieve their goals!** 
