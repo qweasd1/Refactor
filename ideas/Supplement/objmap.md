@@ -1,9 +1,10 @@
 #objmap - a framework to transform javascript object
 ## **Content**
 - Trigger (Jstree)
-- Before Start
-- Start Design
-- More to Think
+- Prepare
+- Functional Design
+- Implementation Design
+- Improve the Design
 
 ### Trigger (Jstree)
 The idea of objmap came occasionally when I want to include jstree(jQuery plugin) into my angularjs app.
@@ -106,19 +107,20 @@ Also, it's still imperative than declarative(what we implement in ```node_transf
 
 **So, can we made it more generic? Can one javascript object transform to a new javascript object with different structure in a declarative way?**
 
-### Before Start
-**Potential scenarios**
+### Prepare
+##### Potential scenarios
 
 Now we have our question, but is it a meaningful question?
 The answer is **YES**!
 Think about the following scenarios:
 * When we build GUI in MVVM pattern, we usually need to transform our model to view model. These codes are sometimes boilerplate codes, so if we can use declarative way to do the transform, it's much easier and can save us a lot of time.
 * When we use other's framework, we always need some adapting code to transform our domain model to the framework's domain model, so that we invoke the facade method of the it.(our jstree is an example for this case). Again, boilerplate code.
+* when we work with AST(Abstract Syntax Tree), we actually work with an object aggregation. Then, we can use objmap to generate the structure we want instead of using visit pattern!(more declarative).
 
 So there is no doubt that the if we can answer our question, it would be definitely useful!
 
 
-**Does there any existing framework?**
+##### Does there any existing framework?
 
 Usually, before your project, look around to see if anyone has made it!
 After a couple hours searching, I found a great case: **[jsonpath-object-transform](https://github.com/dvdln/jsonpath-object-transform)**
@@ -154,8 +156,8 @@ Result:
 ```
 This is really a good idea! but it still has some lack:
 
-1. It doesn't support recursive(so we can't apply it to our jsTree scenario)
-2. It doesn't support calculation(or expression). e.g. it can't do something like this
+- It doesn't support recursive(so we can't apply it to our jsTree scenario)
+- It doesn't support calculation(or expression). e.g. it can't do something like this
 ```javascript
 var template = {
   firstName:'$.firstname',
@@ -166,9 +168,8 @@ var template = {
 
 ```
 
-
-3. Lacking reusable: when the transform becomes complex, we can not re-use our existing template object
-4. ...(**to be continure**)
+- Lacking reusable: when the transform becomes complex, we can not re-use our existing template object
+-  ...(**to be continure**)
 
 Though there still many place to improve, it's actually a good start point!
 
@@ -351,5 +352,87 @@ var template = {
 }
 
 ```
-The example above is only one aspect. There are also other aspects like: if our jsonpath selector return nothing, shall we set the target's property as ```null``` or totally ignore it as ```undefined```? It can be meaningful for your user, since they might has code like ```if(target.prop !== undefined) ```. 
-###
+The example above is only one aspect. There are also other aspects like: if our jsonpath selector return nothing, shall we set the target's property as ```null``` or totally ignore it as ```undefined```? It can be meaningful for your user, since they might has checking logic like ```if(target.prop !== undefined) ``` in their code. 
+
+###### a real world sample
+```javascript
+TODO: select blog
+```
+
+### Implementation Design
+It looks great for the function by now, so let's consider how to implement it!
+
+##### rethink before you start (use abstraction)
+From the section **Function Design** we can see that we have many things need to develop: expression, object-template, text-template, dynamical-parameters, functions and pipe-functions. **But wait! Let's see what's in common of them:**
+
+<table>
+  <thead>
+    <tr>
+      <td>Component</td>
+      <td>Input</td>
+      <td>Output</td>
+      <td>Is Pure Function?</td>
+    </tr>
+  </thead>
+  <tbody>
+   <tr>
+      <td>expression</td>
+      <td>context(can access both public and private fields)</td>
+      <td>value</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>object-template</td>
+      <td>context, target(the target that will return, only contains public fields)</td>
+      <td>target</td>
+      <td>Not Sure</td>
+    </tr>
+    <tr>
+      <td>text-template</td>
+      <td>context</td>
+      <td>string</td>
+      <td>true</td>
+    </tr>
+     <tr>
+      <td>dynamical-parameters</td>
+      <td>context</td>
+      <td>value</td>
+      <td>true</td>
+    </tr>
+     <tr>
+      <td>functions</td>
+      <td>context, target</td>
+      <td>target</td>
+      <td>Not Sure</td>
+    </tr>
+    <tr>
+      <td>pipe-functions</td>
+      <td>context, target</td>
+      <td>value</td>
+      <td>Not Sure</td>
+    </tr>
+  </tbody>
+</table>
+
+See it, they are actually has the same structure, what we need to do is parse them into the following formats:
+```javascript
+function(context) : return_value
+function(context, target) : return_value //target object is need, since we might change the state of target. _copy_ function is such a example
+```
+Let's give a name for these 2 function: ```calculation function```
+**Make things homogeneous than heterogeneous can simplify your inner implementation**
+
+##### list the structure of your module
+- a functionRepo to save/fetch all the parsed ```calculation function```
+- several parsers to parse several components. They need to use:
+  - a text-template engine
+  - a language transformer for expression
+  - a parser for pipeline functions(it's more like coffeescript not javascript so a parser is needed)
+- a root facade object has methods : ```register_template```, ```register_functions```, ```transform```
+- register some embedded functions : e.g. ```_copy_```
+
+After Implementation, we now have a workable solution! Let's move on to the next section to see how to improve our design.
+
+### Improve the Design
+
+##### Extensibility
