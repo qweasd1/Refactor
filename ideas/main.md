@@ -33,7 +33,7 @@
 ###### two way to think: enhancement the tool for generic situation
 
 ###### pratical issue: use less to do more under the current constraint
-Try to find less elements from a constraint environment and make sure they solve the issue correct and efficiently
+Try to find less elements from a constraint environment and make sure they solve the issue correct and efficiently. Use constraint primary elements to build first layer abstraction. Use constraint to define the 'type'. It's more broad. Can we have some property for such structure
 
 ###### parser framework
 - an assigned task
