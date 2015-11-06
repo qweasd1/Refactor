@@ -275,7 +275,7 @@ With sub-template, our transform logic looks extremely simple and declarative
 ##### add pipeline functions
 When we process our domain model, it's very common to use functions like map, filter, group, reduce(in javascript). Let's include them in objmap
 ```javascript
-var tansformer.register_template("file", {
+  tansformer.register_template("file", {
   text: '$.name',
   children: ['$.subfiles', 'filter _.name.startWith("a")', '&file' ] // '_' represent one item from upstream of our pipeline function.
 })
@@ -428,7 +428,7 @@ Let's give a name for these 2 function: ```calculation function```
   - a text-template engine
   - a language transformer for expression
   - a parser for pipeline functions(it's more like coffeescript not javascript so a parser is needed)
-- a root facade object has methods : ```register_template```, ```register_functions```, ```transform```
+- a root facade object has methods : ```register_template```, ```register_function```, ```transform```
 - register some embedded functions : e.g. ```_copy_```
 
 After Implementation, we now have a workable solution! Let's move on to the next section to see how to improve our design.
@@ -436,3 +436,26 @@ After Implementation, we now have a workable solution! Let's move on to the next
 ### Improve the Design
 
 ##### Extensibility
+Why extensibility important? It's because user always need some specific functions. If your module can't be extended easily, it will definitely frustrate your user. [Mustache](https://github.com/janl/mustache.js/) is such a example: Mustache is a string template engine, but you can't add a function to join string in it. Mustache's successor [handlerbar](https://github.com/wycats/handlebars.js) not only overcome this but also also support much more better extension point.
+
+in our objmap, the extension is really easy!(use register_function to register the function then use them in your template).
+
+
+##### Don't Block Your User
+Sometimes user has some **non-trivial logic** that can't be expressed easily in the way your framework provided, we should give a way to let them **has the opportunity to fullfill their logic**. Since your framework is always built upon a more powerful but quite low level platform(like jquery to javascript), a usually handy solution is to let your user can go back to write code in that low level platform if necessary. So in the objmap, le's add a new feature like:
+```javascript
+var template = {
+  prop:function(context, origin) {
+     
+  }
+}
+```
+See it? the function(...) we add do the same thing as our expression do, but you can turn back to your familiar javascript when you feel it's hard to express your logic in expression.
+
+##### Let your User leverage the same power as you
+Well, the previous feature doesn't come to an end. In obj model, we can leverage **jsonpath** like ``` prop: '$.origin_prop'```. But when it turns to use ```funtion```, we can't use the jsonpath unless we include the reference to it.(We don't expose it from our framework). It's usually inconvenient, so let's change our function signature to ```function(context, origin, utility)``` then we can use jsonpath utility like ```utility.jsonpath(some_obj, '$.prop')```.
+BTW, you can also register other utility if you want like following:
+```javascript
+tansformer.register_ultility("your utility name", your_utility) 
+```
+Now, objmap becomes more extensible!
