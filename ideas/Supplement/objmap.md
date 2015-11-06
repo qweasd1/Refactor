@@ -5,6 +5,7 @@
 - Functional Design
 - Implementation Design
 - Improve the Design
+- Extension Tool Design
 
 ### Trigger (Jstree)
 The idea of objmap came occasionally when I want to include jstree(jQuery plugin) into my angularjs app.
@@ -458,4 +459,16 @@ BTW, you can also register other utility if you want like following:
 ```javascript
 tansformer.register_ultility("your utility name", your_utility) 
 ```
-Now, objmap becomes more extensible!
+Now, objmap becomes more extensible! And it's time to move to the next topic!
+
+### Extension Tool Design
+What does **Extension Tool** mean here? Actually, what I mean is **a tool to help people use your framework better**. This is just like an IDE to a languange, with the syntax highlight, auto-completion,..., you work not only more efficiently but have less chance to make errors.
+
+The most simple form of extension tool might be the a REPL console: You directly see what does your code do. Some other examples maybe like **Regex Testor** which highlight the match item when you develop complex regex expression. This sort of tool has the same feature: **let you see the result immediately**. This feature is very useful for the following reasons:
+- it can help new user quickly play with your framework and get familiar.
+- it can be handy for test the integrity when user using your framework to develop.
+
+So, for our objmap, we need at least **an input area** to get our ```origin``` object, **an input area** to edit our ```template``` and **an output area** to display our ```target```
+
+There are absolutely more entension function we can discuss here, but since it's already not a short essay, let's omit them this time.
+
