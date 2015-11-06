@@ -1,21 +1,23 @@
 #objmap - a framework to transform javascript object
+This is an article about how I design a javascript framework - objmap, from incubation to full-featured. However, the article not stop at showing design details, it also share my framework development experience I learn from my daily work and study.(I 'Bold' them in the article) Hope you like the article.
+
 ## **Content**
-- Trigger (Jstree)
+- Start (jstree)
 - Prepare
 - Functional Design
 - Implementation Design
 - Improve the Design
 - Extension Tool Design
 
-### Trigger (Jstree)
-The idea of objmap came occasionally when I want to include jstree(jQuery plugin) into my angularjs app.
-The obstacles I found when I use jsTree is that I need to map my domain model into a specific structure designed for jsTree.
+### Start (Jstree)
+The idea of objmap came occasionally when I want to include jstree(a jQuery plugin) into one of my angularjs app.
+The inital obstacles I met was that, to use jsTree, I need to transform my domain model into a specific structure jsTree accepts.
 
-Fort example:
-my domain model is a file system:
+Here is a simple case:
+my domain model represents a file system:
 ```javascript
 var my_domain_model = {
-   name:'new folder1',
+   name:'folder1',
    isDirecotry: true,
    subFiles:[
      {
@@ -29,10 +31,10 @@ var my_domain_model = {
    ]
 }
 ```
-and the targte model for jsTree is:
+and what jsTree accepts:
 ```javascript
 var jstree_model ={
-         'text' : 'new folder1',
+         'text' : 'folder1',
          'children' : [
            { 
               text : 'file1' 
@@ -47,34 +49,46 @@ To map my_domain_model to jstree_model, The simplest solution is to write a recu
 
 **solution 1: recursive function**
 ```javascript
-[a recursive function]
+var transform = function(origin){
+ var target = {
+   text:origin.name
+ }
+ if(origin.subFiles !== undefined){
+   target.children = origin.subFiles.map(function(sub){
+     return transform(sub)
+   })
+ }
+ return target
+}
+
+var target = transform(origin)
 ```
-Of course this is not a good solution for the following reasons:
+It's a workable solution but it's not a good solution for the following reasons:
 
 1. recursive function can be more erroneous when it grows complex.
-2. It's not general, when I change my domain model, we need to rewrite the recursive function.
-3. It's imperative than declarative.
+2. It's not general, when I change my domain model, Ie need to rewrite the recursive function as well.
+3. It's imperative than declarative. The logic is less clear at a glance.
 
 
-To fix the problems list above, we can use high-order function like the following
+To overcome the issues above, use high-order function is a good idea:
 
 **solution 2: high-order recursive function**
 ```javascript
-function transform(my_model, node_transformer, children_selector)
+function transform(origin, node_transformer, children_selector)
 {
-  var jstree_model = node_transformer(my_model)
+  var target = node_transformer(origin)
  
-  var children = children_selector(my_model)
+  var children = children_selector(origin)
   
   if(children !== undefined)
   {
-    jstree_model.children = children.map(
+    target.children = children.map(
       function(child_model){
          return transform(child_model, node_transformer, children_selector)
       }
     )
   }
-  return jstree_model
+  return target
 }
 
 var jstree_model = transform(my_model, function(x){
@@ -87,9 +101,9 @@ var jstree_model = transform(my_model, function(x){
    }
 })
 ```
-It solves the issue 1, 2, however, the target jstree_model can be more complex(to let you control it better)
+Looks more generic and solves the issue 1, 2 this time. However, the sample we used above is a simplified version. The  jsTree's model can be more complex(to give you better control on jsTree)
 ```javascript
-//one node for jstree_model
+//jsTree model in real world
 {
   id          : "string" // required
   parent      : "string" // required
@@ -102,31 +116,33 @@ It solves the issue 1, 2, however, the target jstree_model can be more complex(t
   },
   li_attr     : {}  // attributes for the generated LI node
   a_attr      : {}  // attributes for the generated A node
+  children:[]
 }
 ```
-Also, it's still imperative than declarative(what we implement in ```node_transformer``` can be complex when the transform logic become complex). Moreover, we can only use this recursive logic with jstree, but such kind of recursive logic likely to occur in many different places. 
+Still the solution #2 is imperative than declarative(what we write in ```node_transformer``` can be complex when the transform logic become complex). We also can't specify the structure of our target in a declarative way since the logic is all in code. Moreover, we can only use this recursive logic with jstree, but such kind of recursive logic likely to occur in many different places. 
 
-**So, can we made it more generic? Can one javascript object transform to a new javascript object with different structure in a declarative way?**
+**So, can we made it more generic? A clear question came in mind: Can we map one javascript object to a new javascript object with different structure in a declarative way?**
+
+
 
 ### Prepare
-##### Potential scenarios
+##### Evaluate the idea
+Is the idea meaningful? I think a while the found: the answer is **YES**!
 
-Now we have our question, but is it a meaningful question?
-The answer is **YES**!
 Think about the following scenarios:
-* When we build GUI in MVVM pattern, we usually need to transform our model to view model. These codes are sometimes boilerplate codes, so if we can use declarative way to do the transform, it's much easier and can save us a lot of time.
-* When we use other's framework, we always need some adapting code to transform our domain model to the framework's domain model, so that we invoke the facade method of the it.(our jstree is an example for this case). Again, boilerplate code.
-* when we work with AST(Abstract Syntax Tree), we actually work with an object aggregation. Then, we can use objmap to generate the structure we want instead of using visit pattern!(more declarative).
+* When we build GUI in MVVM pattern, we usually need to transform our model to view model. These codes are sometimes boilerplate codes but sometimes with some transform logic. No matter which kind of code, it's takes considerable time. If we can use declarative way to do the object map, the code can be shortter, easy to read and maintain.
+* When 2 domain needs to interact with each other, we always need to write some adapting code. In essential, we need to adapt one domain model to another domain model.(our jstree is an example for this case). 
+* If we develop a language related module, we always need to work with AST(Abstract Syntax Tree). AST is actually an object aggregation. So we can use objmap to map the AST to the structure we want directly instead of using a traditional visitor pattern!(more declarative).
+* **(other scenarios continue...)**
 
-So there is no doubt that the if we can answer our question, it would be definitely useful!
+So it's reasonable to write a framework like objmap.
 
 
-##### Does there any existing framework?
+##### Is there any existing framework?
 
-Usually, before your project, look around to see if anyone has made it!
-After a couple hours searching, I found a great case: **[jsonpath-object-transform](https://github.com/dvdln/jsonpath-object-transform)**
-
-the core idea of this framework is to use a ```template``` object to specify the structure of the target object and use the ```JSONPath``` to select the fields from the origin object.
+Usually, we look around to see if anyone do the similar thing before we start our research.
+After a couple hours searching, I found a great case: **[jsonpath-object-transform](https://github.com/dvdln/jsonpath-object-transform)**.
+the core idea of this framework is to use a ```template``` object to specify the structure of the target object and use the ```JSONPath``` as properties of ```template``` object to select the fields from the origin object.
 Here is a sample:
 ```javascript
 var transform = require('jsonpath-object-transform');
@@ -138,12 +154,12 @@ var template = {
   }
 };
 
-var data = {
+var origin = {
   x:1,
   y:2
 };
 
-var result = transform(data, template);
+var target = transform(origin, template);
 ```
 Result:
 ```javasript
@@ -155,48 +171,47 @@ Result:
   
 }
 ```
-This is really a good idea! but it still has some lack:
-
+This is really a good idea, since it gives us the flexibility to specify what our target like in an elegant declarative way. Howerver it's more like a good start not a full-feature solution. 
+Here are some of the unsolved issue:
 - It doesn't support recursive(so we can't apply it to our jsTree scenario)
-- It doesn't support calculation(or expression). e.g. it can't do something like this
+- It doesn't support calculation(or expression). e.g. it can't do something like the following
 ```javascript
 var template = {
   firstName:'$.firstname',
   lastName:'$.lastname'
-  name: //expected to be $.firstname + ' ' + $.lastname, but can't here
+  name: //expected to be $.firstname + ' ' + $.lastname, but is not available here
 }
-
-
 ```
 
 - Lacking reusable: when the transform becomes complex, we can not re-use our existing template object
 -  ...(**to be continure**)
 
-Though there still many place to improve, it's actually a good start point!
+So let's begin our functional design.
 
 
 ### Function Design
 
-##### Step 1: add expression + context inference
-**expression is a very useful tools to let our framework verse and flexible.**
+##### Step 1: add expression and context inference
+**expression is a powerful tools to make your our framework flexible especially you embed it into a host environment.**
 
-A good example is Angularjs. The following code will dynamically change the button's visibility according to model's  products.count
+Angularjs is such a good exmple.In the following code, we use expression to dynamically change the button's visibility according to model's products.count
 ```html
 <button ng-show="products.count >= 4">Select a gift</button>
 ```
-It's really short and convenient. In the meanwhile, angularjs also use context inference: ```product.count``` is actually on object ```$scope``` but we don't specify ```$scope``` in the expression. Angularjs knows it under such context. This is another useful tech we can use to simplify the code we need to write.
+It's really short and convenient. 
 
-Let's turn to objmap
+In the meanwhile, Angularjs also use context inference: the ```product.count``` we used in expression is actually on object ```$scope```. But we don't specify ```$scope``` explicitly. Angularjs knows, under current context, ```product.count``` is actually refer to ```$scope.product.count```. I call such function **context inference**. Since we infer more from our context, we can write less code and thus, let our framework user develop more quickly and fluently.
 
-the best thing we expect is maybe we can use the javscript expression in our template. maybe something like this
+So, our first step is add this 2 feature to our objmap:
+Here we use javscript expression in our template. We use '((' '))' to tell our template parser that the value is an expression
 ```javascript
 var template = {
-  sum: '((1 + 2 + 3))'
+  sum: '((1 + 2 + 3))' 
 }
 ```
-we use '((' '))' to tell our compiler this is a expression
 
-Also the context-inference when we want to reference other property
+
+Next, with the context-inference we can refer to some delcared fields 
 ```javascript
 var = template = {
      firstname:'$.firstname',
@@ -204,8 +219,9 @@ var = template = {
      name: '((firstname + " " + lastname))' // we reference firstname and lastname here
 }
 ```
+The objmap looks much more flexible now.
 
-To be more advanced, we might don't need to output firstname and lastname in our target object, so let's add a new concept: private field(or intermediate variable). Think it as a ```let``` binding in some functional programming:
+To be more advanced, we might don't want to output firstname and lastname in our target object, so let's add a new concept: private field(or intermediate variable). Think it as a intermediate varialbe in some imperative languange or a ```let``` binding in some functional programming:
 ```javascript
 var = template {
      _fn:'$.firstname', //private
@@ -214,22 +230,27 @@ var = template {
 }
 ```
 
-You might feel tired to see string concat like ```_fn + ' ' + _ln``` here. So let's add a string template engine here
+You might feel tired to see string concat like ```_fn + ' ' + _ln``` here. So let's add a string template engine
 ```javascript
 var = template {
      _fn:'$.firstname',
      _ln:'$.lastname',
-     name:'{{_fn}} {{_ln}}' //mustache flavor string template
+     name:'{{_fn}} {{_ln}}', //mustache flavor string template
+     greetings:'Hi {{name}}, welcom to our website'
 }
 ```
 
-So far everhthing looks good! And let's turn to the second part
+So far everhthing looks good! But we still need to add more feature make it powerful
 
-#### Part2: add abstraction
-if expression brings flexibility, abstraction brings reusable and extensibility. The best example for abstraction is 'function' and 'object', we encapsulate reusable logic inside them.
+#### Part2: add abstraction ability
+Abstraction is really cruial for nearly every framework! it's the base of reusable and extensibility. A most familiar example is functions or subroutines in nearly every languange. abstraction can let your framework's users have the ability to encapsulate their special logic. 
+
+Abstraction also bring you the ability to extend your framework. For example, in Angularjs, we have concept called ```directive```, the familiar ```ng-repeat```, ```ng-show``` are the default implmentation of such concept. User can also write their own directive to extend existing functions. This feature, thought look simple but made Angularjs extremely flexible.
+
 let's see what we can do with our objmap:
 
-###### add functions
+###### add transform functions
+Think about the following case:
 ```javascript
 //copy all fields start with 'a'
 var origin = {
@@ -249,45 +270,48 @@ var target = {
 }
 
 ```
-obviously this is not convenient to for our existing framework. So let's add some functions to it!
+Obviously, it is not convenient to do using our existing framework. So let's add the new feature:
 ```javascript
 //something like
 var template = {
-  _copy_:"a*" // _<func>_ represents a function
+  _copy_:"a*" // _<function name>_ represents a function, the value of it will be the parameter pass to the function
 }
 ```
-The template here will copy all properties which start with 'a' from orgin to target object. _<function name>_ will used to specify a function. The value of it will pass as paramenters to it.
+The template here will copy all properties which start with 'a' from orgin to target object.Looks perfect
+
 
 ##### add sub-template
-Next, let's add sub-template.
+Next, let's add sub-template. You can register template in the transformer object and then invoke them in your other template.
 ```javascript
 // recall our file system example for jstree
 // we can specify our transform logic like this 
 var tansformer.register_template("file", {
   text: '$.name',
-  children: ['$.subfiles', '&file' ] //'&' represent invoke a sub-template
+  children: ['$.subfiles', 'each &file' ] // just ingnore the grammar we used here, will explain it latter. But what we mean here is '$.subfiles' is used to select values as source, '&' represent invoke a sub-template and apply it to an item. each means call the template to each item of the source.
 })
 
 var target = transformer.transform(origin, 'file')
 
 ```
-With sub-template, our transform logic looks extremely simple and declarative
+I have to say with sub-template, our transform logic looks extremely simple and declarative
 
 ##### add pipeline functions
-When we process our domain model, it's very common to use functions like map, filter, group, reduce(in javascript). Let's include them in objmap
+When we process object, it's very common to use functions like map, filter, group, reduce(I use the their name in javascript. ). So we can't miss them in objmap. Moreover, to make them more easy to use, I choose a light weight flavor lamba expression for it.
 ```javascript
   tansformer.register_template("file", {
   text: '$.name',
-  children: ['$.subfiles', 'filter _.name.startWith("a")', '&file' ] // '_' represent one item from upstream of our pipeline function.
+  children: ['$.subfiles', 'filter _.name.startWith("a")', 'each &file' ] // '_' represent one item from upstream of our pipeline function.
 })
 ```
 
 #### Part3: make it dynamic
-##### add dynamic parameters to our function
+**To make a framework easy to use, we should let user write less but do more. One of the useful techniques is to facilitate this is let part of your component determined dynamically according to the context.** Or, in other words, it means we put expression in more places.
+
+##### add dynamic parameters to transform function
 ```javascript
 var template = {
-  _f = '$.some_fields',
-  _copy_: "{{_f}}" //use dynamically parameters here
+  _best_author = ['$.authors', 'sort _.vote "desc"', 'first'],
+  _copy_best_author_profile_: "{{_best_author.name}}" //use dynamically parameters here
 }
 ```
 
