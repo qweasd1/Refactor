@@ -27,8 +27,9 @@
     - In web development, transform the json object from AJAX's reply to view model that needs to be represent
     - use as adapter to transform  your domain model to other structure which can be consumed by another domain(our JsTree is a good example)
 
-###### think one question in different solution
+###### what does Software Engineering do?
 
+###### think one question in different solution
 
 ###### two way to think: enhancement the tool for generic situation
 
