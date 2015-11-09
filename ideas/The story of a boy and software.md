@@ -1,9 +1,24 @@
-Hi professors from Institute for Software Research. I'm Tony Wang, a programmer from Citigroup Services and Technology(China).
-I'm so glad that I have the opportunity to apply for this program. To help you know me better, I write this PS. Hope you like it. Let's start from my first project as an intern in BASF.
-
+Hi professors. I'm Tony Wang, a boy who love programming. I'm now working in Citigroup Services and Technology(China) as a core developer for several data warehouse's design and implementation. To describe myself in one sentence, I think I'm a boy who thinks different, always made hands dirty and likes challenge questions. Oh, miss one thing: I like software development since my first try. It's in BASF(A famous german chemistry company) and I was working as a 1-month intern. To begin my story, let's start from this internship.
 
 ### The boy's first try
-I still remember the first time I wrote an independent program when I'm working as a intern in BASF(A German Company). I was working in logistics department and my work is try to find accessible way to help employee work more efficiently. One of the employee told me, they need to generate a summary report each month from several excels. But there are some special rules for the calculation, and it can't specify easily as functions in excel, they had to do it by hand and it really took many time. At that time, I'm a green hand in programming with nearly no basics but I want to have try. I searched on the internet and happy to find there is an embed language called VBA for Excel. Without hesitation, I found as much materials as I can and learned them in my first week. Then I began to develop the summary report generation software. It tooks totally weeks to finish this little program, fix all the bug and cover all the corner case. I was surprised to realize I used that many time to finish a software looks simple and trivil. A simple thought came out in my mind: can it be more easy? I know I can't answer my question , but it inspires me to find the anwser! The internship ended soon after I finished the little program, but my interest in software just started! 
+Time rollbacks back to 3 years ago, the first day I worked as an intern in the office of BASF's logistics department,  my manager was just standing by me and he was speaking 
+
+  Manager: 'Tony, I think we encounter some troubles in our daily work and so far no good sultion yet, wanna a try?'
+  
+  Me: 'Sure sir, what's it?' 
+  
+  Manager: 'Well, we need to generate many reports from lots of Excel files every month but the process consumes really a lot of time. Could you find a way to make it easier?'
+  
+  Me: 'It sounds interesting, I want to have a try!'
+  
+  Mannager: 'Good boy, Let me introduce you to one of our employee who currently try to solve this issue. He will give you a good start!'
+  
+The manager then took me to that employee and the employee begain to explain her origin plan to solve this issue. After a few minutes, I realized she want to use some special reference function built-in excel to reference all the summary data  to solve this problem, but since the report is quite complex, it can't work. 'This might not be a good solution', I thinked in mind, 'Maybe we have some powerful tools for such kind of tasks.' While thinking, I started to search on google and 3 alphabets finally appeared - VBA, an embed macro language which can automate the Excel. I thought I found the tool I wanted. However the employee looked at the screen and told me, no one in this department have learned this languange, they were even not fluent with Excel. Though seemed challenge, I thought we should have a try. Though I had no experience on programming, I learned all things from zero myself and finally I finshed my tasks after trying and trying - I built  2 report auto-generate software. 
+
+
+
+
+One of the employee told me, they need to generate a summary report each month from several excels. But there are some special rules for the calculation, and it can't specify easily as functions in excel, they had to do it by hand and it really took many time. At that time, I'm a green hand in programming with nearly no basics but I want to have try. I searched on the internet and happy to find there is an embed language called VBA for Excel. Without hesitation, I found as much materials as I can and learned them in my first week. Then I began to develop the summary report generation software. It tooks totally weeks to finish this little program, fix all the bug and cover all the corner case. I was surprised to realize I used that many time to finish a software looks simple and trivil. A simple thought came out in my mind: can it be more easy? I know I can't answer my question , but it inspires me to find the anwser! The internship ended soon after I finished the little program, but my interest in software just started! 
 
 ### the boy's last year in University
 
