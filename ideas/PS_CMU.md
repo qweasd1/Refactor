@@ -3,7 +3,31 @@ nice to meet you.My names is Tony wang. I'm from China and is now working as a p
 In this essay, I want to show my thoughts on Software Engineering.
 
 
-What's the most important thing for Software Enginerring
+What is Software Engineering?
+First thing first, I want to show my own understanding of what software engineering is. In mind, software engineering is the standard, method, tools, principals that help people build software more better. But I'm not quite satisfied with the definition of Software Engineering since it's too broad and can't be measured. In my point of view, good things can be measure. So first we need divide developer.
+
+To make clear the issue you want to solve.
+First thing first, I think find a good issue for yourself is very important. During my work experience, I learned from many project and heard many ideas from different people.
+
+
+On demand design:
+Usually, we are not build a whole solution to solve all the issue. That will be extremely difficult. But we can think in another way. We best leverage our current environment and constraint and build for an easy understand framework.
+
+Some important tech we need for SE
+Understanding of Language. Language analysis is quite important for static analysis, refactor. Sometimes you need write your own language as well.
+
+
+
+
+Software Engineering is efficient ways to controll the software complexity.
+
+Complex situation.
+
+Development tools: to make complex things not complex, to make time consuming things not time consuming, to reduce the duplicate things, to make migration transparent and easy.
+
+
+The inner desgin.
+
 
 
 
