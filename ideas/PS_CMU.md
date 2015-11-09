@@ -1,6 +1,12 @@
-Hi Professors from Institute for Software Research, nice to meet you.My names is Tony wang. I'm from China and is now working as a programmer for Citigroup Services and Technology(China) Limited. (CSTC) 
-I've worked for 2 years after graduate. Though I didn't learn much CS class from school, I learned a lot myself during work. 
-I really like computer science, especially for reusable module design,architecture, testing,design partterns, software development tools, language design and some other.
+Dear Professors from Institute for Software Research, 
+nice to meet you.My names is Tony wang. I'm from China and is now working as a programmer for Citigroup Services and Technology(China) Limited. (CSTC)
+In this essay, I want to show my thoughts on Software Engineering.
+
+
+What's the most important thing for Software Enginerring
+
+
+
 I will share my ideas on those areas in details in the following sections along with my working experience:
 ### software engineering
 software engineering is a big topic. It includes architecture, test, continuous integration, one-click deployment... just to name 
@@ -45,3 +51,5 @@ in citi
 ##### Error handling, monitor, error handling
 When we build system. error handling is very very important, especially for batch system. During my work, system
 with poor designed error handling mechanism
+
+
