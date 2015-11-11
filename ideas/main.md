@@ -109,3 +109,9 @@ As a community, we are in two roles: write code to facilitate others, consume ot
 
 ###Teachers:
 - Jonathan Aldrich
+
+
+
+
+--------------------------------------
+- Good ideas is important and good design is also important
