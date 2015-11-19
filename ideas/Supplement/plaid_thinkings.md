@@ -77,7 +77,50 @@ main(){
 ```
 
 ### Exception Handling
-Since AEminium aimed to fullfill
+Currently, I haven't read the topic about the exception handling logic in AEminium. But from my personal experience, Exceptions in multi-thread can be not easy to handle. Here is an example:
+```csharp
+void m1(){
+  throw new Exception();
+}
+//assumpt we have the exception handling logic in AEminium
+void main(){
+  try{ 
+    m1()
+    m1()
+  }catch(Exception ex){
+    ...
+  }
+}
+```
+it's hard to know which method throw out that Exception. It might be strange to call ```m1()``` twice, however, sometimes, the situation is like:
+```csharp
+void m1(){
+  throw new Exception();
+}
+
+void m2(){
+  m1()
+}
+
+void main(){
+  try{ 
+    m1()
+    m2()
+  }catch(Exception ex){
+    ...
+  }
+}
+```
+and we face similiar situation. (though we can distinguish them from callStack, but think about some situation with recursive method call)
+
+I think if we can add some features for exception handling will be quite helpful.(I experience the pain for the lacking in my daily development). 
+
+
+### 
+
+
+________________________________
+### Ingnore the following since they are still in draft 
 
 
 ### When the method
