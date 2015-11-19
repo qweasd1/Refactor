@@ -1,8 +1,8 @@
 Here are some ideas I got after reading some of plaid and AEminium's paper.
 
 ### shall we explicitly specify some **'join'** logic?
-I guess in reality, we might have the scenario like this:
-- we have system ```A```
+I think in reality, it's common to have the following scenario:
+> - we have system ```A```
 - system ```A``` need to process 3 tasks: ```task1```,```task2```,```task3``` and then after all of them finished sends out an notification 
 
 We can convert this scenario to the following code:
