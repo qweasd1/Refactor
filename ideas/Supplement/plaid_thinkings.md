@@ -1,9 +1,11 @@
 Here are some ideas I got after reading some of plaid and AEminium's paper.
 
-### shall we explicitly specify some **'join'** logic?
-I think in reality, it's common to have the following scenario:
+### shall we give the user some chance to control the workflow?
+After I read some paper about AEminium, I know it's a language which can make program parallel by compiler so the developer don't need to explicitly express the workflow logic. But the real world experience inspire me to think several real world cases and found it's a better that we can give the user more chance to control the workflow.
+
+Here is a scenario:
 > - we have system ```A```
-- system ```A``` needs to process 3 tasks: ```task1```,```task2```,```task3``` and then after **all of them finished** sends out an notification 
+- system ```A``` needs to process 3 tasks: ```task1```,```task2```,```task3``` and then after **all of them finished**, it will sends out an notification. 
 
 We can convert this scenario to the following code:
 ```csharp
@@ -21,8 +23,8 @@ void main(){
   send_notification();
 }
 ```
-The issue is actually, ```task1()```, ```task2()```, ```task3()``` share no data with ```send_notification()``` method, so 
-the AEminium might consider they can run in parallel. But we need to let ```send_notification()``` run only after the 3 tasks method finished. So actually we need some **thread join logic**.
+The issue is actually, ```task1()```, ```task2()```, ```task3()``` share no data with ```send_notification()``` method, they are only **logic related**. So 
+the AEminium might consider they can run in parallel. But we need to let ```send_notification()``` run only after the 3 tasks methods finished. So actually we need some **thread join logic**.
 
 Of course we can use a workaround like the following:
 ```csharp
@@ -48,10 +50,11 @@ void main(){
 ```
 But seems it's not that convenient.
 
-In another example:
-> - System ```B``` like system ```A``` has 3 tasks but will notify a message out  **once one of 3 tasks finished**. How shall we express the logic?
+Here is Some other cases:
+> System ```B``` like system ```A``` has 3 tasks but will notify a message out  **once one of 3 tasks finished**. How shall we express the logic?
+> System ```C``` needs to let it tasks run one by one, but different tasks share no data.
 
-So, maybe we can introduce some structure to express the **join** logic.
+These case trigger me to think, is it a good idea to introduce some workflow structure?
 
 maybe something like the following
 ```csharp
@@ -74,46 +77,45 @@ main(){
   }
   send_notification();
 }
-```
 
-### Exception Handling
-Currently, I haven't read the topic about the exception handling logic in AEminium. But from my personal experience, Exceptions in multi-thread can be not easy to handle. Here is an example:
-```csharp
-void m1(){
-  throw new Exception();
-}
-//assumpt we have the exception handling logic in AEminium
-void main(){
-  try{ 
-    m1()
-    m1()
-  }catch(Exception ex){
-    ...
+// let the tasks run in synchronous
+main(){
+  sequence: {
+    task1();
+    task2();
+    task3();
   }
+  send_notification();
 }
 ```
-it's hard to know which method throw out that Exception. It might be strange to call ```m1()``` twice, however, sometimes, the situation is like:
+One step further, I thought the structure like the following is a good choice to express shedule logic.
 ```csharp
-void m1(){
-  throw new Exception();
-}
-
-void m2(){
-  m1()
-}
-
-void main(){
-  try{ 
-    m1()
-    m2()
-  }catch(Exception ex){
-    ...
-  }
+<shedule_name> [parameters] :{
 }
 ```
-and we face similiar situation. (though we can distinguish them from callStack, but think about some situation with recursive method call)
+So is it a better idea to let user can extend such kind of logic. E.g. they can define a ```"Class"```(here I give the keyword ```schedule```) to define the schedule function:
+```csharp
+//this a shedule control the max parallel count
+schedule limit_parallel {
+ // some definition
+ ...
+}
 
-I think if we can add some features for exception handling will be quite helpful.(I experience the pain for the lacking in my daily development). 
+//use the defined shedule limit_parallel
+main(){
+  //so only 2 tasks run in parallel at a time.
+  limit_parallel(2): {
+    task1();
+    task2();
+    task3();
+  }
+
+}
+```
+Though the details is deeply thought, I still guess AEminium will become more flexible if we have the explicit workflow support.
+
+
+
 
 
 ### Let developer has more control, and Make it More Extended
@@ -143,6 +145,45 @@ void main(){
 
 ________________________________
 ### **Ingnore the following since they are still in draft **
+
+### Exception Handling
+Currently, I haven't read the topic about the exception handling logic in AEminium. But from my personal experience, Exceptions in multi-thread can be not easy to handle. Here is an example:
+```csharp
+void m1(){
+  throw new Exception();
+}
+//assumpt we have the exception handling logic in AEminium
+void main(){
+  try{ 
+    m1()
+    m1()
+  }catch(Exception ex){
+    ...
+  }
+}
+```
+Since, the 2 ```m1()``` not related, they will ran in parallel and it's hard to know which method throw out that Exception. It might be strange to call ```m1()``` twice, however, sometimes, the situation is like:
+```csharp
+void m1(){
+  throw new Exception();
+}
+
+void m2(){
+  m1()
+}
+
+void main(){
+  try{ 
+    m1()
+    m2()
+  }catch(Exception ex){
+    ...
+  }
+}
+```
+and we face similiar situation. (though we can distinguish them from callStack when use debug, but think about some situation with recursive method call)
+
+The lack of support for multi-thread exception handling is common in most current language, so I think if we can add more features for exception handling.
 
 
 ### incorperate some parallel design pattern and implment them in languange level.
