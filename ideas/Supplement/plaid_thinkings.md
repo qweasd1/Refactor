@@ -52,10 +52,11 @@ void main(){
 But seems it's not convenient since we introduce more variables.
 
 Here is Some other similar cases:
-> System ```B``` needs to let several tasks run one by one, but different tasks share no data. (still we can have a workaround for this case)
-> System ```C``` like system ```A``` has 3 tasks but will notify a message out  **once one of 3 tasks finished**. (I can't come out a workaround solution)
+> System ```B``` needs to let several tasks run one by one, but different tasks share no data, so they will paralell by compiler. (still we can have a workaround for this case if we declare a unique variable)
 
-So I think maybe it's good idea to include a new feature to explicity control the workflow.
+> System ```C``` like system ```A``` has 3 tasks but will notify a message out  **once one of 3 tasks finished**. (I can't come up with a workaround for this situation)
+
+So I think maybe it's a good idea to include a new feature to explicity control the workflow.
 
 Here is the structure I come up.
 ```csharp
@@ -89,15 +90,15 @@ main(){
   send_notification();
 }
 ```
-A block like the following will tell the compiler re-arrange the schedule inside the block
+A block like the following will tell the compiler to re-calculate the schedule inside the block. The ```schedule_name``` and ```paramters``` give more hint to compiler
 ```csharp
-<shedule_name> [parameters] :{
+<schedule_name> [parameters] :{
 }
 ```
-One step further, the structure above is actually a generic structure. So we can use it not as keyword but as a language feature.
-we can give user the ability to express the schedule logic. Think something like the following:
+One step further, the structure above is actually a generic structure. So we can use it not as keyword but as a **language feature**.
+In this way we can give our user the ability to express their specific schedule logic. Think about something like the following:
 ```csharp
-//this a schedule control the max parallel count
+//here we define a schedule which control the max parallel count
 schedule limit_parallel {
  // some definition...
  ...
@@ -114,13 +115,14 @@ main(){
 
 }
 ```
-I thought this feature can make some parallel specific design pattern easy to implemented in AEminium.
+I thought this feature can make some parallel specific design patterns easy to implemented in AEminium. And design patterns are really useful in parallel situation. 
 
 ### Something want to know more
 - Does AEminium support functional programming feature?
+- Does AEninium support recursive? how is its strategy for parallel recursive method?
 - Will AEminium support some runtime code generation?(so that we can write some adaptive program) 
 - AEminium's Exception handling logic
-- Can AEminium works with existing Java class?(like scala and groovy) especially when working with thread-insafe code
+- Can AEminium works with existing Java class?(like scala and groovy) especially when working with thread-insafe code.
 
 
 
