@@ -1,11 +1,12 @@
 Here are some ideas I got after reading some of plaid and AEminium's paper.
 
-### shall we give the user some chance to control the workflow?
-After I read some paper about AEminium, I know it's a language which can make program parallel by compiler so the developer don't need to explicitly express the workflow logic. But the real world experience inspire me to think several real world cases and found it's a better that we can give the user more chance to control the workflow.
+### Can we add explicitly workflow control into AEminium?
+> After I read some paper about AEminium, I know it's a language which can make program parallel with compiler magic. The developer only needs to declare the data dependency and permission and the complier will optimize the program to parallel according to these information. 
 
+But sometimes in reality, different methods might have no data dependency but the logic dependency.
 Here is a scenario:
 > - we have system ```A```
-- system ```A``` needs to process 3 tasks: ```task1```,```task2```,```task3``` and then after **all of them finished**, it will sends out an notification. 
+- system ```A``` needs to process 3 tasks: ```task1```,```task2```,```task3``` and then after **all of them finished**, it will send out an notification. 
 
 We can convert this scenario to the following code:
 ```csharp
@@ -24,7 +25,7 @@ void main(){
 }
 ```
 The issue is actually, ```task1()```, ```task2()```, ```task3()``` share no data with ```send_notification()``` method, they are only **logic related**. So 
-the AEminium might consider they can run in parallel. But we need to let ```send_notification()``` run only after the 3 tasks methods finished. So actually we need some **thread join logic**.
+the AEminium might consider they can run in parallel. But we need to let ```send_notification()``` run only after the 3 tasks methods finished. So actually we need some **synchronous logic**.
 
 Of course we can use a workaround like the following:
 ```csharp
@@ -51,12 +52,12 @@ void main(){
 But seems it's not that convenient.
 
 Here is Some other cases:
-> System ```B``` like system ```A``` has 3 tasks but will notify a message out  **once one of 3 tasks finished**. How shall we express the logic?
-> System ```C``` needs to let it tasks run one by one, but different tasks share no data.
+> System ```B``` needs to let several tasks run one by one, but different tasks share no data. (still we can have a workaround for this case)
+> System ```C``` like system ```A``` has 3 tasks but will notify a message out  **once one of 3 tasks finished**. (I can't come out a workaround solution)
 
-These case trigger me to think, is it a good idea to introduce some workflow structure?
+So I think maybe it's good idea to include a new feature to explicity control the workflow.
 
-maybe something like the following
+Here is the structure I come up.
 ```csharp
 // wait all tasks to finish then go on
 main(){
@@ -88,16 +89,18 @@ main(){
   send_notification();
 }
 ```
-One step further, I thought the structure like the following is a good choice to express shedule logic.
+One step further, the structure like the following is actually a generic structure and 
 ```csharp
 <shedule_name> [parameters] :{
 }
 ```
-So is it a better idea to let user can extend such kind of logic. E.g. they can define the schedule function and then use them in the program:
+we can use it to express the shedule logic(```waitall```, ```waitany```, ```sequence``` and the ```embeded one: atomic```) and give the user opportunity to extend it
+
+Think something like the following:
 ```csharp
-//this a shedule control the max parallel count
+//this a schedule control the max parallel count
 schedule limit_parallel {
- // some definition
+ // some definition...
  ...
 }
 
@@ -112,115 +115,14 @@ main(){
 
 }
 ```
-Though the details haven't been deeply thought,  I still guess explicit workflow will be a good way to make AEminium more flexible.
+I thought this feature can make some parallel specific design pattern easy to implemented in AEminium.
 
-### General Language or DSL
-I know Plaid is design to be a a general language but since the real world situation can be 
+### Something want to know more
+- Does AEminium support functional programming feature?
+- Will AEminium support some runtime code generation?(so that we can write some adaptive program) 
+- AEminium's Exception handling logic
+- Can AEminium works with existing Java class?(like scala and groovy) especially when working with thread-insafe code
 
-
-### Let developer has more control, and Make it More Extended
-Though AEminium aimed to supply parallel by free, I thought sometimes, developers want more control over their code. The reason is simple, real world questions can be complex and our parallel algorithmn can't handle every case well. If developer can controll something, they have more chance to make a better solution and avoid some unexpected improvement.
-
-Here I raise a real world example:
-- we have several batch job which needs to load differebt data. Each batch job ran in a process(not thread)
-- one of the batch job **job_big** consume large amount of CPU resource and last for long time. Other batch job are quite small and takes short time.
-
-The issue is, if **job_big** ran first, it will soon consume all the CPU resource(since we try to let it be as parallel as possible) and might block the following small jobs. The small jobs thus have to wait for the **job_big** finished to start.
-Since they ran in different processes, AEminium can't balance them. 
-
-What I mean here is AEminium is great for auto parallel but sometimes we need some control like ```restrain the upper bound of parallel```.
-
-The code might like the following:
-```
-void main(){
-  t1();
-  t2();
-  t3();
-}
-
-```
-
-
-
-
-________________________________
-### **Ingnore the following since they are still in draft **
-
-### Exception Handling
-Currently, I haven't read the topic about the exception handling logic in AEminium. But from my personal experience, Exceptions in multi-thread can be not easy to handle. Here is an example:
-```csharp
-void m1(){
-  throw new Exception();
-}
-//assumpt we have the exception handling logic in AEminium
-void main(){
-  try{ 
-    m1()
-    m1()
-  }catch(Exception ex){
-    ...
-  }
-}
-```
-Since, the 2 ```m1()``` not related, they will ran in parallel and it's hard to know which method throw out that Exception. It might be strange to call ```m1()``` twice, however, sometimes, the situation is like:
-```csharp
-void m1(){
-  throw new Exception();
-}
-
-void m2(){
-  m1()
-}
-
-void main(){
-  try{ 
-    m1()
-    m2()
-  }catch(Exception ex){
-    ...
-  }
-}
-```
-and we face similiar situation. (though we can distinguish them from callStack when use debug, but think about some situation with recursive method call)
-
-The lack of support for multi-thread exception handling is common in most current language, so I think if we can add more features for exception handling.
-
-
-### incorperate some parallel design pattern and implment them in languange level.
-
-### When the method
-I'm very curious about the **concrete algorithm** we use to parallel method in ```AEminium```
-
-Here is some cases I thought might be interesting:
-##### Case 1
-
-```csharp
-class test
-{
-  private unique int field;
-  
-  //implicitly used member variable field
-  void m1(){
-    field = 1
-  }
-  
-  void m2(){
-    field = 2
-  }
-  
-  
-  //or more complex like
-  void m3(){
-     ...// some code do nothing related with member variable: field. So can be parallel indead
-     m2();
-  }
-  
-  void main(){
-     m1();
-     m3();
-  }
-}
-```
 
 
  
