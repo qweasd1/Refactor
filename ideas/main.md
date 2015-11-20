@@ -18,7 +18,16 @@
     - thinking before makes my hands dirty(centralize my question if I can)
     - got experience when facing complex questions. sometimes, we need to give some try, then we can make clear 
 
+
+### advantages:
+- I learn everything myself, so have a good ability to do independent research.
+
+
 ###Examples:
+
+
+
+
 ###### objmap framework
 - a sample when I use jstree
 - raise the questions, is there a general and convenient way to convert a one object to another structure object
