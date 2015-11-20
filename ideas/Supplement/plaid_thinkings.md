@@ -1,12 +1,12 @@
-Here are some ideas I got after reading some of plaid and AEminium's paper.
+Here is a feature I thought might be useful if we add to AEminium.
 
-### Can we add explicitly workflow control into AEminium?
-> After I read some paper about AEminium, I know it's a language which can make program parallel with compiler magic. The developer only needs to declare the data dependency and permission and the complier will optimize the program to parallel according to these information. 
+### Add explicitly workflow control into AEminium
+> After I read some papers about AEminium, I know it's a language which can make program parallel with compiler magic. The developer only needs to declare the data dependency and permission and the complier will optimize the program to parallel according to these information. 
 
 But sometimes in reality, different methods might have no data dependency but the logic dependency.
 Here is a scenario:
 > - we have system ```A```
-- system ```A``` needs to process 3 tasks: ```task1```,```task2```,```task3``` and then after **all of them finished**, it will send out an notification. 
+- system ```A``` needs to process 3 tasks: ```task1```,```task2```,```task3``` and then after **all of them finished**, it will send out an ```notification```. 
 
 We can convert this scenario to the following code:
 ```csharp
@@ -25,7 +25,7 @@ void main(){
 }
 ```
 The issue is actually, ```task1()```, ```task2()```, ```task3()``` share no data with ```send_notification()``` method, they are only **logic related**. So 
-the AEminium might consider they can run in parallel. But we need to let ```send_notification()``` run only after the 3 tasks methods finished. So actually we need some **synchronous logic**.
+the AEminium might consider they can run in parallel. But we need to let ```send_notification()``` run only after the 3 tasks methods finished. So actually we need some **synchronous logic** but we don't have this in AEminium.
 
 Of course we can use a workaround like the following:
 ```csharp
@@ -49,9 +49,9 @@ void main(){
   send_notification(flag_task1, flag_task2, flag_task3);
 }
 ```
-But seems it's not that convenient.
+But seems it's not convenient since we introduce more variables.
 
-Here is Some other cases:
+Here is Some other similar cases:
 > System ```B``` needs to let several tasks run one by one, but different tasks share no data. (still we can have a workaround for this case)
 > System ```C``` like system ```A``` has 3 tasks but will notify a message out  **once one of 3 tasks finished**. (I can't come out a workaround solution)
 
@@ -89,14 +89,13 @@ main(){
   send_notification();
 }
 ```
-One step further, the structure like the following is actually a generic structure and 
+A block like the following will tell the compiler re-arrange the schedule inside the block
 ```csharp
 <shedule_name> [parameters] :{
 }
 ```
-we can use it to express the shedule logic(```waitall```, ```waitany```, ```sequence``` and the ```embeded one: atomic```) and give the user opportunity to extend it
-
-Think something like the following:
+One step further, the structure above is actually a generic structure. So we can use it not as keyword but as a language feature.
+we can give user the ability to express the schedule logic. Think something like the following:
 ```csharp
 //this a schedule control the max parallel count
 schedule limit_parallel {
