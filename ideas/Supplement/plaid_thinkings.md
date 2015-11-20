@@ -118,11 +118,11 @@ main(){
 I thought this feature can make some parallel specific design patterns easy to implemented in AEminium. And design patterns are really useful for parallel programming.  
 
 ### Something want to know more
-- Does AEminium support functional programming feature?
+- Does AEminium support functional programming feature? (and what will happen when we parallel our program with code contains closure?)
 - Does AEninium support recursive? how is its strategy for parallel recursive method?
-- Will AEminium support some runtime code generation?(so that we can write some adaptive program) 
-- AEminium's Exception handling logic
-- Can AEminium works with existing Java class?(like scala and groovy) especially when working with thread-insafe code.
+- Will AEminium support some runtime code generation?(so that we can write some adaptive program, but also facing runtime task schedule) 
+- AEminium's Exception handling logic(since multi-thread exception can sometimes harder to handle)
+- Can AEminium works with existing Java class?(like scala and groovy) What would happened when they work with thread-insafe code?
 
 
 
