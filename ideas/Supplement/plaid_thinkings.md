@@ -115,7 +115,7 @@ main(){
 
 }
 ```
-I thought this feature can make some parallel specific design patterns easy to implemented in AEminium. And design patterns are really useful in parallel situation. 
+I thought this feature can make some parallel specific design patterns easy to implemented in AEminium. And design patterns are really useful for parallel programming.  
 
 ### Something want to know more
 - Does AEminium support functional programming feature?
