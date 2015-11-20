@@ -93,7 +93,7 @@ One step further, I thought the structure like the following is a good choice to
 <shedule_name> [parameters] :{
 }
 ```
-So is it a better idea to let user can extend such kind of logic. E.g. they can define a ```"Class"```(here I give the keyword ```schedule```) to define the schedule function:
+So is it a better idea to let user can extend such kind of logic. E.g. they can define the schedule function and then use them in the program:
 ```csharp
 //this a shedule control the max parallel count
 schedule limit_parallel {
@@ -112,10 +112,10 @@ main(){
 
 }
 ```
-Though the details is deeply thought, I still guess AEminium will become more flexible if we have the explicit workflow support.
+Though the details haven't been deeply thought,  I still guess explicit workflow will be a good way to make AEminium more flexible.
 
-
-
+### General Language or DSL
+I know Plaid is design to be a a general language but since the real world situation can be 
 
 
 ### Let developer has more control, and Make it More Extended
