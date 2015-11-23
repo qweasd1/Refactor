@@ -33,7 +33,7 @@ Meta Programming:
 
 ##### Complex System Design:
 Complex system design is challenge, especially you do everything from scatch. 
-- It's hard to management your whole resource.(logic)
+- It's hard to management your whole resource, your config files.(logic)
 - It's hard to migration, logic is widespread everywhere in your code
 - how to maintain
 - 
