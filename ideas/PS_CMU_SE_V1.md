@@ -31,6 +31,23 @@ I think design patterns is very important for static analysis since they can pro
 
 Meta Programming:
 
+##### Complex System Design:
+Complex system design is challenge, especially you do everything from scatch. 
+- It's hard to management your whole resource.(logic)
+- It's hard to migration, logic is widespread everywhere in your code
+- how to maintain
+- 
+
+
+###### might solution:
+- use transformation from model to model
+- use semi-structure code.
+- document system
+- open to extension
+- what made 2 different program different?
+
+
+Automation Development:
 
 Desire mentor:
 
