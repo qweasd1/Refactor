@@ -21,11 +21,15 @@ Software is like chemistry, there are countless synthesises around the world but
 
 
 
-Areas I'm interested in
+### Areas I'm interested in
 
-Language design: I think language is one of the essntial part of software development. It's the media which bind your idea to a workable solution. A well design language can help you express your idea more easily and ignore the implement details. I used to do some works on several language related projects. Here I include one of them in this essay: <hanbao: a grammar mapping tool which support left-recursive>. It describe how I design a grammar mapping tool with some good features and you can see it in my supplement material.  
+Language design: I think language is one of the essntial part of software development. It's the media which bind your idea to a workable solution. A well design language can help you express your idea more easily and ignore the implement details. I used to do some works on several language related projects. Here I include one of them in this essay: <hanbao: a grammar mapping tool which support left-recursive>. It describe how I design a grammar mapping tool with some good features and you can see it in my supplement material. 
 
 Design Patterns:  
+I think design patterns is very important for static analysis since they can provide another level of abstraction beyond Abstract Syntax Tree. I'm more interested in how combine design pattern with language as a language feature. Also, how can we combine design pattern to guide auto-patch bug or even auto-code-generation. I've read a book called <Element Design Pattern>. The author of this book show how they let program detect the design pattern from code repo. I thought this is a great idea and we can combine it with our existing static analysis tool to build more advanced tool.
+
+
+Meta Programming:
 
 
 Desire mentor:
