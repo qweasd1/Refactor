@@ -32,8 +32,10 @@ Syntax design is very pratical and useful, to let other people more easily to us
 #### Language Composite
 Some time you can't wrap all good feature in a single language, so a good choice might write different DSL and find a way to composite them together. A good sample might be Professor An...'s wyeaz language. There are also
 
-#### Language View
+#### Language View and Model
 Language view is different syntax of a same language model. for example one view is used for quick development, another view is more readable. So in this way, we can develop with quick mode and after that we directly get a readble version for free. We can even study the common thing when implement different view for the same lanugage model and develop some auto generation tool.
+
+We can raise Antlr's grammar config and embed attribute.
 
 
 
