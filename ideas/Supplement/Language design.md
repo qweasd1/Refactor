@@ -35,7 +35,7 @@ Some time you can't wrap all good feature in a single language, so a good choice
 #### Language View and Model
 Language view is different syntax of a same language model. for example one view is used for quick development, another view is more readable. So in this way, we can develop with quick mode and after that we directly get a readble version for free. We can even study the common thing when implement different view for the same lanugage model and develop some auto generation tool.
 
-We can raise Antlr's grammar config and embed attribute.
+We can raise Antlr's grammar config and embed attribute.( When we want to keep the grammar neutral.)
 
 
 
