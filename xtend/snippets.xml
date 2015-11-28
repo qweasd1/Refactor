@@ -12,4 +12,21 @@
 }</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XParenthesizedExpression" deleted="false" description="" enabled="true" name="kvp">${key} -&gt; ${value}</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="list">newArrayList(${cursor})</template><template autoinsert="false" context="org.eclipse.xtend.core.Xtend.Member" deleted="false" description="main method" enabled="true" id="main" name="main">def static void main(String[] args) {
 	${cursor}
 }
-</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="map">newHashMap(${cursor})</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="pl">println(${cursor})</template></templates>
+</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="map">newHashMap(${cursor})</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="pl">println(${cursor})</template><template autoinsert="true" context="org.eclipse.xtend.core.Xtend.File" deleted="false" description="" enabled="true" name="test_class">import static org.junit.Assert.*;&#13;
+import org.junit.Test&#13;
+import org.junit.runner.RunWith&#13;
+import org.eclipse.xtext.junit4.*&#13;
+import org.xtext.example.mydsl.${languageName}InjectorProvider&#13;
+&#13;
+@RunWith(XtextRunner)&#13;
+@InjectWith(${languageName}InjectorProvider)&#13;
+class ${languageName}Test {&#13;
+	&#13;
+	@Test&#13;
+	def void ${testmethod}(){&#13;
+		&#13;
+	}&#13;
+}</template><template autoinsert="true" context="org.eclipse.xtend.core.Xtend.Member" deleted="false" description="create test method" enabled="true" name="testm">@Test&#13;
+def void ${name}() {&#13;
+	${cursor}&#13;
+} </template></templates>
