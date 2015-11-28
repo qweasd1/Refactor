@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="_if">if(${condition}){&#13;
+	${cursor}&#13;
+}</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="_switch">switch(${var}){&#13;
+	case ${condition} :{&#13;
+		&#13;
+	}&#13;
+	default : {&#13;
+		&#13;
+	}&#13;
+}</template><template autoinsert="true" context="org.eclipse.xtend.core.Xtend.Member" deleted="false" description="" enabled="true" name="dispatch">def dispatch ${name}(${parameter}){&#13;
+	${cursor}&#13;
+}</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XParenthesizedExpression" deleted="false" description="" enabled="true" name="kvp">${key} -&gt; ${value}</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="list">newArrayList(${cursor})</template><template autoinsert="false" context="org.eclipse.xtend.core.Xtend.Member" deleted="false" description="main method" enabled="true" id="main" name="main">def static void main(String[] args) {
+	${cursor}
+}
+</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="map">newHashMap(${cursor})</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="pl">println(${cursor})</template></templates>
