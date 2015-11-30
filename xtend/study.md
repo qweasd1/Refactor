@@ -1,3 +1,5 @@
 - check and quick fix
   - fix_api: Issue, IssueResolutionAcceptor, IModificationContext(IXtextDocument.get,IXtextDocument.replace...)
   - check_api: error, warning, info
+- dependency injection
+  - inject extension object: @Inject extension <ClassType>
