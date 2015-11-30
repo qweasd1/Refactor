@@ -18,3 +18,7 @@
 ### Quick Fix
 - code snippet
   - fix method
+
+
+### Questions
+- ```Test```Can we remove: org.eclipse.xtext.common.Terminals 
