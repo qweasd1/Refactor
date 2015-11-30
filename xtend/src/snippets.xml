@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="org.eclipse.xtend.core.Xtend.Member" deleted="false" description="" enabled="true" name="_ded">def dispatch ${name}(${parameter}){&#13;
+	${cursor}&#13;
+}</template><template autoinsert="true" context="org.eclipse.xtend.core.Xtend.Member" deleted="false" description="create method" enabled="true" name="_def">def ${name}(${parameter}){&#13;
+	${cursor}&#13;
+}</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="_if">if(${condition}){&#13;
+  ${cursor}&#13;
+}</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="_switch">switch(${var}){&#13;
+	case ${condition} :{&#13;
+	  ${cursor}&#13;
+	}&#13;
+	default : {&#13;
+      &#13;
+	}&#13;
+}</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="assertEquals-Double" enabled="true" name="ad">assertEquals(${expected}, ${actual}, ${delta})</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="assertEqual" enabled="true" name="ae">assertEquals(${expected}, ${actual})</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="assertTrue" enabled="true" name="at">assertTrue(${condition})</template><template autoinsert="true" context="org.eclipse.xtend.core.Xtend.Type" deleted="false" description="import junit related namespace" enabled="true" name="ijunit">import org.junit.runner.*&#13;
+import org.junit.*&#13;
+import static org.junit.Assert.*</template><template autoinsert="true" context="org.eclipse.xtend.core.Xtend.Member" deleted="false" description="inject ParserHelper&lt;T&gt;" enabled="true" name="inexph">@Inject extension ParserHelper&lt;${Model}&gt;</template><template autoinsert="true" context="org.eclipse.xtend.core.Xtend.Member" deleted="false" description="" enabled="true" name="inext">@Inject extension ${type}</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XParenthesizedExpression" deleted="false" description="" enabled="true" name="kvp">${key} -&gt; ${value}</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="list">newArrayList(${cursor})</template><template autoinsert="false" context="org.eclipse.xtend.core.Xtend.Member" deleted="false" description="main method" enabled="true" id="main" name="main">def static void main(String[] args) {
+	${cursor}
+}
+</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="map">newHashMap(${cursor})</template><template autoinsert="true" context="org.eclipse.xtext.xbase.Xbase.XAssignment" deleted="false" description="" enabled="true" name="pl">println(${cursor})</template><template autoinsert="true" context="org.eclipse.xtend.core.Xtend.File" deleted="false" description="" enabled="true" name="test_class">import static org.junit.Assert.*;&#13;
+import org.junit.Test&#13;
+import org.junit.runner.RunWith&#13;
+import org.eclipse.xtext.junit4.*&#13;
+import org.xtext.example.mydsl.${languageName}InjectorProvider&#13;
+&#13;
+@RunWith(XtextRunner)&#13;
+@InjectWith(${languageName}InjectorProvider)&#13;
+class ${languageName}Test {&#13;
+	&#13;
+	@Test&#13;
+	def void ${testmethod}(){&#13;
+		&#13;
+	}&#13;
+}</template><template autoinsert="true" context="org.eclipse.xtend.core.Xtend.Member" deleted="false" description="create test method" enabled="true" name="testm">@Test&#13;
+def ${name}() {&#13;
+	${cursor}&#13;
+} </template><template autoinsert="true" context="org.eclipse.xtend.core.Xtend.Type" deleted="false" description="import xtext related junit items" enabled="true" name="xtextidep">import org.junit.runner.*&#13;
+import org.junit.*&#13;
+import static org.junit.Assert.*&#13;
+import org.eclipse.xtext.junit4.*&#13;
+import org.eclipse.xtext.junit4.util.ParseHelper&#13;
+&#13;
+import com.google.inject.Inject&#13;
+&#13;
+import ${project}.${LanguageName}InjectorProvider&#13;
+import ${project}.${LanguageNameLower}.*&#13;
+&#13;
+${cursor}</template><template autoinsert="true" context="org.eclipse.xtend.core.Xtend.Type" deleted="false" description="xtext unit test class" enabled="true" name="xtexttestc">@RunWith(XtextRunner)&#13;
+@InjectWith(${LanguageName}InjectorProvider)&#13;
+class ${TestName} {&#13;
+	${cursor}&#13;
+}&#13;
+</template></templates>
