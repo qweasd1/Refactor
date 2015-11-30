@@ -21,4 +21,4 @@
 
 
 ### Questions
-- ```Test```Can we remove: org.eclipse.xtext.common.Terminals 
+- ```{Test}```Can we remove: org.eclipse.xtext.common.Terminals 
