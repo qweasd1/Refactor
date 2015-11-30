@@ -22,9 +22,14 @@
   - dispatch method
 - class
 
+##### operation
+- cast
+
 ##### unit test
 - test class
 - test method
 - assert
-  - assertEquals
+  - assertEquals/assertEquals-Double
   - assertTrue
+- import junit: when using junit from other JVM language
+
