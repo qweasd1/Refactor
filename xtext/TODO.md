@@ -9,7 +9,9 @@
     - assertEquals
 
 
-
+### Lexer
+- How can we specify lexer rule to avoid override origin lexer rule
+- when terminal string return it has been automatically escape the content
 ### Checker 
 - code snippet
   - check method
