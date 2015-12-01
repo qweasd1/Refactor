@@ -14,6 +14,7 @@
 - while/dowhile
 - for/foreach
 - try/trycatch/trycatchfinally
+- ```case```
 
 
 ##### member
