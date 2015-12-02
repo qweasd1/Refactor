@@ -19,3 +19,7 @@
 ### Classical Case
 - when you need to check if an array is empty or null in an RichLiteral Template
 
+### Extend Library
+
+###### Collection
+# Get distinct value (use ```fold``` function)
