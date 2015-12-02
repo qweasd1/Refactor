@@ -43,3 +43,7 @@
 - ```{Test}```Can we remove: org.eclipse.xtext.common.Terminals 
 - ```error(211): ../org.xtext.example.mydsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalMyDsl.g:941:1: [fatal] rule ruleArgumentList has non-LL(*) decision due to recursive rule invocations reachable from alts 1,2.  Resolve by left-factoring or using syntactic predicates or using backtrack=true option.```
 - switch the case option has ',' between each option will cause generate java code wield
+
+
+### Test
+- Batch Testor: when finished one language, we shall try to make batch test more easily! (prepare the source code then run in batch)
