@@ -74,9 +74,30 @@ From this project, I realized that some simple ideas can be difficult when we go
 ### My understanding on language design
 Since I already list 2 projects there, I hope I can express my understanding on language design in this section.
 
-As we all know, language design has 2 core areas. The design of the underlying model and the design of syntax. 
+As we all know, language design has 2 core areas. The design of the underlying model and the design of syntax. The underlying model can be seen as a specific domain model, so it has no difference with a framework actually. The syntax on the other hand do nothing on domain logic. It's just like a thin layer wrapped on the domain model to make it express more easily. However to let a language used in industry, There are more things need to consider. IDE feature like code hightlight, error reporting or advanced one like quickfix and refactor are also very important. 
 
-Let's first talk about The design of underlying model is essential for a language,
+With the advent of tools like xtext, language development has became a product line. Xtext, build the whole life cycle including type and custom checking, scoping and reference, quick fix and refactor etc. It also provides powerful testing framework and ultitily method. It makes develope a language more easily.  So that's another thing I'm interested in: How could I implement a language efficiently by developing and using assistant tools.
+
+Usually we don't develop a language from scratch. We usually start from a base depends on our needs and then add our new features Language on demand.
+
+
+
+I thought the design of wyvern (which is professor Jonathan's project) is a great design. The most valuable thing of it, as I think , is it provide a framework to hold different language together in a structure way. This resemble the nature that in a real world, a complex system usually composite with different domain and you just can't use only one general language to decribe it efficiently. Though we can develop internal DSL for each domain but it's absolutely not enough. If you see a lot of framework with their DSL, you will find usually the DSL share very similar structure and their difference relies on the intepretor. So actually we can reuse those syntax structure along with some of their error checker and add other new need functions. We then provide quick integration tool to help integrate the new DSL into our existing wyvern system. So we can build a big repository like Maven's repository and store different language syntax and let user quickly download the build out their own DSL.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+is essential for a language,
 
 I think, at its core, language is an **efficient tool using well designed syntax to easily express its underlying domain model**. So actually we can use the  following equation to describe the same meaning:
 > programming language = well designed syntax + underlying domain model 
