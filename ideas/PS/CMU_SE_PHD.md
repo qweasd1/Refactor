@@ -1,3 +1,5 @@
+## Personal Statement
+
 I'm Wang Zhendong, a chinese boy now working as a developer in Citigroup. 2.5 years working experience which was full of challenge tasks not only made me become an efficient developer but also let me familiar with most aspects of software development.  Personally, the topics of software development I like most are Enterprise Application Architecture, framework design, model driven development and language design. 
 
 Since Jonathan Aldrich is my dream mentor. I'd like to discuss some of the language related projects I did in here. If you are interested in these projects details, see them in my supplement material.
