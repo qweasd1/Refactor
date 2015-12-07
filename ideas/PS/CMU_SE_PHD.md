@@ -96,7 +96,13 @@ In one word I like this language and I hope I could have chance to work on it th
 ### A general view on software engineering
 In general, I thought software and chemistry share a lot of similar traits. In chemistry, on the one hand we have countless synthesis with extremely different characteristics and on the other hand we only have only 100+ unique atoms. It's the rule of chemistry and limit atoms which generate the interesting world of synthesis. For software development, the situation is same except taht we are still on the way to figure out those basic elements and rules and try to leverage them efficently. 
 
-### Finally
+### broad areas I'm are interested in 
+* Meta programming
+* Model Driven Development (especially for the eclipse modeling project)
+* Language Design
+* Object-oriented foundations
+* Design Pattern
+
 
 
 Since I already list 2 projects there, I hope I can express my understanding on language design in this section.
