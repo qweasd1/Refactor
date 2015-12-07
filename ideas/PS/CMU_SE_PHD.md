@@ -73,8 +73,6 @@ From this project, I realized that some simple ideas can be difficult when we go
 
 ### My understanding on language design
 
-
-
 I thought the design of wyvern (which is professor Jonathan's project) is a great design. The most valuable thing of it, as I think , is it provide a framework to hold different language together in a structure way. This resemble the nature that in a real world, a complex system usually composite with different domain and you just can't use only one general language to decribe it efficiently. Though we can develop internal DSL for each domain but it's absolutely not enough. If you see a lot of framework with their DSL, you will find usually the DSL share very similar structure and their difference relies on the intepretor. So actually we can reuse those syntax structure along with some of their error checker and add other new need functions. We then provide quick integration tool to help integrate the new DSL into our existing wyvern system. So we can build a big repository like Maven's repository and store different language syntax and let user quickly download the build out their own DSL.
 
 I think we always have the need to build the DSL for complex system. Usually they share the some feature, so in traditional, we always start the language from a lanuage template. This is quite like inheritance in OO programming. As we all know, OO best pratice suggest that composition is better than inheritance since it's more flexible. So I think the same thing also apply to language design.
@@ -84,17 +82,21 @@ I thought wyvern divide a whole lanugage into several small DSL segments and let
 
 wyvern is also a good tool to build a framework config. Usually a framework is flexible, so we usually expose some extension points. In traditional, the extension code are usually define in xml or some language's code. It can sometimes be ackward by using this way. For example, some software requires their plugin to inheritate from specific baseclass and implment some method you have no idea. However, if you expose a more readable DSL, it might be better to understand and easy to use.
 
-In the future maybe, we can build a maven like repository which stores many DSL segments from world around
+In the future maybe, we can build a maven like repository which stores many DSL segments from world around and let developer pick them up and quickly integerate them into their wyvern system.
+
+Moreover, when developers began to use this mode, we can do static analysis on their code more easily. Usually, it's hard to interpret the intension of a piece of code since general language is so much flexible. A developer can express the same idea in many different ways. When people started to use wyvern, they are more likely to give more explicit semantic information since domain specific logic are constraint inside specific DSL.
+
+In one word I like this language and I hope I could have chance to work on it though it seems not show in this years project list.
 
 
-When I design the meta data system for <Company>, I tends to use graph database as the storerage since graph database is powerful when modeling complex domain model. However, since that complexity, I think 
+ 
 
 
 
+### A general view on software engineering
+In general, I thought software and chemistry share a lot of similar traits. In chemistry, on the one hand we have countless synthesis with extremely different characteristics and on the other hand we only have only 100+ unique atoms. It's the rule of chemistry and limit atoms which generate the interesting world of synthesis. For software development, the situation is same except taht we are still on the way to figure out those basic elements and rules and try to leverage them efficently. 
 
-
-
-
+### Finally
 
 
 Since I already list 2 projects there, I hope I can express my understanding on language design in this section.
