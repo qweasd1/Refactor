@@ -94,17 +94,19 @@ In one word I like this language and I hope I could have chance to work on it th
 
 
 ### A general view on software engineering
-In general, I thought software and chemistry share a lot of similar traits. In chemistry, on the one hand we have countless compounds with extremely different characteristics and on the other hand we only have only 100+ unique atoms and countable rules. Those rules and atoms combine with each other and finally generate the this diversity world. For software development, the situation is same except taht we are still on the way to figure out those basic elements and rules. 
+In general, I thought software and chemistry share a lot of similar traits. In chemistry, on the one hand we have countless compounds with extremely different characteristics and on the other hand we only have only 100+ unique atoms and countable rules. Those rules and atoms combine with each other and finally generate the this diversity world. For software development, the situation is same except taht we are still on the way to figure out those basic elements and rules. So the main job for a software engineering researcher is try to find the basic elements and rule for software development and leverage them to build good software efficently.
 
-### broad areas I'm are interested in 
+### Areas I'm are interested in 
 * Meta programming
 * Model Driven Development (especially for the eclipse modeling project)
 * Language Design
 * Object-oriented foundations
 * Design Pattern
+* Plug-In development (especially for eclipse)
 
 ### Advantages of me
 * I'm quite fluent with different programming language especially for functional programming.
+* I have real experience on complier techonology.
 * I have solid understanding and practice experience on most aspects of software development, such as OO Design, Design Pattern, DSL, architecture,  TDD, DDD, CI and one-click deployment. (I'm not quite famliar with security related topics)
 * I'm experienced on handle practical programming issue.
 * I'm a quick learner and good at comprehend abstract model.
@@ -115,8 +117,7 @@ In general, I thought software and chemistry share a lot of similar traits. In c
 * Hanbao: a self written grammar mapping framework which supports left recursive grammar 
 * objmap: the design of a JS framework to do model to model tranformation
 * <Parser Framework>: a flexible parser framework
-* How to design a document?
-* 
+* How should a document be designed?
 
 
 Since I already list 2 projects there, I hope I can express my understanding on language design in this section.
