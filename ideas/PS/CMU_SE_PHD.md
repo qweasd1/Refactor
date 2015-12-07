@@ -94,7 +94,7 @@ In one word I like this language and I hope I could have chance to work on it th
 
 
 ### A general view on software engineering
-In general, I thought software and chemistry share a lot of similar traits. In chemistry, on the one hand we have countless synthesis with extremely different characteristics and on the other hand we only have only 100+ unique atoms. It's the rule of chemistry and limit atoms which generate the interesting world of synthesis. For software development, the situation is same except taht we are still on the way to figure out those basic elements and rules and try to leverage them efficently. 
+In general, I thought software and chemistry share a lot of similar traits. In chemistry, on the one hand we have countless compounds with extremely different characteristics and on the other hand we only have only 100+ unique atoms and countable rules. Those rules and atoms combine with each other and finally generate the this diversity world. For software development, the situation is same except taht we are still on the way to figure out those basic elements and rules. 
 
 ### broad areas I'm are interested in 
 * Meta programming
@@ -103,6 +103,20 @@ In general, I thought software and chemistry share a lot of similar traits. In c
 * Object-oriented foundations
 * Design Pattern
 
+### Advantages of me
+* I'm quite fluent with different programming language especially for functional programming.
+* I have solid understanding and practice experience on most aspects of software development, such as OO Design, Design Pattern, DSL, architecture,  TDD, DDD, CI and one-click deployment. (I'm not quite famliar with security related topics)
+* I'm experienced on handle practical programming issue.
+* I'm a quick learner and good at comprehend abstract model.
+
+
+
+### Content for supplement material
+* Hanbao: a self written grammar mapping framework which supports left recursive grammar 
+* objmap: the design of a JS framework to do model to model tranformation
+* <Parser Framework>: a flexible parser framework
+* How to design a document?
+* 
 
 
 Since I already list 2 projects there, I hope I can express my understanding on language design in this section.
