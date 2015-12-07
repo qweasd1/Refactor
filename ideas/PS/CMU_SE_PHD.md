@@ -121,31 +121,4 @@ In general, I thought software and chemistry share a lot of similar traits. In c
 * How should a document be designed?
 
 
-Since I already list 2 projects there, I hope I can express my understanding on language design in this section.
-
-As we all know, language design has 2 core areas. The design of the underlying model and the design of syntax. The underlying model can be seen as a specific domain model, so it has no difference with a framework actually. The syntax on the other hand do nothing on domain logic. It's just like a thin layer wrapped on the domain model to make it express more easily. However to let a language used in industry, There are more things need to consider. IDE feature like code hightlight, error reporting or advanced one like quickfix and refactor are also very important. 
-
-With the advent of tools like xtext, language development has became a product line. Xtext, build the whole life cycle including type and custom checking, scoping and reference, quick fix and refactor etc. It also provides powerful testing framework and ultitily method. It makes develope a language more easily.  So that's another thing I'm interested in: How could I implement a language efficiently by developing and using assistant tools.
-
-Usually we don't develop a language from scratch. We usually start from a base depends on our needs and then add our new features Language on demand.
-
-
-
-is essential for a language,
-
-I think, at its core, language is an **efficient tool using well designed syntax to easily express its underlying domain model**. So actually we can use the  following equation to describe the same meaning:
-> programming language = well designed syntax + underlying domain model 
-
-For example, in professor Jonathan's AEminium Language, the core domain model is a scheduler which create an parallel exeution plan for a sequence of actions according to their data sharing condition. The syntax is the grammar we use to write this language. The domain model will help solve some ensential questions and an improvement on syntax can help you express your complex domain model more easily.   
-
-When you start to develop a language, there are also some other things need to implement. 
-* you need a parser to parse your source code into AST.
-* you need several checkers to make sure the semantic correctness
-* depends on your intention, you will need some other 
-
-### Wher
-
-
-### What's the benefit if we develop a new language.
-
 
