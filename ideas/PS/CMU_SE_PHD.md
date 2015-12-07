@@ -106,10 +106,11 @@ In general, I thought software and chemistry share a lot of similar traits. In c
 
 ### Advantages of me
 * I'm quite fluent with different programming language especially for functional programming.
-* I have real experience on complier techonology.
-* I have solid understanding and practice experience on most aspects of software development, such as OO Design, Design Pattern, DSL, architecture,  TDD, DDD, CI and one-click deployment. (I'm not quite famliar with security related topics)
-* I'm experienced on handle practical programming issue.
-* I'm a quick learner and good at comprehend abstract model.
+* I'm familiar with concept about compiler and have real experience on complier techonology. I'm fluent with tool like Antlr and xtext.
+* I can research and develop independently.(I've independently developed several 20000+ line of code projects which contains complex multi-thread logic, complex layout algorithm etc...) I'm also a good self learner.(Actually I learn everything about programming myself after I graduated)
+* I have solid understanding and practical experience on most aspects of software development such as OO Design, Design Pattern, DSL, Enterprise Application Architecture, TDD, DDD, CI and one-click deployment. (I'm not quite famliar with security related topics)
+ 
+
 
 
 
