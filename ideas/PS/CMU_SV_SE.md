@@ -20,9 +20,9 @@ I think I was lucky with a non-CS background when I worked on my first project s
 
 To find the answer, I began to read any books I could find about software development. I learned the OO design from Grady Booch's [Object-Oriented Analysis and Design with Applications](http://www.amazon.com/Object-Oriented-Analysis-Design-Applications-3rd/dp/020189551X/ref=sr_1_3?ie=UTF8&qid=1449544953&sr=8-3&keywords=object+oriented+design). I learned Design Pattern from Gang of Four, learned Agile programming and clean code from Uncle Bob's book. I also read books about TDD, DDD, CI, Enterprise Application Architecture, Dependecy Inject, AOP and wide range of popular framework. For many books I read many times, but still not understand clearly. I deadly felt I need a **environment** to  apply and validate what  I've read and thought.  
 
+After several selection, I found my desire environment -- Citigroup. I passed the interview easily with my broad view on software development and my technology on .Net and got my dream land to cultivate my ideas on software development. The best project I wrote is <> which can let user using a visual tool to parse and transform complex data(xml, json, csv ...) easily and quickly. The framework will first show user the fields in raw file. After user selected their desire fields, a meta-program will generate an execution plan using the meta information collected from sample file . Finally, the runtime engine will use the execution plan, parellel it and then parse the large volume source data in an efficient way. In one word, user only need to care about the fields they want, all the details and performance will be handled by the framework.  I also began to touch some advanced topics like meta-programming and applied it into one of my main project. This project aims to use less effort to parse complex raw data(not well designed xml,json,csv file) into standard format. I design a meta-program which can collect meta information from sample data and genearte execution plan according to user's desire fields. I also build a GUI for user, so they just need to select the field they want from screen and ignore other things. The framework will also use  
 
-
-
+### first project
 * Learn Linq functional programming
 * Learn to use 3rd-part control
 * Learn multi-thread
@@ -31,7 +31,7 @@ To find the answer, I began to read any books I could find about software develo
 
 
 
-### 
+### days in Citi
 * Pass the interview
 * Used to think use advanced techonology is more important. Begin to think how to control the complexity of software. 
 * Unit test
