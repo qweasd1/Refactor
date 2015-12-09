@@ -9,14 +9,44 @@ My name is Wang Zhendong and I'm a 24 year old Chinese boy. I got my bachelor de
 
 I'm fluent with a wide range of language and framework. You can see a long list of them in my resume, so I won't state them again here . What I want to show here is how I learned new languages and frameworks. For language, especially the modern and general purpose language, they always share some common concept more or less . A good example for this is the concept of lambda expression and high order function. They are wide spread in nearly all modern language and the differences relies on the concrete syntax. Another example is the pattern match and usually different language has different support strength for it, some are more powerful(Scala with its case class), some are less powerful.(xtend) Once you familiar with the underlying concept, you will quickly get used to that new language. The same concept also apply to a framework. Usually a framework is aimed to solve a particular problem. So before learning a new framework, I always first make clear what kind of problem it aims to solve and what difficulty I will face if I don't use this framework. Not like language, framework usually has less static check, so when I learn a framework, I always think how I can unit test the component I wrote from the framework. Beside thinking, I will always make my hands dirty to make sure I can use them correctly in real world. 
 
-I'm good at designing and developing easy to use framework. When work in <Company>, One of my project is to develop a general framework to transform dirty and complex source data into a desired format. The source data could be xml, json, csv, Excel etc. The most complex source data could be xml file with several namespaces and deep hierarchey. From a user's perspective, they absolutely hope they can do the transform without in an intuitive way without touching any complex code, so decided to design my framework fullfill this need. The solution I gave is quite simple in concept but a little bit challenge. Here, let me use xml source data as an example to explain the desing:
+I'm good at designing and developing easy to use framework. When work in <Company>, One of my project is to develop a general framework to transform dirty and complex source data into a desired format. The source data could be xml, json, csv, Excel etc. The most complex source data could be xml file with several namespaces and deep hierarchey. From a user's perspective, they absolutely hope they can do the transform without in an intuitive way without touching any complex code, so decided to design my framework fullfill this need. The solution I gave is quite simple in concept but a little bit challenge. Here, let me use xml source data as an example to explain the design:
 * An analysis program will read in a sample xml file, parse and collect meta information like tag name, tag relationships from it and show it to user through a GUI. 
 * User then pick up the fields they want from the GUI. 
 * User specify their desire format in a template
 * The analysis program will generate a execution plan for the whole transform. 
 * After passing the exectuion plan and source file to the transform engine, it will genrate out the file.
 
-* The algorithm for generating execution plan is quite complex since it will needs to combine both the meta inforamtion from sample file(e.g. the relationship between xml tags like tag A has only one tag B but has many tag C) and the user's choice on GUI. It also handle different namespace. Though hard to implement, It will be really convenient for the end user to use it since I hide all the implement details and let meta program generate them as more as possible. The framework finally gained great success since it save a huge time and it won an award in <Company> 's innovation competition ranking #14 out of 110 project. (I even got the 3rd highest technology score). Beside the transform framework, I also develop several other interesting framework 
+As you might guess, the most complex part is how analysis program generate the execution plan. Let's see a concrete example:
+Here is our source data
+```xml
+<!-- source data-->
+<Blog>
+  <Author>Tony</Author>
+  <Articles>
+    <Article title="1st article">
+      <Comments>
+        <Comment>a1_c1</Comment>
+        <Comment>a1_c2</Comment>
+      </Comments>
+    </Article>
+    <Article title="2nd article">
+      <Comments>
+        <Comment>a2_c1</Comment>
+        <Comment>a2_c2</Comment>
+      </Comments>
+    </Article>
+  </Articles>
+</Blog>
+```
+Here is our desire format(a csv file): 
+```
+Author|Article|Comments
+Tony|1st article|a1_c1
+Tony|1st article|a1_c2
+Tony|2nd article|a2_c1
+Tony|2nd article|a2_c2
+```
+To transform hierarchy data like xml into flatten data like csv. The logic is not that straightforward. It gets more complicated when we also need to handle different namespaces and error condition. The framework finally gained great success since it save a huge time and it won an award in <Company> 's innovation competition ranking #14 out of 110 project. (I even got the 3rd highest technology score). Beside the transform framework, I also develop several other interesting framework 
 
 I had a broad and comprehensive understanding on many aspects of software development related topics. I had solid understanding on OO design, design pattern and Enterprise Application Architecture. I also know domain driven development well and implement it in daily development.(One of my interest is to development assist tools to help implement DDD more easily) For programming paradigm, I'm fluent with both OO and functional flavor. For methodology, I'm a fan of Agile and TDD and used them for 1.5 years. I'm quite famliar with unit test and some mock frameworks. I'm also quite famliar with Dependency Injection along with the popular frameworks like Guice, Ninject and Spring. For CI, though I practise very little, I know the main concept for it and popular tool like Jenkins. For static analysis, I know the SonarCube. DSL, language design and complier technology is one of my big love. I'm fluent with Antlr4 and xtext and I developed several application based on them in my daily work. For instance, I implement a parser for t-sql to extract meta information by using xtext and use those information to analysis its potential performance issue. Moreover I develop a meta program to refactor the low performance sql to a high performance version automatically. I also like model driven development very much and believed it will be a big trend in the future. The Eclipse Modeling Project and its sub-projects is my best love on this area. 
 
