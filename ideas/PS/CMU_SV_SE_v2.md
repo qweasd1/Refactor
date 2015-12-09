@@ -35,18 +35,36 @@ Here is our source data
         <Comment>a2_c2</Comment>
       </Comments>
     </Article>
+    <Article >
+      <Title>3rd article<Title/>
+      <Comments>
+        <Comment>a3_c1</Comment>
+      </Comments>
+    </Article>
+    <Article >
+      <Title>4th article<Title/>
+      <Comments error="can't read it from db">
+        
+      </Comments>
+    </Article>
   </Articles>
 </Blog>
 ```
 Here is our desire format(a csv file): 
 ```
+//desired data
 Author|Article|Comments
 Tony|1st article|a1_c1
 Tony|1st article|a1_c2
 Tony|2nd article|a2_c1
 Tony|2nd article|a2_c2
+Tony|3rd article|a3_c1
+
+//error data flow
+Author|Article|Comments
+Tony|4th article|[error: can't read it from db]
 ```
-To transform hierarchy data like xml into flatten data like csv. The logic is not that straightforward. It gets more complicated when we also need to handle different namespaces and error condition. The framework finally gained great success since it save a huge time and it won an award in <Company> 's innovation competition ranking #14 out of 110 project. (I even got the 3rd highest technology score). Beside the transform framework, I also develop several other interesting framework 
+The sample above needs to transform hierarchy data like xml into flatten data like csv.It also needs to handle heterogeneous structure(comapre the 3rd Article tag with the its previous one) and error condition(the 4th ). This is just a sample and the real world requirements can be more complex. So it's really meaningful if we can build the intelligent analysis program. Though difficult, The framework is finally finished and gained great success since it save a huge time and it won an award in <Company> 's innovation competition ranking #14 out of 110 project. (I even got the 3rd highest technology score). 
 
 I had a broad and comprehensive understanding on many aspects of software development related topics. I had solid understanding on OO design, design pattern and Enterprise Application Architecture. I also know domain driven development well and implement it in daily development.(One of my interest is to development assist tools to help implement DDD more easily) For programming paradigm, I'm fluent with both OO and functional flavor. For methodology, I'm a fan of Agile and TDD and used them for 1.5 years. I'm quite famliar with unit test and some mock frameworks. I'm also quite famliar with Dependency Injection along with the popular frameworks like Guice, Ninject and Spring. For CI, though I practise very little, I know the main concept for it and popular tool like Jenkins. For static analysis, I know the SonarCube. DSL, language design and complier technology is one of my big love. I'm fluent with Antlr4 and xtext and I developed several application based on them in my daily work. For instance, I implement a parser for t-sql to extract meta information by using xtext and use those information to analysis its potential performance issue. Moreover I develop a meta program to refactor the low performance sql to a high performance version automatically. I also like model driven development very much and believed it will be a big trend in the future. The Eclipse Modeling Project and its sub-projects is my best love on this area. 
 
@@ -66,11 +84,12 @@ I Have a broad knowledge on software development: For design, I had solid unders
 Perform well on independent development and research: From my startup project to my current work in Citi, I was always working on the most challenge tasks range from complex algorithm to sophisticated architecture. I also work on some extenal DSL design and complier related tasks. And usually seldom people could provide me help on these area. I learn all things myself. Books and blogs written by brilliant guys are my instructors and I always like to make my hands dirty to try the new things I've learned. In this year's Citi innovation competition, My independetly developed ETL framework has passed the first round with ranking #14 of 110 projects. My technology score ranks #3. The competition is still in progressing.
 
 #### research and working experience
-* design and develop an code-free ETL framework to transform dirty, complex and heterogeneous raw data to clean and standard format. in <Company>
-* design and develop parellel optimizer for batch job. The developer only need to focus on dataflow and the optimizer will parallel the job automatically.
-* design and develop a visual data compare tool used to compare heterogeneous, large volume data from different data source. (Used in data migration)  
+* design a digit chip testing tool in my frist startup program. The software contains sophisticated and customized ploting system, complex parallel and synchronous logic and dynamically generated GUI.
+* design and develop an intelligent ETL framework to transform dirty, complex and heterogeneous raw data to clean and standard format. in <Company>
+* design and develop parellel optimizer for data processing. The developer only need to focus on dataflow and the optimizer will parallel the data process automatically.
+* design and develop a visual data compare tool used to compare heterogeneous, large volume data from different data source. (Used in data migration project)  
 * design and implement a light weight grammar mapping tool in javascript called [hanbao](https://github.com/qweasd1/hanbao) which support left recursive grammar, AST rewrite and a more powerful ASTVisitor.(It's like Antlr4 but with a totally different implementation) 
-* design a flexible model to model tranformation framework in javascript called [objmap](https://github.com/qweasd1/Refactor/blob/master/ideas/Supplement/objmap.md) (haven't implement)
+* design a flexible model to model tranformation framework in javascript called [objmap](https://github.com/qweasd1/Refactor/blob/master/ideas/Supplement/objmap.md) (haven't implement yet, but you can see the main design here)
 * 
 
 
