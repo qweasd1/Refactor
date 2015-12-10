@@ -50,7 +50,22 @@ I was interested in language design since the beginning of this year. The intere
 
 I've list aspects I think is important for a language design here. In the next section, I will give a short introduction on my understanding of Software Architecture.
 
+### My understanding on Software Architecture
+##### What does Architecture do?
+As we all know, software can be complex and we need some way to help reduce such complexity. When I started learning architecture, I focus on the concrete pattern(like the classical three layer architecture) they used and advanced framework which support the architecture. But now, I had more deeper understand on architecture. 
 
+Now I think, architecture is an efficient way to decompose the big problem you are facing into bounded manageable pieces(domain) and setup the interface between them, in which the three keywords are **decompose, bounded, interface**.
+
+> ##### decompose
+Decompose means we can divide big problem into smallar one. Usually small problem has more concrete constraint, more easy to solve out and write test against. Beside this, a small problem has the more possibility been solved by others already which we can leverage by free.
+
+> ##### bounded
+Bounded means each sub domains are loosely coupled with each other, which means we can develop them independently. We can even replace them with Mock when testing! 
+
+> ##### interface
+Interface is the concrete constraint we set on communication between domain and domain. It guarantee no matter what happened inside a domain, it won't change its facade behavior.  
+
+In practice, the most tricky thing when work architecture is how you abstract out the domain into suitable abstract level. 
 
 ### My ideas on Plaid
 
