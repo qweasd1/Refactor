@@ -31,18 +31,23 @@ I was interested in language design since the beginning of this year. The intere
 ###### The strategy to develop a new language.
   Since language design in essential is a system design, so all concepts about agile development can applies to it. The following are my ideas on how to develop a language more efficiently. 
   
-  First, I think it's important to rush out a protoype of you language while you are doing the design. With the help of framework like xtext, we can finished the prototype very quickly. Once we had the protoype, we can quickly find out the drawback in our language.
+  **First**, I think it's important to rush out a protoype of you language while you are doing the design. With the help of framework like xtext, we can finished the prototype very quickly. Once we had the protoype, we can quickly find out the drawback in our language.
   
-  Second, Always try your language with real world sample. Like system and framework design, we transform our fancy idea into convenient feature into our language to make specific job doing easily. But sometimes, our new feature will conflict with existing function and made some common case used to be easy but now hard to implement. I've found such kind of question in the paper of AEminium and here is a little [article](https://github.com/qweasd1/Refactor/blob/master/ideas/Supplement/plaid_thinkings.md) for it. Since I haven't read all materials about AEminium, though maybe the question I raised is solved already, the idea in the article is my current thinking.
+  **Second**, Always try your language with real world sample. Like system and framework design, we transform our fancy idea into convenient feature into our language to make specific job doing easily. But sometimes, our new feature will conflict with existing function and made some common case used to be easy but now hard to implement. I've found such kind of question in the paper of AEminium and here is a little [article](https://github.com/qweasd1/Refactor/blob/master/ideas/Supplement/plaid_thinkings.md) for it. Since I haven't read all materials about AEminium, though maybe the question I raised is solved already, the idea in the article is my current thinking.
   
-  Third, I think it's better not to optimize your language so early. From my own veiw, the most important thing for a new language is if its semantic model best suit the real world need. When the semantic model become stable, we then started to began the optimization.
+  **Third**, I think it's better not to optimize your language so early. From my own veiw, the most important thing for a new language is whether its semantic model best cover the real world need. When the semantic model become stable, we then started to began the optimization since most optimization is based on semantic model. 
   
   
-  
-* How to let other guys learn your language easily. Share common concept and help them understand the unique part of your language. Seasonal programmers are old foxes and they are usually familiar with feature like 
 
-agile development
+  
+###### How to make your language popular
+  To make your language popular, there are two main aspects you can improve:
+* internal improvement: usually, people tends to use their familiar syntax, so it's a good idea to reuse other language's syntax for the same semantic model in your language This will ease the user's learning curve. For instance, lambda expression and pattern match are two popular feature for nearly every functional programming language, but different language give them different syntax. So don't give a new version for them yourself unless you have a solid reason for it. Also, reuse other language's mature syntax can let you reuse their implementation and you save more time when you do prototype!
+* external improvement: This aspect contains many content. For intance, you need to write a good document for it. You need to setup a community for it and make sure user's question was answered in time. However, I think, always provide a good playaround environment to your user is a good idea! A good example is some [Regex Test plugin](https://regex101.com/) which give user very quick feedback when they study and use Regex.
 
+
+
+I've list aspects I think is important for a language design here, I will list more in my supplement materials. 
 
 ### My ideas on Plaid
 
