@@ -29,9 +29,16 @@ I was interested in language design since the beginning of this year. The intere
   However, thanks for framework like xtext which step more than Antlr, has provide mechanism to write these functions easily! 
   
 ###### The strategy to develop a new language.
-  Since language design in essential is a system design, so all concept about agile development can applies on it. 
+  Since language design in essential is a system design, so all concepts about agile development can applies to it. The following are my ideas on how to develop a language more efficiently. 
   
-  When I develop
+  First, I think it's important to rush out a protoype of you language while you are doing the design. With the help of framework like xtext, we can finished the prototype very quickly. Once we had the protoype, we can quickly find out the drawback in our language.
+  
+  Second, Always try your language with real world sample. Like system and framework design, we transform our fancy idea into convenient feature into our language to make specific job doing easily. But sometimes, our new feature will conflict with existing function and made some common case used to be easy but now hard to implement. I've found such kind of question in the paper of AEminium and here is a little [article](https://github.com/qweasd1/Refactor/blob/master/ideas/Supplement/plaid_thinkings.md) for it. Since I haven't read all materials about AEminium, though maybe the question I raised is solved already, the idea in the article is my current thinking.
+  
+  Third, I think it's better not to optimize your language so early. From my own veiw, the most important thing for a new language is if its semantic model best suit the real world need. When the semantic model become stable, we then started to began the optimization.
+  
+  
+  
 * How to let other guys learn your language easily. Share common concept and help them understand the unique part of your language. Seasonal programmers are old foxes and they are usually familiar with feature like 
 
 agile development
