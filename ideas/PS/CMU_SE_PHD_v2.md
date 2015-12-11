@@ -66,11 +66,48 @@ process unit B process 2000 items
 ```
 But since our process unit is running in parallel, I can't directly write the log information into the log file.(since a file can't be open and read by two thread) So some synchronous logic need to be introduced. However, these sychronous code finally caused implicitly couple between those process unit and slow the performance! So a more sophisticated logger need to be design. Another issue is when process unit failed and I need to log helpful information and let framework release the using resource correctly. The framework soon becomes complex when dealing with these issue and some other corner cases. I think the cases I met here is common in other architecture! However, when we design the architecture, we tends to focus our attention on the brilliant feature we want but miss some features which are necessary! To avoid this, I think it's always a good idea to make a quick but simple prototype out and playaround with it to see if we miss anything from our desgin. Also, from another perspective, features like log and error handling themself are deserved to investigate. 
 
-I raise the 
-
-In practice, the most tricky thing when work architecture is how you abstract out the domain into suitable abstract level. 
+Next, I will show some of my ideas on professor Jonathan Aldrich's project!(They really attract me!)
 
 ### My ideas on Plaid
+Plaid is a language with more strict complie time checking in area like typestate, permission which help us write more safe code. For its extension, AEminium, the language can also compile its exection into parallel version by using data dependency and their permission.
+
+For plaid itself, I come up with some ideas like we can add some syntax sugar to leverage the typestate. Here is an example:
+```
+// our model
+state File {
+  ...
+}
+
+HasNext case of File = {
+  method readLine(){...} // it will change its state to EnfOfFile when it reach the ends of file
+}
+
+EndOfFile case of File ={
+  
+}
+
+// syntax sugar on while
+var file = new File(...)
+while(file hasState HasNext){
+  file.readLine()
+  ...
+}
+
+while(file NotInState EndOfFile){
+ ...
+}
+
+// syntax sugar for pattern match
+switch(file){
+    HasNext:{
+       ...
+    },
+    EndOfFile:{
+       ...
+    }
+}
+
+```
 
 
 ### My ideas on Wyvern
