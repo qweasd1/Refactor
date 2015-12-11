@@ -52,18 +52,11 @@ I've list aspects I think is important for a language design here. In the next s
 
 ### My understanding on Software Architecture
 ##### What does Architecture do?
-As we all know, software can be complex and we need some way to help reduce such complexity. When I started learning architecture, I focus on the concrete pattern(like the classical three layer architecture) they used and advanced framework which support the architecture. But now, I had more deeper understand on architecture. 
+  As we all know, software can be complex and architecture is invented to help reduce such complexity. As I think, architecture is an efficient way to decompose the big problem you are facing into bounded manageable pieces(domain) and setup the interface between them. Moreover, it's sometimes wise and tricky to create some intermediate layer or domain to help your architecture more flexible though they look like do nothing directly with your big problem. 
 
-Now I think, architecture is an efficient way to decompose the big problem you are facing into bounded manageable pieces(domain) and setup the interface between them, in which the three keywords are **decompose, bounded, interface**.
+  I remember when I was asked to parallel some batch data processing jobs in one of project, I didn't implement it directly. since parallel code can be complex and we have many job needs to be parallel. I don't want to duplicated the parallel logic in my different places. It's also not suitable if we write some ultility function for them, because different job use different logic and need different way to parallel processing. Just like a lemma can sometimes make a hard theory easy to prove,  I realized I might need to introduce some intermediate concept. So I design the a model for data processing, in which, the core model is a data process unit which declares the resources it requires and the resources it will produce. The user can connect the data process unit to build the logic view of their data process flow. When running, a runtime engine will mornitor the status of each process unit and invoke it in parallel when its consumeing resources are all produced. I also include pipeline which implement the classic producer-consumer design pattern as a special resource into my model.  So the user now only need to express their data process logic in a single thread way the framework help to make it run in parallel. 
 
-> ##### decompose
-Decompose means we can divide big problem into smallar one. Usually small problem has more concrete constraint, more easy to solve out and write test against. Beside this, a small problem has the more possibility been solved by others already which we can leverage by free.
 
-> ##### bounded
-Bounded means each sub domains are loosely coupled with each other, which means we can develop them independently. We can even replace them with Mock when testing! 
-
-> ##### interface
-Interface is the concrete constraint we set on communication between domain and domain. It guarantee no matter what happened inside a domain, it won't change its facade behavior.  
 
 In practice, the most tricky thing when work architecture is how you abstract out the domain into suitable abstract level. 
 
