@@ -74,6 +74,32 @@ Plaid is a language with more strict complie time checking in area like typestat
 When reading professor Jonathan's paper, Some questions came into mind:
 * How AEminium compatible with existing JVM-language? In those JVM-language, there are no concept like permission, so if we invoke their domain model's method in our code, how our compiler generates the parallel execution plan?  A possible way I thought is we can redefine the method signature to add the permission.
 * Does it a good idea to let AEminium determine everything about parallel optimization? I remember I encountered an interesting case when I using the parallel batch processing framework: I used to query the the processor count on the computer to determine how much thread will be used to run the job and it scales well for single application. However, in real world, Sometimes, I need to run several batches at the same time. They ran idendently in different process and we use const processor count, no one balance them. The more generated threads don't boost the performance but slow it. For AEminium, I don't know the concrete implementation for its scheduler, but if the optimization is done in complie time, I'm afraid we will meet the problem I just raised. To overcome this issue, I got an idea and it was written in this [article](https://github.com/qweasd1/Refactor/blob/master/ideas/Supplement/plaid_thinkings.md). We can use the structure defined their to control the parallel size or even we can define some run time schedule logic.
+* I found a case which is quite interestring in Plaid:
+```
+state Base {
+  bool isValidate() // this method's return value can't be determined by compile time
+}
+
+state A case of Base {
+  
+}
+
+state B case of Base {
+  
+}
+
+state C case of Base {
+   transform() {
+      if(isValidate()){
+         this <- this.AState
+      }
+      else{
+         this <- this.BState
+      }
+   }
+}
+```
+The question is how I determine the status after calling ```transform()```? It can't be determined by compile time. I haven't read the paper about gradual typing, but I guess it might solve such kind of question there.
 * For Plaid itself, a minor but might useful thing is we can add some syntax sugar for **state** for while statement and switch clause like the following:
 ```
 // our model
@@ -111,7 +137,7 @@ switch(file){
 }
 
 ```
-
+Finally, I think Plaid like many other modern language did a nice job on incorperate what used to be design pattern into language features and support more better complie time check. The AEminium also attracts me for its parallel algorithm. I used to develop some complex multi-thread programs and I know different kind of lock can have dramatically impact on parallel program especially when the synchronous logic happens frequently. I used to dream I could write intelligent meta-program to automatically choose the best execution out and I thought that's what AEminium want. Hope I could have chance to optimize AEminium parallel algorithm in the future.
 
 ### My ideas on Wyvern
 In enterprise software development, we tends to decompose our application into suitable sub domain. There is always an issue when 
