@@ -56,7 +56,17 @@ I've list aspects I think is important for a language design here. In the next s
 
   I remember, there was one time, I was asked to parallel some batch data processing jobs in my project.  I didn't implement the parallel logic directly. since parallel code can be complex and we have many job needs to be parallel. I don't want to duplicated the parallel logic in my different places. It's also not suitable if I write some ultility function encapsulate the parallel logic, because different jobs use different logic and need different way to parallel processing. Just like a lemma can sometimes make a hard theory easy to prove,  I realized I might need to introduce some intermediate concept. So I design a model for our data processing, in which, the core model is a data process unit which operates a single data processing. It also declares the resources it will consume and the resources it will produce. To implement a spesific data process logic, The user can connect the data process unit to build the logic view of their data process flow. When running, a runtime engine will mornitor the status of each process unit and invoke it in parallel when its consumeing resources are all produced. I also include pipeline which implement the classical producer-consumer design pattern as a special resource, so that the user only need to express the data process logic for a single batch unit. I also gave many generic data process unit and let user pass in a lambda expression to express their unique data process logic.
 
+  However,  when I use the framework in real world, some issue I used to ignore became bigger than I expected. The first one is about log. I was asked to record the process progress like the following:
+```...
+process unit A process 1000 items
+process unit B process 1000 items
+process unit A process 2000 items
+process unit B process 2000 items
+...
+```
+But since our process unit is running in parallel, I can't directly write the log information into the log file.(since a file can't be open and read by two thread) So some synchronous logic need to be introduced. However, these sychronous code finally caused implicitly couple between those process unit and slow the performance! So a more sophisticated logger need to be design. Another issue is when process unit failed and I need to log helpful information and let framework release the using resource correctly. The framework soon becomes complex when dealing with these issue and some other corner cases. I think the cases I met here is common in other architecture! However, when we design the architecture, we tends to focus our attention on the brilliant feature we want but miss some features which are necessary! To avoid this, I think it's always a good idea to make a quick but simple prototype out and playaround with it to see if we miss anything from our desgin. Also, from another perspective, features like log and error handling themself are deserved to investigate. 
 
+I raise the 
 
 In practice, the most tricky thing when work architecture is how you abstract out the domain into suitable abstract level. 
 
