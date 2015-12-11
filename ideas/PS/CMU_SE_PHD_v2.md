@@ -51,7 +51,7 @@ I was interested in language design since the beginning of this year. The intere
 I've list aspects I think is important for a language design here. In the next section, I will give a short introduction on my understanding of Software Architecture.
 
 ### My understanding on Software Architecture
-##### What does Architecture do?
+
   As we all know, software can be complex and architecture is invented to help reduce such complexity. As I think, architecture is an efficient way to decompose the big problem you are facing into bounded manageable pieces(domain) and setup the interface between them. Moreover, it's sometimes wise and tricky to create some intermediate layer or domain to help your architecture more flexible though they look like do nothing directly with your big problem. 
 
   I remember, there was one time, I was asked to parallel some batch data processing jobs in my project.  I didn't implement the parallel logic directly. since parallel code can be complex and we have many job needs to be parallel. I don't want to duplicated the parallel logic in my different places. It's also not suitable if I write some ultility function encapsulate the parallel logic, because different jobs use different logic and need different way to parallel processing. Just like a lemma can sometimes make a hard theory easy to prove,  I realized I might need to introduce some intermediate concept. So I design a model for our data processing, in which, the core model is a data process unit which operates a single data processing. It also declares the resources it will consume and the resources it will produce. To implement a spesific data process logic, The user can connect the data process unit to build the logic view of their data process flow. When running, a runtime engine will mornitor the status of each process unit and invoke it in parallel when its consumeing resources are all produced. I also include pipeline which implement the classical producer-consumer design pattern as a special resource, so that the user only need to express the data process logic for a single batch unit. I also gave many generic data process unit and let user pass in a lambda expression to express their unique data process logic.
@@ -140,9 +140,8 @@ switch(file){
 Finally, I think Plaid like many other modern language did a nice job on incorperate what used to be design pattern into language features and support more better complie time check. The AEminium also attracts me for its parallel algorithm. I used to develop some complex multi-thread programs and I know different kind of lock can have dramatically impact on parallel program especially when the synchronous logic happens frequently. I used to dream I could write intelligent meta-program to automatically choose the best execution out and I thought that's what AEminium want. Hope I could have chance to optimize AEminium parallel algorithm in the future.
 
 ### My ideas on Wyvern
-In enterprise software development, we tends to decompose our application into suitable sub domain. There is always an issue when 
-* make every domain logic more easily. So don't embed general language
-* make it more easily to describe the 
+Wyvern is a great language which allow us to composite different language together in a uniformed and organized way. From my view, I think the most valuable thing is it lets the programmers have the opportunity to use specific DSL to describe 
+
 
 ### Future plan
 * advanced design pattern and parsing strategy for frontend work.
