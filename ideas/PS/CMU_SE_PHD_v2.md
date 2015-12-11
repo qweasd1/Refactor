@@ -136,11 +136,20 @@ switch(file){
     }
 }
 
+
 ```
 Finally, I think Plaid like many other modern language did a nice job on incorperate what used to be design pattern into language features and support more better complie time check. The AEminium also attracts me for its parallel algorithm. I used to develop some complex multi-thread programs and I know different kind of lock can have dramatically impact on parallel program especially when the synchronous logic happens frequently. I used to dream I could write intelligent meta-program to automatically choose the best execution out and I thought that's what AEminium want. Hope I could have chance to optimize AEminium parallel algorithm in the future.
 
 ### My ideas on Wyvern
-Wyvern is a great language which allow us to composite different language together in a uniformed and organized way. From my view, I think the most valuable thing is it lets the programmers have the opportunity to use specific DSL to describe 
+Wyvern is a great language which allow us to composite different language together in a uniformed and organized way. This is a very good feature, since in reality, a complex system is usually composite with several small subdomains. For each sub domain, it usually contains very different logic from others, so it's of course inefficient to express them in a single language. Wyvern give you the freedom to express those subdoma in a suitable DSL. 
+
+Before Wyvern, developers like me try to mimic the same thing by 2 ways. The first one is using internal DSL(with pattern like fluent interface). But internal DSL is of course less flexible than external one. It also lacks the semantic analysis and other IDE support like code highlight, quick fix etc. Another one is embed external DSL in string Literal.(Professor Jonathan has discussed this in his paper, so won't discuss here)
+
+Here are some of my ideas on Wyvern:
+* Add cross-language AOP support: AOP is quite useful when dealing with interception function like cache and logging. For Wyvern, it's highly structured and in essential a tree-like structure, it's easy to implement some css-like selector which means define a join point could be more easily. 
+* Combine with modeling driven development: 
+
+So I think, it can really be a good tool to implement software architecture.
 
 
 ### Future plan
