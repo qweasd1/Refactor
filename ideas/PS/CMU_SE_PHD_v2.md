@@ -146,8 +146,9 @@ Wyvern is a great language which allow us to composite different language togeth
 Before Wyvern, developers like me try to mimic the same thing by 2 ways. The first one is using internal DSL(with pattern like fluent interface). But internal DSL is of course less flexible than external one. It also lacks the semantic analysis and other IDE support like code highlight, quick fix etc. Another one is embed external DSL in string Literal.(Professor Jonathan has discussed this in his paper, so won't discuss here)
 
 Here are some of my ideas on Wyvern:
-* Add cross-language AOP support: AOP is quite useful when dealing with interception function like cache and logging. For Wyvern, it's highly structured and in essential a tree-like structure, it's easy to implement some css-like selector which means define a join point could be more easily. 
-* Combine with modeling driven development: 
+* Add cross-language AOP support: AOP is quite useful when dealing with interception function like  exception handling, cache and logging. For Wyvern, it's highly structured and in essential a tree-like structure, it's easy to implement some css-like selector which means define a join point could be more easily. I think cross-language AOP support is just one kind of cross-language feature, maybe we will have more in the future!
+* Language composition and Wyvern language Repository: Since Wyvern decompose the language you define into small parts and their interface, the small parts can now be developed independently. Another good news is we can leverage the enhancement of one specific language we used by free when it release a new version!  I also think we can build a centeral repository like Maven to store all external language package of Wyvern and made user easily pick them up when need. 
+* Combine with internal DSL: Though Wyvern provide
 
 So I think, it can really be a good tool to implement software architecture.
 
