@@ -71,7 +71,10 @@ Next, I will show some of my ideas on professor Jonathan Aldrich's project!(They
 ### My ideas on Plaid
 Plaid is a language with more strict complie time checking in area like typestate, permission which help us write more safe code. For its extension, AEminium, the language can also compile its exection into parallel version by using data dependency and their permission.
 
-For plaid itself, I come up with some ideas like we can add some syntax sugar to leverage the typestate. Here is an example:
+When reading professor Jonathan's paper, Some questions came into mind:
+* How AEminium compatible with existing JVM-language? In those JVM-language, there are no concept like permission, so if we invoke their domain model's method in our code, how our compiler generates the parallel execution plan?  A possible way I thought is we can redefine the method signature to add the permission.
+* Does it a good idea to let AEminium determine everything about parallel optimization? I remember I encountered an interesting case when I using the parallel batch processing framework: I used to query the the processor count on the computer to determine how much thread will be used to run the job and it scales well for single application. However, in real world, Sometimes, I need to run several batches at the same time. They ran idendently in different process and we use const processor count, no one balance them. The more generated threads don't boost the performance but slow it. For AEminium, I don't know the concrete implementation for its scheduler, but if the optimization is done in complie time, I'm afraid we will meet the problem I just raised. To overcome this issue, I got an idea and it was written in this [article](https://github.com/qweasd1/Refactor/blob/master/ideas/Supplement/plaid_thinkings.md). We can use the structure defined their to control the parallel size or even we can define some run time schedule logic.
+* For Plaid itself, a minor but might useful thing is we can add some syntax sugar for **state** for while statement and switch clause like the following:
 ```
 // our model
 state File {
