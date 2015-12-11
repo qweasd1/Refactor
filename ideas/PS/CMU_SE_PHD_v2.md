@@ -148,11 +148,21 @@ Before Wyvern, developers like me try to mimic the same thing by 2 ways. The fir
 Here are some of my ideas on Wyvern:
 * Add cross-language AOP support: AOP is quite useful when dealing with interception function like  exception handling, cache and logging. For Wyvern, it's highly structured and in essential a tree-like structure, it's easy to implement some css-like selector which means define a join point could be more easily. I think cross-language AOP support is just one kind of cross-language feature, maybe we will have more in the future!
 * Language composition and Wyvern language Repository: Since Wyvern decompose the language you define into small parts and their interface, the small parts can now be developed independently. Another good news is we can leverage the enhancement of one specific language we used by free when it release a new version!  I also think we can build a centeral repository like Maven to store all external language package of Wyvern and made user easily pick them up when need. 
-* Combine with internal DSL: Though Wyvern provide
+* Combine with internal DSL: Though Wyvern provides great support for external DSL, most developers are not quite familiar with Language design so I think it's better to provide them some level of flexible as well. The simplest the way is we can let them define functions inside a global space and let them use these functions inside there corresponding language.
+* Show more better structure to semanti analysis
 
-So I think, it can really be a good tool to implement software architecture.
 
 
 ### Future plan
-* advanced design pattern and parsing strategy for frontend work.
-* error handling with error input. Report useful error information
+
+#### Short Plan(for the next year)
+* I hope I could have a solid understanding on every aspects of complier technology in my first year of PHD. I hope I could do the frontend and backend job of compiler fluently and do quickly prototype with complex language after my first year.
+* I hope I could join professor Jonathan Aldrich's project as soon as possible. I'm a self learner and a quick learner during project.
+* I hope I could have a solid understanding on Eclipse plugin development since it's essential to write language plugin. (I hope I could write useful plug-in for plaid and wyvern in the future). I also hope I could have chance to learn EMF(eclipse modeling project) deeply since it's good for rushing out prototype.
+* If possible, I hope I could work on several complex meta-programming and model driven development related project. I also hope I could study on Graph Database like Neo4j since I thought graph has advantages on modeling complex models. I used to dream to build meta dataware house by using Neo4j and write meta-program to help maintain complex datawarehouse in an intelligent and self-adaptive way. 
+
+#### Long Plan(for the next five year)
+* I hope I could touch complex system from different background.(Web, Bank, Hospital...). I hope I could find more architecture pattern from them.
+* I hope I could help bring wyvern to industry. (I think it will be very welcome in industry if we design it well and give excellent IDE support)
+* I hope I could be a good architecturer and can give workable solution when facing complex problem.
+* I hope I could be a good language designer and efficient implementor when there are needs for a new language.(including advacned IDE support features)
