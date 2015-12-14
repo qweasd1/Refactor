@@ -23,13 +23,9 @@ The days in Citi is very exciting. It's my first time to see those giant system 
 
 I applied this logic in a data integeration framework I developed recently. In traditional, the data integeration program tends to mixed up the logic of data parsing, the logic of data-checking and the logic for parallel processing. These programs are usually hard to understood and maintained. When working on such kind of project, I decided to try another way. I first decomposed the data integration problem into several domains like parsing, parallel processing, data-checking. Then I used some advanced technology like meta-programming to enhance each domains to make it easy to use. For example, in parallel processing, I build a runtime engine to parallel the execution of data integeration automatically. For parsing, I extract meta information from source data and let meta-program analysis them and generate the execution plan for the data integeration. I also build a GUI to let user input some necessary information for the parsing logic. The final result is, user can express their logic in a code-free way now. The framework got greate success since it simplified the data integration problem and I won an Award in Citi's Innovation Competition for it. 
 
-I tried many projects in this way when I working in Citi and I found I'm more and more fluent to solve complex issues! 
+I tried many projects in this way when I working in Citi and I found I'm more and more fluent to solve complex problems! 
 
 ### Why I apply for this program
-The broad knowledge I learned in the past few years brought me to the exciting world of Software Engineering. I really hope I could learn more deeply on this area. That's why I decided to read a master degree. 
+The broad knowledge I learned in the past few years brought me to the exciting world of Software Engineering. I really hope I could learn more broadly and deeply on this area. With great experience from industry, I thought it's really a good time to go back to school to learn more. CMU SV is famous for its CS and it provides both the interesting courses and practical projects which just fit my needs. That's why I decided to apply for this exciting program. I really hope I could have the honor to join this program.
 
-To be more concrete:
-* I hope I could touch projects with different background such as health care, logistics, retail etc to enhance my understanding on software architecture.
-* I hope I could work on some industry level data mining related project. I had a statistic background and I learned machine learnning myself at school.
-* I hope I could work on some intelligent system design like self-healing and self-adaptive system.  
 
