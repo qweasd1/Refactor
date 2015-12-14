@@ -20,7 +20,9 @@ Though the project is successful,  I also met many design issue during it. For e
 ________________
 
 ##### Days in Citigroup
-The days in Citi is very exciting. It's my first time to see those giant system and how difficult to build and maintain them. During my days in Citi, one of my job was to develop an advanced data warehouse framework. Our goal 
+The days in Citi is very exciting. It's my first time to see those giant system and how difficult to build and maintain them. This inspired me to think the question: why software is so complex and how to decrease this complexity. After work and practice with those complex sysytem for 1.5 years, I gradually realized the core of software development is to decompose the problem you are facing into suitable pieces and try to make those individual pieces easy to use. I applied this logic in a data integeration framework I developed recently. In traditional, when doing data integeration, people tends to write customized code mixed with the logic of parsing data, the logic of data-checking and the logic for processing integration in parallel. The program is hard to understood and usually contains duplicated logic. When working on this project, I first decomposed it into several domains like parsing, parallel processing, data-checking. Then I used some advanced technology like meta-programming to enhance each domains. For example, in parallel processing, I build a runtime engine to parallel the execution of data integeration automatically. For parsing, I first extract meta information from source data and let meta-program analysis them and generate the execution plan for the data integeration. I also build a GUI to let user input some necessary information for the parsing logic. The final result is, user can express their logic in a code-free way. The framework got greate success and I won an Award for Citi's Innovation Competition for it. 
+
+
  
 
 
