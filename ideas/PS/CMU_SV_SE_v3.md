@@ -10,7 +10,9 @@
  * We need to design a high performance data processing architecture sicne our tool collects signals from digital chip in a high frequency. Sophisticated parallel and synchronous algorithm is needed.
  * We need to design a high refresh rate real-time dashboard and chart system to visualize variable status in digital chip. The chart is even more complex since it has additional complex interaction logic when running in real-time.  
  * We need to build dynamical GUI according to the user's runtime configuration. For one case, user can select the variables they want to watch and the tool will create a chart with those variables' curves.
- As you can see, this is not an easy task. However, I was quite happy with those challenge. For the data processing problem, I studied the parallel programming myself. It's very interesting to tuning the performance by using fine-grained lock or even lock-free algorithm. The debug for unknown errors is also quite tricky in multi-thread environment.   
+
+ As you can see, this is not an easy task. However, I was quite happy with those challenge. For the data processing problem, I studied the parallel programming myself. It's very interesting to tuning the performance by using fine-grained lock or even lock-free algorithm. The debug for unknown errors under multi-thread environment is also quite tricky! I also gain a lot when I tried to design resusable thread-safe class. My interest on parallel programming finally leads me to a perfect data processing module. 
+ 
 
 
 
