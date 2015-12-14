@@ -5,7 +5,8 @@
 
 ### My 2.5 year work experience
 2.5 year is not a long time for a software developer, but I think, I gained a lot during it. 
-  
+
+##### My first project
 My first project is a startup project, in which, we need to develop a powerful diagnostic tool for digital chip. The tool is quite complex. Just list some challenge things I met.
  
 * We need to design a high performance data processing architecture sicne our tool collects signals from digital chip in a high frequency. Sophisticated parallel and synchronous algorithm is needed.
@@ -16,7 +17,9 @@ As you can see, this is not an easy task. However, I was quite happy with those 
 
 During the project, I also met many technic issue. For example, some of the classes I designed are big and complex. They were both hard to comphrehend and hard to test. Another common issue is my code is quite fragile to user's requirement changes. I need to change a lot to fullfill a small requirement change but I think there should be better way to do. To learn how to develop better, I began to read wide range of books such as OO design, Design Patterns, Enterprise Application Development, Test Driven Development and Domain Driven Development. The constant learning and practicing last for half an year and help me setup up a solid understanding on Enterprise Level software development. With the help of this I finally got the chance to enter my dream company, Citigroup.
 
+________________
 
+##### Days in Citigroup
 
  
 
