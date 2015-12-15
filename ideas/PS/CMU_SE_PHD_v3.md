@@ -42,7 +42,9 @@ The main reason for this issue, is we put all things in one grammar and they are
 ##### Language design in real world
 The above just talk about the big picture of a language design. When implement a language in real world there are also some detail considerations, I list some of them in this [article](https://github.com/qweasd1/CMU_SE_PHD/blob/master/supplement/language_design_details.md).
  
-Another  a language is always composed with a lot of features to support more broad use cases. This kind of language is what so called general language. However, it's sometimes inconvenient to improve them since we put all things together under a big grammar. It's just like  I think the advent of Wyvern changed this landscape. I will discuss this in this [article](https://github.com/qweasd1/CMU_SE_PHD/blob/master/supplement/wyvern_thinkings.md)
+##### Other topics 
+There are still many topics about language design I'm interested in. But I don't have enough time to write them all here before dealine. I will update them [here](https://github.com/qweasd1/CMU_SE_PHD/tree/master/supplement).
+
 
 ### My advantages
 Though I don't have a background for CS from school, I learned all required knowledge by reading and practicing myself. Comparing with students in school, I think I had more practical expereince from industry. Here is some of my advantages: 
@@ -52,20 +54,21 @@ Though I don't have a background for CS from school, I learned all required know
 * I know what kind of language features are more useful for industry developer. 
 * I'm also experienced on framework and system design. I'm not only creative in new feature design, but also experienced on how to make them compatible with existing system. [Here](https://github.com/qweasd1/CMU_SE_PHD/blob/master/supplement/objmap_design.md) is one of my design for a model to model transform framework written in javascript
 * I already had some experience on complier related work. I've written css-selector like [ultility function](https://github.com/qweasd1/Powershell-Repo/blob/master/Language/AST/PSAst/PSAstCore.ps1) to help grap Powershell AST more easily. I used it to write several [plugins](https://github.com/qweasd1/Powershell-Repo) for powershell ISE. I've written a grammar mapping tool(like Antlr4 but with different implementation) called [hanbao](https://github.com/qweasd1/hanbao) which support left recursive grammar and AST rewrite in javascript. I'm also working on a performance optimizer for complex t-sql query in my recent work. I already finished the parsing part of the t-sql grammar. See my design [here](https://github.com/qweasd1/CMU_SE_PHD/blob/master/supplement/sql_optimizer.md)
-* I'm a quick learner and can work well on independent tasks. I learned software development all by myself including not easy ones like parallel programming and complier technology. I'm also creative on writing assitant tool for my daily work.
+* I'm a quick learner and can work well on independent tasks. I learned software development all by myself including not easy ones like parallel programming and complier technology. I'm also creative on writing assitant tool to help me do daily work more easily.
 
 ### Why I wish to work with Professor Jonathan
 As a software developer, I always dream to improve the the quality of software and the productivity of developer by using innovation ways. I hope I could write intelligent framework to let developer express only the necessary information and the framework try to handle the details. I used to use Meta Programming, Code Generation and Model Driven Development to design framework for this purpose.  [Here](https://github.com/qweasd1/CMU_SE_PHD/blob/master/supplement/innovation_way_to_improve_software_quality.md) is some idea I've tried before. However, after reading Professor Jonathan's papers, I realized how powerful the language design and type system can help realize my dream. For example, in the paper of [Tagged object](http://www.cs.cmu.edu/~aldrich/papers/ecoop15-tags.pdf), the idea to treat class as the first citizen(like function as the first citizen in functional language) can really simplify the solution of some meta-programming problems. The permission model is also a powerful concept to let parallel programming more declarative than imperative. All of these are appealing to me and I hope I could learn it as soon as possible!
 
 ### Future Plan
 ##### A short one(next year)
-* I hope I could have a solid understanding on compiler technology especially for using it in real world. 
+* I hope I could consolidate my understanding on compiler technology especially for its practical use in real world.  
 * I hope I could work on Plaid project and Wyvern project as soon as possible. I will prepare well my development environment, make sure I understood the detail design of the language and what my colleagues are doing before I start working.
 * I hope I could learn more on Eclipse Plugin Development. It's necessary for me to write IDE support and assistant tool for a new language. It can also help me write assitant tool for my daily development.
 
 ##### A long one
-* I hope I could develop framework to help language development more easily and quickly in the future. 
-* I hope I could work on projects from more different background. Pratical issue in project are always the best inspiration for new design.
+* I hope I could develop framework to help language development and prototype more easily and quickly in the future. 
+* I hope I could work on projects from more different background. Pratical issue in complex projects are always the best inspiration for new design and model.
 * I hope I could learn more on Meta Programming and Model Driven Development. I hope I could work on related projects to enhance my understanding on these 2 areas.
 
 
+Finally, I really hope I could success in this application. Thanks for reading this essay!
