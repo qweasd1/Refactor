@@ -8,24 +8,38 @@ To be straight, my dream mentor is **Jonathan Aldrich** and my dream projects ar
 ### My understanding on Language Design
 
 ##### The Goals of a language
-I think the goals of a language are the core of every language's design. They describe what kind of problems a language will solve. Here are several examples. For the C language , its goal is to let developer use high level model to describe the program used to be describe in Assembly language. For Java, one of its goals is to do memory management auotmatically. For AEminium, the goal is to let developer use a more declarative way to write parallel programming. It's important to make sure the goals of a language during the development, because this will not make us lost in the implementation details.
+I think the goals of a language are the core of every language's design. They describe what kind of problems a language will solve. Here are several examples. For the C language , its goal is to let developer use high level model to describe the program used to be described in Assembly language. For Java, one of its goals is to do memory management auotmatically. For AEminium, the goal is to let developer use a more simple and declarative way to write parallel programming.
 
-##### Core model
+Though when develop a new language, we are usually inspired by a new language syntax or feature frist. It's very important to consider the goals of the new language. If the goal of the language is fullfilled by other language or it has limit usage, it might be less worthy for you to develop it.
 
-The core model is the implementation model we used to realize our goals of a language. For instance, the ```GC``` class and its underlying algorithm is the core model to implement the automatic memory management in Java. The Permission system and task builder is the core model for AEminium. Just like every kind of design, A common issue when working with core model design is we will focus our attention on our interest aspect but miss some necessary aspect which is important for real world using. I found such kind of case in AEnimium. I discussed it in this [article](https://github.com/qweasd1/CMU_SE_PHD/blob/master/supplement/a_small_enhancement_on_AEminium.md) along with my fix method. 
+##### Core Model
 
-So, It's always a good idea to validate if a core model fit not only fullfill our goal but also compatible with other real world requirement.
+The core model is the implementation model we invent to realize our goals of a language. For instance, the Garbage Collection algorithm is the core model to realize the automatic memory management in Java. The Permission system and task builder is the core model for AEminium to realize its Concurrent-by-Default Programming. 
+
+The design of core model is quite strcit and there are some issue usually happened during this phase. One of them is when we design core model, we usually focus our attention on our interest aspect but miss some aspects which is necessary for its real world using. I found one of this case in AEnimium and I discussed it in this [article](https://github.com/qweasd1/CMU_SE_PHD/blob/master/supplement/a_small_enhancement_on_AEminium.md) along with my improvement. 
+
+So, It's always a good idea to validate if a core model fits not only our goals but is also compatible with other real world requirement.
 
 
-##### syntax model
-Though core model is already workable, but we still need a easy and intuitive way to express them. That's why we need the design of syntax model. Usually a well designed syntax model can help developer write more concise code. For example, lambda expression is a common core model across many different language, but different language support them in different syntax model. In Java(before Java 8), we use anonymous class to express the lambda expression which is very verbose. But in language like C# we can express them in a short-format like ```x,y=>x+y```. or in Scala  we even express it as ```_ + _```. So good syntax model design can make express the same core model more easily. 
+##### Syntax Model
+Though core model is already a workable model, we still need a easy and intuitive way to express them. That's why we need to design the syntax model. Usually a well designed syntax model can help developer write more concise and clear code. For example, lambda expression is a common core model across many different language, but different language support them in different syntax model. In Java(before Java 8), we use anonymous class to express the lambda expression which is very verbose. But in language like C# we can express them in a short-format like ```x,y=>x+y```. or in Scala  we even express the same lambda as ```_ + _```. So good syntax model  can make express the same core model more easily. 
 
-As I think, Syntax model is usually more easier to design than core domain model since it's just a thin layer wrapping the core model. However, the difficulty increases when we want to improve our syntax model for an existing language. This usually caused grammar conflict and we need to rewrite the grammar and also caused the AST to change.
+The main job we work on a syntax model is to tuning the grammar of the language to compatible with syntax feature we want. As I think, Syntax model is usually more easier to design than core domain model since the front-end technology of compiler existing for a long time. However, the difficulty still exist when we want to improve our syntax model on an existing language. This usually caused grammar conflict and we need to rewrite the grammar and also caused the AST to change. I will discuss this latter in Language evolution.
     
-##### additional feature for industry level language.
-From a prototype view, when we finished the core model and syntax model we are already finished a language. However, for an industry level language, there are more to consider. A good example is, we need to report meaningful error message to the developer when our source code contains errors. Another example is what so called "quick fix". When you use Eclipse, you can press "ctrl+1" to invoke quick fix on error code and select an option Eclipse provides you. To implement these advanced functions we also need to embed more things in our compiler design. Since these feature shall be similar between different language, we can abstract them out and "merge" with our prototype language model when need. There are already good tool on these tasks like [Xtext](https://eclipse.org/Xtext/).
+##### Additional features for industry level language.
+From a prototype view, when we finished the core model and syntax model we are already finished a language. However, for an industry level language, there are more to consider. A good example is, we need to report meaningful error message to the developers when their source code contains errors. Another example is what so called "quick fix". When you use Eclipse, you can press "ctrl+1" to invoke quick fix on error code and select an option Eclipse provides you to fix it. To implement these advanced functions we also need to embed more things in our compiler design. Since these feature shall be similar between different language, we can abstract them out and "merge" with our prototype language model when need. There are already good tool on these tasks and [Xtext](https://eclipse.org/Xtext/) is just one of them. 
 
-##### Some Other ideas
+Though these features are not necessary to the design of a language, but if we provide them, our language can be more easily to pick by industry developer. So it's deserved to investigate on this topic. Actually, the underlying model is quite complex.  
+
+##### Language evolution 
+We have discussed the necessary features of a language on above. In this section, I want to talk about the evolution of a general language. 
+
+As we all know, language evolved to provide new feature to benefit developer. However, as we mentioned in Syntax Model, this sometimes caused grammar conflict with existing language grammar if we try to add new syntax model. To avoid this, a cheap and convenient way  is to reuse the existing syntax model and add new logic in compiler. The annotation in Java is such a good example. They provide more information for complier to implement additional operation. It's a powerful pattern, but sometimes, we need more flexible syntax and the fianl result is we need to change our complex grammar! 
+
+The main reason for this issue, is we put all things in one grammar and they are coupled with each other. We can't make sure if we change part it won't affect others. I guess, this might be a common issue among all general language. It will definitely slow down the development speed of a language along with more heavier burden of test. But I think with the advent of Wyvern, this issue can be easy to solve! see this [article](https://github.com/qweasd1/CMU_SE_PHD/blob/master/supplement/wyvern_thinkings.md) for more details!
+
+
+##### Language design in real world
 The above just talk about the big picture of a language design. When implement a language in real world there are also some detail considerations, I list some of them in this [article](https://github.com/qweasd1/CMU_SE_PHD/blob/master/supplement/language_design_details.md).
  
 Another  a language is always composed with a lot of features to support more broad use cases. This kind of language is what so called general language. However, it's sometimes inconvenient to improve them since we put all things together under a big grammar. It's just like  I think the advent of Wyvern changed this landscape. I will discuss this in this [article](https://github.com/qweasd1/CMU_SE_PHD/blob/master/supplement/wyvern_thinkings.md)
