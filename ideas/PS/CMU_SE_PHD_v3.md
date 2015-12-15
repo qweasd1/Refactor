@@ -8,9 +8,9 @@ To be straight, my dream mentor is **Jonathan Aldrich** and my dream projects ar
 ### My understanding on Language Design
 
 ##### The Goals of a language
-I think the goals of a language are the core of every language's design. They describe what kind of problems a language will solve. Here are several examples. For the C language , its goal is to let developer use high level model to describe the program used to be described in Assembly language. For Java, one of its goals is to do memory management auotmatically. For AEminium, the goal is to let developer use a more simple and declarative way to write parallel programming.
+I think the goals of a language are the core of every language's design. They describe what problems a language want to solve. Here are several examples. For the C language , its goal is to let developer use high level model to describe program which used to be described in Assembly language. For Java, one of its goals is to free developer from memory management. For AEminium, the goal is to let developer use a more simple and declarative way to write parallel programming.
 
-Though when develop a new language, we are usually inspired by a new language syntax or feature frist. It's very important to consider the goals of the new language. If the goal of the language is fullfilled by other language or it has limit usage, it might be less worthy for you to develop it.
+When we develop a new language in real world, our fancy ideas are usually inspired by a specific language syntax or feature. However, it's very important to consider the goals of the new language. If the goal of the language is fullfilled by other language or it has limit usage, or it's quite vague it might be less worthy for you to develop it. 
 
 ##### Core Model
 
@@ -36,7 +36,7 @@ We have discussed the necessary features of a language on above. In this section
 
 As we all know, language evolved to provide new feature to benefit developer. However, as we mentioned in Syntax Model, this sometimes caused grammar conflict with existing language grammar if we try to add new syntax model. To avoid this, a cheap and convenient way  is to reuse the existing syntax model and add new logic in compiler. The annotation in Java is such a good example. They provide more information for complier to implement additional operation. It's a powerful pattern, but sometimes, we need more flexible syntax and the fianl result is we need to change our complex grammar! 
 
-The main reason for this issue, is we put all things in one grammar and they are coupled with each other. We can't make sure if we change part it won't affect others. I guess, this might be a common issue among all general language. It will definitely slow down the development speed of a language along with more heavier burden of test. But I think with the advent of Wyvern, this issue can be easy to solve! see this [article](https://github.com/qweasd1/CMU_SE_PHD/blob/master/supplement/wyvern_thinkings.md) for more details!
+The main reason for this issue, is we put all things in one grammar and they are coupled with each other. We can't make sure if we change part it won't affect others. I guess, this might be a common issue among all general language. It will definitely slow down the development speed of a language along with more heavier burden of test. But I think with the advent of Wyvern, this issue can be easy to solve! see this [article](https://github.com/qweasd1/CMU_SE_PHD/blob/master/supplement/wyvern_thinkings.md) about my ideas on wyvern for more details!
 
 
 ##### Language design in real world
