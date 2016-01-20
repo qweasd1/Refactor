@@ -1,14 +1,17 @@
-### Basics
+### bool condition
+* [*]array(),null,0,false will represent false
+
+### Basics- Control flow
 * return from script: exit()
 * try-catch syntax:
 ```php
 try
 {
- ⋮ do something risky
+    //do something risky
 }
 catch (ExceptionType $e)
 {
- ⋮ handle the exception
+   //handle the exception
 }
 
 ```
@@ -26,4 +29,14 @@ catch (ExceptionType $e)
 
 ### DB Operation
 * new PDO('mysql:host=hostname;dbname=database', 'username', 'password')
+* Usually PDO will swallow errors, to config it to throw errors every time failed, add this:
+```php
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+```
+* let the MysQL connection use utf-8
+```php
+$pdo->exec('SET NAMES "utf8"')
+```
+* run sql: exec('sql') returns **affectedRows** 
+* get result query: query($sql)
 * 
