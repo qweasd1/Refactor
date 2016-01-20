@@ -70,3 +70,19 @@ $pdo->execute();
 ### Very common issues:
 * key not existing in array
 * know if DB operation successful
+
+
+
+### MySQL Basic
+* Basic data type (int, text)
+* primary key
+* 
+
+### MySQL Web
+* use utf8
+```sql
+CREATE TABLE joke (
+...
+) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
+
+```
