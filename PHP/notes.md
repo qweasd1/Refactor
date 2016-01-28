@@ -26,11 +26,16 @@ foreach($array as $key => $value){
 }
 ```
 
-### Html Template
+### Basic - Regex
+* [?] regex Literal: '<del> <regex_expression> <del> ', del can be [/#], **since regex_expression is just PHP string, we need to escape [\]**
+* IsMatch method: preg_match('/<your regex goes here>/', targetText)
+
+### Html
 
 * add <meta charset="utf-8"> to the head of your html
 
-
+### Basic - Module
+* [?] difference between include and require?
 
 ### Http requrest
 * $_REQUEST will contain both variables defined in $_GET and $_POST
@@ -75,7 +80,7 @@ $pdo->execute();
 
 ### MySQL Basic
 * Basic data type (int, text)
-* primary key
+* primary key/ foreign key
 * 
 
 ### MySQL Web
