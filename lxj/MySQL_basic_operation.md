@@ -19,3 +19,7 @@
 ### Insert(ignore, on duplicate key replace to)
 * ignore http://www.server110.com/mysql/201310/2453.html
 * ignore + auto_increment: http://www.2cto.com/database/201108/99073.html
+
+
+### Set Variable in Select Query
+* select @v := <expr>  http://stackoverflow.com/questions/3888735/mysql-set-user-variable-from-result-of-query
