@@ -23,3 +23,7 @@
 
 ### Set Variable in Select Query
 * select @v := <expr>  http://stackoverflow.com/questions/3888735/mysql-set-user-variable-from-result-of-query
+
+
+### Create SP
+* http://blog.sina.com.cn/s/blog_98a0937f0100zgdf.html
