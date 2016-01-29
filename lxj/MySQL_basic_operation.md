@@ -42,3 +42,5 @@ select 'tt';
 end if;
 end$$
 ```
+### String
+* substring_index: substring_index(str,delim,count) (http://www.educity.cn/wenda/401026.html)
