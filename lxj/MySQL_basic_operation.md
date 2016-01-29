@@ -27,3 +27,18 @@
 
 ### Create SP
 * http://blog.sina.com.cn/s/blog_98a0937f0100zgdf.html
+
+
+### If exist
+* if exist 
+```sql
+delimiter$$
+create procedure gg()
+begin
+if exists(select column_name from information_schema.columns where 
+table_schema='test' and table_name='t_user' andn column_name='point')
+then
+select 'tt';
+end if;
+end$$
+```
