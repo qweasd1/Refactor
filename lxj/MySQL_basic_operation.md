@@ -42,5 +42,8 @@ select 'tt';
 end if;
 end$$
 ```
+### delete multiple table
+* http://my.oschina.net/iblike/blog/51082/
+
 ### String
 * substring_index: substring_index(str,delim,count) (http://www.educity.cn/wenda/401026.html)
