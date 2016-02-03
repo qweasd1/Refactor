@@ -28,6 +28,10 @@ void (*funcTable[2])(void) = { func0, func1 }; // Array of two pointers
 for ( int i = 0; i < 2; ++i ) // Use the loop counter as the array
 funcTable[i](); // index.
 ```
+### pointer
+
+
+
 
 ### collection
 * initialize expression: {a,b,c}
