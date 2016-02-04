@@ -6,3 +6,7 @@
 ### pointer:
 * http://file.allitebooks.com/20150510/Understanding%20and%20Using%20C%20Pointers.pdf
 * http://file.allitebooks.com/20150510/Pointers%20in%20C.pdf
+
+
+### New Features
+* http://file.allitebooks.com/20150901/C++%20Recipes%20A%20Problem-Solution%20Approach.pdf
