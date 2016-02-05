@@ -24,8 +24,9 @@
 for item in list:
     print(itme)
 ```
-*range: range(start,UBound[, step])
-
+* range: range(start,UBound[, step])
+* min, max,sum
+* list Comprehensions: 
 
 ### Math
 *  ```3 ** 2 => 9```: two multiplication symbols to represent exponents
