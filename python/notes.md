@@ -42,7 +42,25 @@ for item in list:
 * or : use ```or```
 * in: target in list
   * not int
+* False expression(will consider to be False in condition): False,(),[],{},0
 
+### Control flow
+* If/else
+```python
+if <test condition>:
+    <then statement>
+else:
+    <else statement>
+```
+* If/elif
+```python
+if <test condition>:
+    <then statement>
+elif <elif condition>:
+    <elif statement>
+else:
+    <else>
+```
 ### Math
 *  ```3 ** 2 => 9```: two multiplication symbols to represent exponents
 *  
