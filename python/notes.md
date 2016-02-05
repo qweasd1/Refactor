@@ -10,6 +10,7 @@
 * construct: list = [a,b,c,d]
 * print: print(list)
 * index access: list[i] i can be negative
+* copy: list_new = list_old[:]
 * list modification: 
   * change: list[i] = 'new value'
   * push: list.append('tail')
@@ -17,6 +18,9 @@
   * remove: del list[0], list.remove('value') (it will only remove the first one)
   * pop(): pop up the tail
 * sort: list.sort() (side-effect), **[? can't find]**list.sorted() (no-side-effect)
+* concat
+  * extend: listA.extend(listB) (side-effect: listA will be extended)
+  * + : listA + listB (no-side-effct)
 * reverse(side-effect): list.reverse()
 * get list count: len(list)
 * loop (remember the ':' after for): 
@@ -27,6 +31,10 @@ for item in list:
 * range: range(start,UBound[, step])
 * min, max,sum
 * list Comprehensions: 
+
+### Tuple
+* initilize: (a,b,c)
+* list comprehension: ```.. for (i, _) in list ..``` or ```.. for i, j in list ..```
 
 ### Math
 *  ```3 ** 2 => 9```: two multiplication symbols to represent exponents
