@@ -31,7 +31,7 @@ for item in list:
 * range: range(start,UBound[, step])
 * min, max,sum
 * list Comprehensions: 
-
+  * [raw]: http://www.secnetix.de/olli/Python/list_comprehensions.hawk
 ### Tuple
 * initilize: (a,b,c)
 * list comprehension: ```.. for (i, _) in list ..``` or ```.. for i, j in list ..```
