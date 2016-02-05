@@ -36,6 +36,13 @@ for item in list:
 * initilize: (a,b,c)
 * list comprehension: ```.. for (i, _) in list ..``` or ```.. for i, j in list ..```
 
+### Bool Logic
+* True/False keywords: ```True```,```False``` 
+* and: use ```and```
+* or : use ```or```
+* in: target in list
+  * not int
+
 ### Math
 *  ```3 ** 2 => 9```: two multiplication symbols to represent exponents
 *  
