@@ -3,3 +3,8 @@
 
 ### workbench
 * some sample:  https://github.com/mysql/mysql-workbench/blob/aa9272c882eb9305f67890d177d70821cb5d28b3/plugins/wb.sqlide
+* 
+
+
+### Things:
+* how to add item to menu([P47] def handleLiveTreeContextMenu(name, sender, args):): https://github.com/mysql/mysql-workbench/blob/aa9272c882eb9305f67890d177d70821cb5d28b3/plugins/wb.sqlide/sqlide_schematree_ext.py
