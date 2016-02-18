@@ -1,0 +1,63 @@
+import java.util.Arrays;
+
+
+public class test {
+
+	public static void main(String[] args) {
+		AdjacencyListInputProvider provider = new AdjacencyListInputProvider();
+		Algorithm ag = new Algorithm();
+		
+		Node[] input = provider.create_Sparse();//createInput(); 
+		
+		
+		
+		//Utility.print_adjacency_list(input);
+		
+		//System.out.println();
+		
+		ag.run(input);
+		
+		int i = 1;
+	}
+	
+	
+	private static Node[] createInput() {
+		double[][] input_array = {
+				{ 0,-1, 9, 4},
+				{-1, 0,-1, 6},
+				{ 9,-1, 0, 1},
+				{ 4, 6, 1, 0}
+		};
+		
+		int size = input_array.length;
+		
+		Node[] nodes = new Node[size];
+		
+		for (int i = 0; i < input_array.length; i++) {
+			Node head = new Node();
+			Node cursor = head;
+			
+			for (int j = 0; j < nodes.length; j++) {
+				double weight =  input_array[i][j];
+				if (weight == -1) {
+					continue;
+				}
+				
+				cursor.index = j;
+				cursor.weight = weight;
+				
+				if(j != size - 1){
+					Node next = new Node();
+					cursor.next = next;
+					cursor = next;
+				}
+				
+			}
+			nodes[i] = head;
+		}
+		
+		return nodes;
+	}
+	
+
+}
