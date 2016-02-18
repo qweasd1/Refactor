@@ -1,0 +1,28 @@
+
+public class OneDimInputProvider {
+	
+	private int size = 3;
+	
+	public double[] create_Complete() {
+		int inputLength = (1 + size) * size / 2;
+		
+		double[] input = new double[inputLength];
+		
+		int index = 0;
+		
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j <= i; j++) {
+				if (i == j) {
+					input[index] = 0;
+				}
+				else {
+					input[index] = Utility.nextDouble();
+				}
+				
+				index++;
+			}
+		}
+		
+		return input;
+	}
+}
