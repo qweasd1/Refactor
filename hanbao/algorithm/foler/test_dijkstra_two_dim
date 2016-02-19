@@ -1,0 +1,26 @@
+
+public class test_dijkstra_two_dim {
+	public static void main(String[] args) {
+		
+		double x = Double.POSITIVE_INFINITY;
+		
+		double[][] input = {
+				{ 0, x, 9, 4},
+				{ x, 0, x, 6},
+				{ 9, x, 0, 1},
+				{ 4, 6, 1, 0}
+		};
+		
+		
+		DijkstraTwoDimAlgorithm ag = new DijkstraTwoDimAlgorithm();
+		ag.run(input);
+		
+		//Utility.print_adjacency_list(input);
+		
+		//System.out.println();
+		
+		//ag.run(input);
+		
+		int i = 1;
+	}
+}
