@@ -1,0 +1,21 @@
+
+public class test_dijkstra_one_dim {
+	public static void main(String[] args) {
+		
+		double x = Double.POSITIVE_INFINITY;
+		
+		double[] input = new OneDimInputProvider().createSparse();
+		
+		
+		DijkstraOneDimAlgorithm ag = new DijkstraOneDimAlgorithm();
+		
+		
+		Utility.print_one_dim(input);
+		
+		System.out.println();
+		
+		ag.run(input);
+		
+		int i = 1;
+	}
+}
