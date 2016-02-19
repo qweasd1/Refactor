@@ -1,0 +1,21 @@
+
+public class test_one_dim {
+	public static void main(String[] args) {
+		OneDimInputProvider provider = new OneDimInputProvider();
+		OneDimAlgorithm ag = new OneDimAlgorithm();
+		
+		double[] input = provider.create_Complete();//createInput(); 
+		
+		Utility.print_one_dim(input);
+		System.out.println();
+		ag.run(input);
+		
+		//Utility.print_adjacency_list(input);
+		
+		//System.out.println();
+		
+		//ag.run(input);
+		
+		int i = 1;
+	}
+}
