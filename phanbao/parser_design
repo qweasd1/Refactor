@@ -1,0 +1,156 @@
+import:
+* you can import gramar from other grammar file
+* the mechanism is to load file one by one, the new grammar definition will override the previous one
+	syntax:
+		import <grammar>
+		from <grammar> import (* | <element> [, element]*) [except <element> [, element]*]
+	semantic:
+		source_code->ast->cache(intermediate_representation)
+
+lexer:
+	option: i(ignore case)
+	
+	lexer: more than one char string, can support?
+	anonymous_lexer: the inline grammar's sequence: if it's string, put it on the head, if it's regex, put it on the regex head
+			
+parser:
+	option: ad = 0 auto_depack disable
+
+	rule:
+		branch:
+		* implicit branch name: when not specify the name of the branch, it will automatically generate it(#ag_generate_branch_name)
+		* branch auto_depack rule:
+			** add assistance to help figure out pattern
+		* implicit branch name: only 1 branch in a rule(how to generate the visitor)
+	
+	only one branch rule	
+	auto_depack_rule:  is_auto_depack && (1 explicit return || no explicit return but only 1 ref)
+		* moreover if there is no explicit return in branch but there is one named reference, how we check the assign type? more than 1 assign, use array, one assign but self or parent group is more than 1 time, should treat as array
+
+grammar:
+
+		LEXER: 'lexer'
+		PARSER: 'parser'
+		IMPORT: 'import'
+		FROM: 'from'
+		EXCEPT: 'except'
+		
+
+		COMMENT: /#[^\n]*/
+		WS: / \t\r/
+		NEWLINE: /\n/
+		
+		ID = [a-zA-Z_]\w*
+		NUMBER = \d+
+		
+		REGEX:  (\/|[^/])*
+		STRING_SINGLE: (\'|[^'])*
+		STRING_DOUBLE: (\"|[^"])*
+		
+		
+		
+		?:'?'
+		,:','
+		::':'
+		/:'/'
+		*:'STAR'
+		
+		QUANTIFIER: /[+*?]/
+		AST_ASSIGN: /(\?=|\+=|=)/
+		
+		grammar:
+			imports = imports = import lexer = lexer parser = parser
+		
+		import:
+			import_stmt*
+		
+		import_stmt: 
+			module(nad): IMPORT  module = id
+			elements:    FROM module = id IMPORT imports = import_identifier_list (EXCEPT excepts = import_identifier_list)?
+		
+		import_identifier_list:
+			import_identifier (',' import_identifier)*
+		
+		import_identifier:
+			ID
+			'*'
+		
+		
+		
+		parser:
+			_: PARSER ':' INDENT rule_stmt+ DEDENT
+		
+		rule_stmt:
+			_: name = ID (options = option_list)? ':' INDENT branches+= branch_stmt+ DEDENT
+		
+		branch_stmt:
+			_: (name = ID (options = option_list)? ':')?  units += branch_quantifier+
+		branch_unit:
+			_: (prop = ID assign_signal = AST_ASSIGN)? match 
+		
+		branch_quantifier:
+			_: config = branch_match_unit quantifier = QUANTIFIER?
+		
+		branch_match_unit:
+			inline: lexer_pattern
+			ref(nad): value = ID
+			group(nad): '(' (units += branch_unit)+ ')'
+		
+		
+		lexer:
+			LEXER ':' INDENT lexer_stmt+ DEDENT
+		
+		lexer_stmt:
+			ID (options = option_list)?  ':'  lexer_pattern
+		
+		
+		lexer_pattern: 
+			string_single(nad): '"' value = STRING_SINGLE '"'
+			string_double(nad): "'" value = STRING_DOUBLE "'" //remember to escape the '/' in your code
+			regex(nad): '/' value = REGEX '/'
+			
+		
+			
+		option_list:
+			'(' option (',' option)* ')'
+			
+		option:
+			_(ad=0): name = ID ('=' value = NUMBER)?
+		
+		token_rewriter:
+			indent: 1
+			ignore: 
+				WS
+				NEWLINE
+				COMMENT
+				
+		
+		
+test case:
+	* comment: #test
+	* import: ...
+	* lexer: 
+		ID: 'a'
+		ID(i): 'a'
+		ID: /\t/
+		ID(i): /\t/
+		ID: /\//
+		ID(i): /\//
+	* parser:
+		has branch name:
+			a:
+				b: ID
+		no branch name:
+			a:
+				ID
+		has quantifier:
+			a:
+				b: ID [*+?]
+		has inline lexer: 
+			a:
+				b: ['+' "-" /\d+/]
+		has group:
+			a:
+				b: ID (',' ID)*
+					
+			
