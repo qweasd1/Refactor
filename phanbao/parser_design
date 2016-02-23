@@ -34,6 +34,7 @@ grammar:
 		IMPORT: 'import'
 		FROM: 'from'
 		EXCEPT: 'except'
+		PASS: 'pass'
 		
 
 		COMMENT: /#[^\n]*/
@@ -43,9 +44,9 @@ grammar:
 		ID = [a-zA-Z_]\w*
 		NUMBER = \d+
 		
-		REGEX:  (\/|[^/])*
-		STRING_SINGLE: (\'|[^'])*
-		STRING_DOUBLE: (\"|[^"])*
+		REGEX:  (/\/|[^//])*
+		STRING_SINGLE: ('\'|[^']')*
+		STRING_DOUBLE: ('\"|[^"]')*
 		
 		
 		
@@ -54,19 +55,20 @@ grammar:
 		::':'
 		/:'/'
 		*:'STAR'
+		+:'+'
 		
-		QUANTIFIER: /[+*?]/
+		
 		AST_ASSIGN: /(\?=|\+=|=)/
 		
 		grammar:
-			imports = import lexer = lexer parser = parser
+			imports = import? lexers = lexer parsers = parser
 		
 		import:
-			import_stmt*
+			import_stmt+
 		
 		import_stmt: 
-			module(nad): IMPORT  module = id
-			from:    FROM module = id IMPORT imports = import_identifier_list (EXCEPT excepts = import_identifier_list)?
+			module(nad): IMPORT  module = ID
+			from:    FROM module = ID IMPORT imports = import_identifier_list (EXCEPT excepts = import_identifier_list)?
 		
 		import_identifier_list:
 			import_identifier (',' import_identifier)*
@@ -78,17 +80,18 @@ grammar:
 		
 		
 		parser:
-			_: PARSER ':' INDENT rule_stmt+ DEDENT
+			noneEmpty: PARSER ':' INDENT stmts += rule_stmt+ DEDENT
+			empty: PASS
 		
 		rule_stmt:
 			_: name = ID (options = option_list)? ':' INDENT branches+= branch_stmt+ DEDENT
 		
 		branch_stmt:
-			_: (name = ID (options = option_list)? ':')?  units += branch_quantifier+
+			_: (name = ID (options = option_list)? ':')?  units += branch_unit+
 		branch_unit:
-			_: (prop = ID assign_signal = AST_ASSIGN)? match 
+			_: (prop = ID assign_type = AST_ASSIGN)? branch_match_quantifier 
 		
-		branch_quantifier:
+		branch_match_quantifier:
 			_: config = branch_match_unit quantifier = QUANTIFIER?
 		
 		branch_match_unit:
@@ -96,18 +99,23 @@ grammar:
 			ref(nad): value = ID
 			group(nad): '(' (units += branch_unit)+ ')'
 		
+		quantifier:
+			plus(nad): '+'
+			star(nad): '*'
+			question: '?'
 		
 		lexer:
-			LEXER ':' INDENT lexer_stmt+ DEDENT
+			noneEmpty: LEXER ':' INDENT stmts +=lexer_stmt+ DEDENT
+			empty: PASS
 		
 		lexer_stmt:
-			ID (options = option_list)?  ':'  lexer_pattern
+			name = ID (options = option_list)?  (':'  pattern = lexer_pattern)?
 		
 		
 		lexer_pattern: 
-			string_single(nad): '"' value = STRING_SINGLE '"'
-			string_double(nad): "'" value = STRING_DOUBLE "'" //remember to escape the '/' in your code
-			regex(nad): '/' value = REGEX '/'
+			string_single(nad): value = STRING_SINGLE 
+			string_double(nad): value = STRING_DOUBLE  //remember to escape the '/' in your code
+			regex(nad):  value = REGEX 
 			
 		
 			
@@ -124,7 +132,8 @@ grammar:
 				NEWLINE
 				COMMENT
 				
-		
+import logic needs to be re-consider:
+	* if there are only
 		
 test case:
 	* comment: #test
