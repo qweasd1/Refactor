@@ -1,3 +1,5 @@
+###GrammarMergeVisitor
+```python
 GrammarMergeVisitor(GrammarVisitor):
   def __init__(self,grammar):
     self.g = grammar
@@ -60,7 +62,10 @@ GrammarMergeVisitor(GrammarVisitor):
         restParserCollectors.update({p.name:p})
     values = restParserCollectors.values()
     self.ParserRule.extend(values())
-    
+```
+
+### grammar
+```
 grammar:
   rootRule : string
   name: string
