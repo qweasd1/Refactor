@@ -41,17 +41,22 @@ grammar(grammar, grammarType = File/String):
   	Standalone: controls whether we package phanbao module into the package. When False, package all into the target grammar
  
 ### target package structure
-#fileName: ${Grammar}Grammar.py
+*fileName: ${Grammar}Grammar.py
 
 phanbao?
 from phanbao import * ?
 
 lexerRule = []
-ignoreRule = []
+tokenRewriteRule = []
 
 ${Grammar}Parser
 ${Grammar}Visitor
 
-def parse(source_code, match_cb = lambda x:x.value):
-    
+def parse(source_code,root = ${RootRule}, match_cb = lambda x:x.value):
+    lex = lexer(source_code,lexerRule)
+    rewriter = token_rewriter(tokenRewriteRule)
+    rewrite_tokens = rewriter.output(lex.alltokens())
+    tm = transaction_token_manager(rewrite_tokens)
+    parser = ${Grammar}Parser(tm, match_cb)
+    return parser.parse(root)
   
