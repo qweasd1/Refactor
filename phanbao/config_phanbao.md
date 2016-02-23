@@ -1,13 +1,15 @@
 ### Phanbao Grammar
 ```python
+### Phanbao Grammar
+```python
 parserRule = [
   #root
   rule("grammar",
   [
     branch("0",[
-      unit(RULE, "import",(0,1),(ASSIGN_PROP,"imports")),
-      unit(RULE, "lexer",(1,1),(ASSIGN_PROP,"lexers")),
-      unit(RULE, "parser",(1,1),(ASSIGN_PROP,"parsers"))
+      unit(RULE, "import",("imports",ASSIGN_PROP),(0,1)),
+      unit(RULE, "lexer",("lexers",ASSIGN_PROP),(1,1)),
+      unit(RULE, "parser",("parsers",ASSIGN_PROP),(1,1))
     ])
   ]
   ),
@@ -20,15 +22,15 @@ parserRule = [
   rule("import_stmt",[
     branch("module",[
       unit(TOKEN,"IMPORT"),
-      unit(TOKEN,"ID",(1,1),(ASSIGN_PROP,"module"))
+      unit(TOKEN,"ID",("module",ASSIGN_PROP),(1,1))
     ],False),
     branch("from",[
       unit(TOKEN, "FROM"),
-      unit(TOKEN, "ID",(1,1),(ASSIGN_PROP,"module")),
+      unit(TOKEN, "ID",("module",ASSIGN_PROP),(1,1)),
       unit(TOKEN, "IMPORT"),
-      unit(RULE, "import_identifier_list",(1,1),(ASSIGN_PROP,"imports")),
+      unit(RULE, "import_identifier_list",("imports",ASSIGN_PROP),(1,1)),
       unit(TOKEN, "EXCEPT"),
-      unit(RULE, "import_identifier_list",(0,1),(ASSIGN_PROP,"excepts"))
+      unit(RULE, "import_identifier_list",("excepts",ASSIGN_PROP),(0,1))
     ])
   ]),
   rule("import_identifier_list",[
@@ -54,7 +56,7 @@ parserRule = [
       unit(TOKEN,"PARSER"),
       unit(TOKEN,":"),
       unit(TOKEN,"INDENT"),
-      unit(RULE, "rule_stmt",(1,-1),(ASSIGN_ARRAY,"stmts")),
+      unit(RULE, "rule_stmt",("stmts",ASSIGN_ARRAY),(1,-1)),
       unit(TOKEN,"DEDENT")
     ]),
     branch("empty",[
@@ -63,37 +65,37 @@ parserRule = [
   ]),
   rule("rule_stmt",[
     branch("0",[
-    unit(TOKEN, "ID",(1,1),(ASSIGN_PROP,"name")),
-    unit(RULE "option_list", (0,1),(ASSIGN_PROP,"options")),
+    unit(TOKEN, "ID",("name",ASSIGN_PROP),(1,1)),
+    unit(RULE "option_list", ("options",ASSIGN_PROP),(0,1)),
     unit(TOKEN,":"),
     unit(TOKEN, "INDENT"),
-    unit(RULE, "branch_stmt",(1,-1),(ASSIGN_ARRAY,"branches")),
+    unit(RULE, "branch_stmt",("branches",ASSIGN_ARRAY),(1,-1)),
     unit(TOKEN, "DEDENT")
     ])
   ]),
   rule("branch_stmt",[
     branch("0",[
       unit(GROUP,[
-        unit(TOKEN, "ID",(1,1),(ASSIGN_PROP,"name")),
-        unit(RULE "option_list", (0,1),(ASSIGN_PROP,"options")),
+        unit(TOKEN, "ID",("name",ASSIGN_PROP),(1,1)),
+        unit(RULE "option_list", ("options",ASSIGN_PROP),(0,1)),
         unit(TOKEN,":"),
       ],(0,1)),
-      unit(RULE, "branch_unit",(1,-1),(ASSIGN_ARRAY,"units"))
+      unit(RULE, "branch_unit",("units",ASSIGN_ARRAY),(1,-1))
     ])
   ]),
   rule("branch_unit",[
     branch("0",[
       unit(GROUP,[
-        unit(TOKEN, "ID",(1,1),(ASSIGN_PROP,"prop")),
-        unit(TOKEN, "AST_ASSIGN",(1,1),(ASSIGN_PROP,"assign_type"))
+        unit(TOKEN, "ID",("prop",ASSIGN_PROP),(1,1)),
+        unit(TOKEN, "AST_ASSIGN",("assign_type",ASSIGN_PROP),(1,1))
       ],(0,1)),
       unit(RULE,"branch_match_quantifier")
     ])
   ]),
   rule("branch_match_quantifier",[
     branch("0",[
-      unit(RULE, "branch_match_unit",(1,1),(ASSIGN_PROP,"config")),
-      unit(RULE, "quantifier",(0,1),(ASSIGN_PROP, "quantifier"))
+      unit(RULE, "branch_match_unit",("config",ASSIGN_PROP),(1,1)),
+      unit(RULE, "quantifier",("quantifier",ASSIGN_PROP),(0,1))
     ])
   ]),
   rule("branch_match_unit",[
@@ -101,11 +103,11 @@ parserRule = [
       unit(RULE, "lexer_pattern")
     ]),
     branch("ref",[
-      unit(TOKEN,"ID",(1,1),(ASSIGN_PROP))
+      unit(TOKEN,"ID",(ASSIGN_PROP),(1,1))
     ],False),
     branch("group",[
       unit(TOKEN,"(")
-      unit(RULE,"branch_unit",(1,-1),(ASSIGN_ARRAY,"units"))
+      unit(RULE,"branch_unit",("units",ASSIGN_ARRAY),(1,-1))
       unit(TOKEN,")")
     ],False)
   ]),
@@ -127,7 +129,7 @@ parserRule = [
       unit(TOKEN, "LEXER"),
       unit(TOKEN, ":"),
       unit(TOKEN, "INDENT"),
-      unit(RULE, "lexer_stmt",(1,-1),(ASSIGN_ARRAY, "stmts"))
+      unit(RULE, "lexer_stmt",("stmts",ASSIGN_ARRAY),(1,-1))
       unit(TOKEN, "DEDENT")
     ]),
     branch("empty",[
@@ -136,23 +138,23 @@ parserRule = [
   ]),
   rule("lexer_stmt",[
     branch("0",[
-      unit(TOKEN,"ID",(1,1),(ASSIGN_PROP, "name")),
-      unit(RULE, "option_list",(0,1),(ASSIGN_PROP,"options")),
+      unit(TOKEN,"ID",("name",ASSIGN_PROP),(1,1)),
+      unit(RULE, "option_list",("options",ASSIGN_PROP),(0,1)),
       unit(GROUP,[
         unit(TOKEN,":"),
-        unit(RULE,"lexer_pattern",(ASSIGN_PROP, "pattern"))
+        unit(RULE,"lexer_pattern",("pattern",ASSIGN_PROP))
       ],(0,1))
     ])
   ]),
   rule("lexer_pattern",[
     branch("string_single",[
-      unit(TOKEN, "STRING_SINGLE",(1,1),(ASSIGN_PROP, "value"))
+      unit(TOKEN, "STRING_SINGLE",("value",ASSIGN_PROP),(1,1))
     ],False),
     branch("string_double",[
-      unit(TOKEN, "STRING_DOUBLE",(1,1),(ASSIGN_PROP, "value"))
+      unit(TOKEN, "STRING_DOUBLE",("value",ASSIGN_PROP),(1,1))
     ],False),
     branch("regex",[
-      unit(TOKEN, "REGEX",(1,1),(ASSIGN_PROP, "value"))
+      unit(TOKEN, "REGEX",("value",ASSIGN_PROP),(1,1))
     ],False)
   ]),
   rule("option_list",[
@@ -168,12 +170,14 @@ parserRule = [
   ]),
   rule("option",[
     branch("0",[
-      unit(TOKEN,"ID",(1,1),(ASSIGN_PROP,"name")),
+      unit(TOKEN,"ID",("name",ASSIGN_PROP),(1,1)),
       unit(GROUP,[
         unit(TOKEN, "="),
-        unit(TOKEN, "NUMBER", (1,1),(ASSIGN_PROP, "value"))
+        unit(TOKEN, "NUMBER", ("value",ASSIGN_PROP),(1,1))
       ],(0,1))
     ],False)
   ])
 ]
+```
+
 ```
