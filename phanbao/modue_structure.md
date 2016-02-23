@@ -28,7 +28,7 @@ GrammarParser
 GrammarVisitor
 
 *LexerGenerator
-*ignoreRuleGenerator
+*TokenRewriterGenerator
 ParserGenerator
 *VisitorGenerator(if one rule only have one branch, just generate visit method for that branch)
 
