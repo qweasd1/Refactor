@@ -25,12 +25,14 @@ unit
 
 grammarLexerRule
 GrammarParser
-
+GrammarVisitor
 
 *LexerGenerator
 *ignoreRuleGenerator
 ParserGenerator
-VisitorGenerator
+*VisitorGenerator(if one rule only have one branch, just generate visit method for that branch)
+
+def parse()
 
 
 ### grammar design
@@ -59,4 +61,5 @@ def parse(source_code,root = ${RootRule}, match_cb = lambda x:x.value):
     tm = transaction_token_manager(rewrite_tokens)
     parser = ${Grammar}Parser(tm, match_cb)
     return parser.parse(root)
-  
+
+ 
