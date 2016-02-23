@@ -1,12 +1,18 @@
 ###GrammarMergeVisitor
 ```python
-GrammarMergeVisitor(GrammarVisitor):
-  def __init__(self,grammar):
-    self.g = grammar
+class GrammarMergeVisitor(GrammarVisitor):
+  def __init__(self):
     self.importLexerRuleASTs = []
     self.importParserRuleASTs = []
     self.lexerRule=  []
     self.parserRule = []
+    
+  def loadImport(module):
+    grammar_def = io.open(module).read()
+    grammar_ast = parse(grammar_def)
+    visitor = GrammarMergeVisitor()
+    visitor.visit(grammar_ast)
+    return visitor.createMergedImports()
   def visit_import_stmt_module(self,ast):
     module = ast.module
     lexerRuleAST, parserRuleAST = self.g._loadGrammarContent(module)
@@ -62,24 +68,18 @@ GrammarMergeVisitor(GrammarVisitor):
         restParserCollectors.update({p.name:p})
     values = restParserCollectors.values()
     self.ParserRule.extend(values())
+    
+    return (self.lexerRule, self.ParserRule)
 ```
 
 ### grammar
+```python
+class grammar():
+
+  def loadGrammar(grammarFile):
+  	self.name = grammarFile[0:grammarFile.index('.')]
+  	visitor = GrammarMergeVisitor()
+  	lexerRuleASTs, parserRuleASTs =  visitor.loadImport()
+  	self.rootRule = parserRuleASTs[0].name
+  	
 ```
-grammar:
-  rootRule : string
-  name: string
-  self.lexerRule: [...]
-  self.parserRule: [...]
-  self.lexerRuleAst
-  self.parserRuleAst
-  
-  
-  
-  
-  loadGrammar(file):
-  
-  (lexerRuleAst, parserRuleAst) _loadGrammarContent(file):
-    grammar_def = io.open(file).read()
-    grammar_ast = parse(grammar_def)
-     grammar_ast.imports
