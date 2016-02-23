@@ -59,7 +59,7 @@ grammar:
 		AST_ASSIGN: /(\?=|\+=|=)/
 		
 		grammar:
-			imports = imports = import lexer = lexer parser = parser
+			imports = import lexer = lexer parser = parser
 		
 		import:
 			import_stmt*
