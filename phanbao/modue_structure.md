@@ -24,8 +24,9 @@ branch
 unit
 
 grammarLexerRule
-GrammarParser
-GrammarVisitor
+
+*GrammarParser
+*GrammarVisitor
 
 *LexerGenerator
 *TokenRewriterGenerator
