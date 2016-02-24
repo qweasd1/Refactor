@@ -10,3 +10,4 @@ ID:
 
 * Visitor: can we add a hook in Visitor, a method called at every branch
 * Visitor: how to determine the visitor method?()
+* Visitor: generate visit_rule  + visit_rule_branch: this shall give us opportunity to override rule level visit method
