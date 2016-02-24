@@ -1,4 +1,13 @@
 * regex
 * list 
 * function
-* control flow
+
+
+
+* cleanup resource : http://python-3-patterns-idioms-test.readthedocs.org/en/latest/InitializationAndCleanup.html
+  * using del
+  * weak reference
+* decorator: http://python-3-patterns-idioms-test.readthedocs.org/en/latest/PythonDecorators.html
+
+
+* inspect: https://docs.python.org/3/library/inspect.html
