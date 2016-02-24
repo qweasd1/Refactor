@@ -17,3 +17,12 @@ mforms.newSelector()
 * ```set_selected(index:int)```: set the index item selected 
 * ```set_value(item: str)```: give item and select it. if item not exist, select index 0
 
+### code snippet:
+```
+ t = mforms.newSelector()
+ t.set_size(100,-1)
+ t.add_items(["1","2","3"])
+ test = 'tt'
+ t.add_changed_callback(lambda  : self.cb(test))
+ t.set_value("4")
+```
