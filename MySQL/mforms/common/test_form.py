@@ -2,6 +2,8 @@ import mforms
 tab = mforms.newTabView(mforms.TabViewTabless)
 
 #use t to reference the control you create
+#use tm to reference the form you create
+#use tm.run() to show the form 
 
 class test(mforms.Form):
     def __init__(self):
