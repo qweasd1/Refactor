@@ -13,6 +13,8 @@
 * inspect: https://docs.python.org/3/library/inspect.html
 
 
-* dynamic module : **imp** module
+* dynamic module : 
+ *  **imp** module
+ *  the concept of module itself
 
 * ast : https://docs.python.org/2/library/parser.html
