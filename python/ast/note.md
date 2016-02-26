@@ -1,7 +1,8 @@
-[great]unofficial guide for ast: https://greentreesnakes.readthedocs.org/en/latest/
+* [basic unofficial guide]: https://greentreesnakes.readthedocs.org/en/latest/
   * ast_node:  https://greentreesnakes.readthedocs.org/en/latest/nodes.html#Del
+* [official doc]: https://docs.python.org/2/library/language.html
 [gui] ast viewer: https://github.com/titusjan/astviewer
-
+*
 * **?**parse's method signature
 
 
