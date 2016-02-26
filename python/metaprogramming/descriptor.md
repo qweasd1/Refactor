@@ -1,6 +1,8 @@
 * http://intermediatepythonista.com/classes-and-objects-ii-descriptors
 * https://docs.python.org/2.6/howto/descriptor.html
 
+TODO: analysis descriptor's usage! (static method, class method)
+
 
 ### descriptor must be new style objects or classes
 ```python
