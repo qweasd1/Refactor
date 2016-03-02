@@ -1,1 +1,9 @@
-* https://docs.djangoproject.com/en/1.9/topics/db/queries/
+* basic query for: https://docs.djangoproject.com/en/1.9/topics/db/queries/
+* API details: https://docs.djangoproject.com/en/1.9/ref/models/querysets/#queryset-api
+
+
+* auto_increment id
+* get an entity with a filter, but no entity is available. What will return?
+* when querySet evaluated? what does it do when evaluate?
+  *　no value, raise Exception, more than one value, raise exception
+* multiple value
