@@ -1,1 +1,2 @@
-
+* auto_increment when insert duplicate records
+  * http://dev.mysql.com/doc/refman/5.5/en/information-functions.html#function_last-insert-id:  If you use INSERT IGNORE and the row is ignored, the LAST_INSERT_ID() remains unchanged from the current value (or 0 is returned if the connection has not yet performed a successful INSERT) and, for non-transactional tables, the AUTO_INCREMENT counter is not incremented. For InnoDB tables, the AUTO_INCREMENT counter is incremented if innodb_autoinc_lock_mode is set to 1 or 2, as demonstrated in the following example:
