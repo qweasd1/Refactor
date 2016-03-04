@@ -1,0 +1,58 @@
+from tkinter import *
+import tkinter.filedialog as fd
+import tkinter.messagebox as ms
+
+def tt():
+    print(type(text.index(INSERT)))
+
+def test(e=None):
+    print(start_index.get())
+    print(end_index.get())
+    text.tag_add("sel",start_index.get(),end_index.get())
+    
+    
+    
+    return "break"
+
+
+def build_toolbar(root):
+    f = Frame(root)
+    f.pack(side=TOP, fill=X)
+    toolbar_btn_test(f)
+
+    Entry(f,textvariable=start_index).pack(side=LEFT)
+    Entry(f,textvariable=end_index).pack(side=LEFT)
+    
+    return f
+
+def toolbar_btn_test(toolbar):
+    btn = Button(toolbar,text="test",command=tt)
+    btn.pack(side = LEFT,fill=Y,padx= 3, pady=3)
+
+def build_content(root):
+    text = Text(root)
+    text.pack(fill=BOTH,expand = 1)
+    text.bind("<Control-A>",test)
+    text.tag_config("test", foreground="yellow")
+    return text
+
+def build_search_window(root):
+    win = Toplevel(root)
+    win.title("Search")
+    win.transient(root)
+    return root
+
+win = Tk()
+win.title('test')
+
+start_index = StringVar(win)
+end_index = StringVar(win)
+
+toolbar = build_toolbar(win)
+
+text = build_content(win)
+
+
+#search_window = build_search_window(win)
+
+win.mainloop()
