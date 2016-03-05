@@ -1,0 +1,1 @@
+* ```location```: Lib\idlelib
