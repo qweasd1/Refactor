@@ -4,3 +4,8 @@
 
 
 ### **traverse graph contains cycles**!
+
+
+
+
+### create unique id for entities to let them been found more easily?
