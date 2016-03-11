@@ -2,4 +2,4 @@
 
 
 ### edge cases, no queue was binding to an exchange
-* be sure queue exists in any case(so declare the queue at any time before you uisng them. this operation is idempotent)
+* be sure queue exists in any case(so declare the queue at any time before you uisng them. this operation is idempotent), why this happened?(maybe distributed system... don't know)
