@@ -7,3 +7,11 @@
 
 #### compile version not consistent
 * http://zhidao.baidu.com/link?url=bRCxvP_9EJsS_KJCcWHgst6uFR0po_gmbuV_oToYp5OEb9_Sh8-fX1Vj6phwacxDclDIp5D6Rs7TXZ31iwXF2ONfIyV_riEwzdRcWVtjU0O
+
+
+#### emulator
+* http://www.cnblogs.com/csulennon/p/4178404.html
+* 
+
+#### can't detect your phone as device
+* http://www.aliog.com/43498.htmlhttp://www.aliog.com/43498.html
