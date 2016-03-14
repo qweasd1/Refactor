@@ -8,5 +8,6 @@
 
 
 
-### Drop to Frame
+### [think its usage] Drop to Frame
 * return to a stack frame in the thread to re-run an operation: each statement shall be bound to a specific frame, this operation will rerun the frame. However what side-effect you did before will affect the new frame running.(for e.g. a static field will be set after the first run of this frame)
+* for context-free frame: 
