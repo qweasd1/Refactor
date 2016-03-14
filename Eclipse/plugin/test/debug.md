@@ -24,3 +24,4 @@ substitute more code on demand. With the merging of JRockit and Hotspot
 over time, more may be replaceable at runtime than before; for everything
 else, there's **JRebel**.
 Other JVMs, such as IBM's, can deal with a wider range of replacements
+* however, the change to **plugin.xml won't update!**
