@@ -22,5 +22,5 @@ The ex-Sun Hotspot JVM cannot replace classes if methods are added or
 interfaces are updated. Some JVMs have additional capabilities which can
 substitute more code on demand. With the merging of JRockit and Hotspot
 over time, more may be replaceable at runtime than before; for everything
-else, there's JRebel.
+else, there's **JRebel**.
 Other JVMs, such as IBM's, can deal with a wider range of replacements
