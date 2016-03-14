@@ -4,7 +4,9 @@
 
 
 
-### breakpoint setting
+### breakpoint acc-key
+* Double-Click : toggle add/remove breakpoint
+* Shift-Double-Click: toggle enable/ disable breakpoint(save the config)
 
 
 
@@ -50,6 +52,7 @@ Other JVMs, such as IBM's, can deal with a wider range of replacements
   
 
 ### debug view:
+* [think the usage scenario] skip all breakpoint:
 * go to file for breakpoint: select a breakpoint in Debug view and find where we set that breakpoint.
 * [TODO] there are many other function in this view, see if there are other wonderful usages
 
