@@ -24,4 +24,20 @@ substitute more code on demand. With the merging of JRockit and Hotspot
 over time, more may be replaceable at runtime than before; for everything
 else, there's **JRebel**.
 Other JVMs, such as IBM's, can deal with a wider range of replacements
+* seems eclipse will notify you that if the runtime replacement can't be integrate into the current environment.
 * however, the change to **plugin.xml won't update!**
+
+### [think of its usage] debug filter
+* [page:P39] Preferences | Java | Debug | Step Filtering
+* [case]
+  *  add Package
+  *  filter simple getters
+  *  filter simple setters
+  *  filter constructors
+  *  ctor
+  *  
+  
+### different breakpoint type:
+* method breakpoint: 
+  * Double-Click at the same line of the method signature will add this breakpoint
+  * Ctrl-Double-Click at the breakpoint can let you edit whether this breakpoint stop enter/exit method
