@@ -1,0 +1,1 @@
+* For more information about creating resources and projects, see chapter 6 of Eclipse 4 Plug-in Development by Example Beginner's Guide, Packt Publishing, or visit the Eclipse help documentation at http://help.eclipse.org
