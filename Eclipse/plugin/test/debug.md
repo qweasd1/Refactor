@@ -17,3 +17,10 @@
 * [pre-request]: Project | Build Automatically is enabled
 * [why can we do like this] when a Java program is launched in debug mode, whenever changes to classes are made, it will update the running JVM with the new code if possible. This behavior is controled by JVM through **JVMTI** and whether, for example, the
 virtual machine's canUnrestrictedlyRedefineClasses() call returns true. Generally, updating an existing method and adding a new method or field will work, but changes to interfaces and super classes may not be. 
+see more on this topic : 
+The ex-Sun Hotspot JVM cannot replace classes if methods are added or
+interfaces are updated. Some JVMs have additional capabilities which can
+substitute more code on demand. With the merging of JRockit and Hotspot
+over time, more may be replaceable at runtime than before; for everything
+else, there's JRebel.
+Other JVMs, such as IBM's, can deal with a wider range of replacements
