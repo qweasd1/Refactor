@@ -7,6 +7,8 @@
 ### breakpoint acc-key
 * Double-Click : toggle add/remove breakpoint
 * Shift-Double-Click: toggle enable/ disable breakpoint(save the config)
+* Ctrl-Double-Click:  open the breakpoint configuraition pannel.
+* [TODO] toggle skip all breakpoints
 
 
 
