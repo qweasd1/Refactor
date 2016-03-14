@@ -48,7 +48,7 @@ Other JVMs, such as IBM's, can deal with a wider range of replacements
   * **use case**: 
     * [discuss this] when value has been incorrectly initialized. you can set the breakpoint at the constructor, and use framestack to see where it was invoked to detect where goes wrong.
   * Hit count
-  * 
+  * [TODO: try more on this] the conditional expression can only be expression, so if you want to have complex statement, use a static method to give the logic.
   
 
 ### debug view:
