@@ -41,3 +41,15 @@ Other JVMs, such as IBM's, can deal with a wider range of replacements
 * method breakpoint: 
   * Double-Click at the same line of the method signature will add this breakpoint
   * Ctrl-Double-Click at the breakpoint can let you edit whether this breakpoint stop enter/exit method
+  * exit method breakpoint will stop after return expression has evaludated but a line breakpoint on a return statement will stop before the return exprssion evaluated.
+* conditional breakpoints:
+  * **use case**: 
+    * [discuss this] when value has been incorrectly initialized. you can set the breakpoint at the constructor, and use framestack to see where it was invoked to detect where goes wrong.
+  * Hit count
+  * 
+  
+
+### debug view:
+* go to file for breakpoint: select a breakpoint in Debug view and find where we set that breakpoint.
+* [TODO] there are many other function in this view, see if there are other wonderful usages
+
