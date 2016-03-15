@@ -4,7 +4,10 @@
 ### important methods
 constructor:
 ```java
-Label lb = new Label(shell, SWT.CENTER);
+Label lb = new Label(shell, ${style});
+//use None to default
+
+//use SWT.SEPARATOR to make it a separator
 ```
 
 style:
