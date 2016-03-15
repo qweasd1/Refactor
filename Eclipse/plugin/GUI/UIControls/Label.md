@@ -19,3 +19,8 @@ getAlignment()
 //seperator: SWT.SEPARATOR ( combine with SWT.HORIZONTAL to control the orient, combine with SWT.SHADOW_XXX to control appearance )
 
 ```
+
+method:
+```java
+label.setText("test");
+```
