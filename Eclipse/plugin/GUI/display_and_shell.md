@@ -15,3 +15,25 @@ sleep()           Display object waits for events
 
 ### Shell
 * root window
+
+
+
+
+### boil code
+```java
+Display display = new Display();
+		Shell shell = new Shell(display);
+		
+		////
+		put your code here
+		
+		////
+		shell.pack();
+		shell.open();
+		while (!shell.isDisposed()) { 
+            if (!display.readAndDispatch()) {  
+                display.sleep();   
+            }   
+        }   
+		display.dispose();
+```
