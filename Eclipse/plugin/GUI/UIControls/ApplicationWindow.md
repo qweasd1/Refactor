@@ -19,7 +19,7 @@ protected Control createContents(Composite parent)
 
 
 
-### useful method
+### [?] useful method
 ```
 ApplicationWindow method Function
 addMenuBar() Configures the window with a top-level menu
