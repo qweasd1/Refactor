@@ -15,3 +15,19 @@ dispose() Deallocates the widget and its resources
 isDisposed() Returns a boolean value regarding the widget¡¯s deallocation
 ```
  
+## Control
+> the subclass of Widget
+
+### basic functions
+```
+Control method Function
+getSize() Returns a Point object representing the widget¡¯s size
+setSize(int, int) Sets the widget¡¯s size based on the given length and width
+setSize(Point) Sets the widget¡¯s size according to a Point object
+computeSize(int, int) Returns the dimensions needed to fully display the widget
+computeSize(int, int, boolean) Returns the dimensions needed to fully display the widget,
+and indicates whether its characteristics have changed
+pack() Resizes the widget to its preferred size
+pack(boolean) Resizes the widget to its preferred size, and indicates
+whether its characteristics have changed
+```
