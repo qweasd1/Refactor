@@ -27,7 +27,7 @@ setSize(Point) Sets the widget¡¯s size according to a Point object
 computeSize(int, int) Returns the dimensions needed to fully display the widget
 computeSize(int, int, boolean) Returns the dimensions needed to fully display the widget,
 and indicates whether its characteristics have changed
-pack() Resizes the widget to its preferred size
+pack() Resizes the widget to its preferred size   // you should invoke pack() only after the widgets have been added to the container.
 pack(boolean) Resizes the widget to its preferred size, and indicates
 whether its characteristics have changed
 ```
