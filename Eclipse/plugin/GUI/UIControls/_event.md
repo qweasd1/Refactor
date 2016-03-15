@@ -21,9 +21,27 @@ widget: The widget that fired the Event
 // [?] what's the diff between source and widget?
 ```
 
+### use **EventAdapter**(abstract class) instead of **EventListner**(interface)
+EventAdapter already provide empty method for all abstract methods, just override the one you need
+
 #### all typedEvent
 
-#### [TODO] special event on specific control
+### [TODO] special event on specific control
+#### KeyEvent:
+```
+// char value of the press key
+e.character
+
+// stateMask is an integer represents the modifier keys: shift, alt, ctrl, cmd
+e.stateMask
+
+//keyCode is an integer to represent the typed key
+e.keyCode
+```
+#### [TODO] TraverseEvent
+
+#### [TODO] VerifyEvent
+
 
 ### async update UI
 ```java
