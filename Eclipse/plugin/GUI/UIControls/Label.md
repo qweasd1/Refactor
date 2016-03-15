@@ -22,5 +22,6 @@ getAlignment()
 
 method:
 ```java
-label.setText("test");
+label.setText(String);
+label.setImage(...);
 ```
