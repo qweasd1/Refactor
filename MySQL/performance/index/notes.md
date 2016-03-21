@@ -1,5 +1,5 @@
 ### index type
-* B-Tree
+* B-Tree(static structure+update)
 * Hash
 * [new] spatial indexes: for GIS data
 * [new] full-text indexes use ```MATCH AGAINST```
