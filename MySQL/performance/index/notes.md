@@ -3,6 +3,7 @@
 * Hash
 * [new] spatial indexes: for GIS data
 * [new] full-text indexes use ```MATCH AGAINST```
+* [extend] other types index
 
 ### index usage scenario
 
