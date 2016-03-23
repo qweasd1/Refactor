@@ -1,5 +1,7 @@
 ### books
-* http://javaarm.com/file/opensource/mockito/Practical-Unit-Testing-with-JUnit-and-Mockito_2013-04_Tomek.Kaczanowsk.pdf
+* http://down.51cto.com/data/1890464
+* http://down.51cto.com/data/477326
+* http://down.51cto.com/data/1023342
 
 ### Blogs
 * https://tech.lds.org/wiki/images/f/ff/Mocks_Doubles_And_Matchers.pdf
