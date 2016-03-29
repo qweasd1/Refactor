@@ -16,4 +16,5 @@ In short, snippets are a multi-line console(which you can test javascript in cur
   * run whole snippet: ctrl+enter
   * run select code: ctrl+shift+e
 * see local modification:
-  * open the context menu and select **Local Modifications  **
+  * how to use: open the context menu and select **Local Modifications  **
+  * benefits: rollback the modification
