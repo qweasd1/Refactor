@@ -1,3 +1,17 @@
+### breakpoint
+
+##### short cut
+* step:
+  * over: F10
+  * in  : F11
+  * out : shift+F11
+  * continue: F8
+  * start:    ctrl+Enter
+* breakpoint:
+  * toggle: shift+ mouse1
+  * toggle all active: ctrl+F8
+
+
 ### snippets
 
 ##### overview
