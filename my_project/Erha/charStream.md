@@ -1,4 +1,5 @@
 ### how to write a CharStream
+this article show how you write a CharStream and a Lexer
 
 CharStream
 ```java
